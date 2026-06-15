@@ -1,0 +1,72 @@
+[
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What is the difference between MVP and MVVM? [Mid]",
+    "answer": "**MVP (Model-View-Presenter):**\n* Resolves the problem of having a dependent **View** by using a **Presenter** as a communication channel between the **Model** and **View**.\n* A one-to-one relationship exists between the **Presenter** and the **View**.\n* The **Presenter** has knowledge about the **View** (usually through a protocol).\n\n**MVVM (Model-View-ViewModel):**\n* This architectural pattern is more event-driven as it uses data binding, making it easier to separate core business logic from the **View**.\n* Multiple **Views** can be mapped to a single **ViewModel**.\n* The **ViewModel** has no reference to the **View**."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between value types and reference types in Swift? [Easy]",
+    "answer": "Types in Swift fall into one of two categories:\n* **Value Types:** Each instance keeps a unique copy of its data. When assigned to a variable or passed to a function, the data is copied. These are usually defined as a `struct`, `enum`, or tuple.\n* **Reference Types:** Instances share a single copy of the data. When assigned to a variable or passed to a function, a reference to the same memory location is used. These are usually defined as a `class`."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "Explain common Swift keywords such as @escaping, inout, weak, unowned, and lazy. [Mid]",
+    "answer": "* **`@escaping`:** Used to indicate that a closure passed as a function argument can outlive the function's scope (i.e., it can be stored and executed after the function returns).\n* **`inout`:** Allows a function to modify its parameters and have those changes persist outside the function's scope.\n* **`weak`:** Defines a weak reference to an object, meaning it does not increase the object's retain count. It is always declared as an optional variable and automatically becomes `nil` when the referenced object is deallocated, preventing retain cycles.\n* **`unowned`:** Similar to `weak`, but assumes the referenced object will never be `nil` during its use. If accessed after the object is deallocated, it causes a runtime crash.\n* **`lazy`:** A computed property that is only initialized the first time it is accessed. It saves the value and reuses it on subsequent calls, making it ideal for expensive operations.\n* **`@discardableResult`:** Suppresses the compiler warning when the return value of a function is not used.\n* **`dynamic`:** Tells the compiler to use Objective-C dynamic dispatch instead of static dispatch, often used for Key-Value Observing (KVO)."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between Designated and Convenience initializers, and how does initializer inheritance work? [Mid]",
+    "answer": "* **Designated Initializers:** The primary initializers for a class. They must fully initialize all properties introduced by their class and call a designated initializer from their immediate superclass (delegating up).\n* **Convenience Initializers:** Secondary, supporting initializers. They must call another initializer from the same class (delegating across) and ultimately call a designated initializer. They offer shortcuts to common initialization patterns.\n\n**Automatic Initializer Inheritance:**\n* **Rule 1:** If a subclass does not define any custom designated initializers, it automatically inherits all of its superclass's designated initializers.\n* **Rule 2:** If a subclass implements all of its superclass's designated initializers (either by inheriting them or overriding them), it automatically inherits all of the superclass's convenience initializers."
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What is the Delegation design pattern? [Easy]",
+    "answer": "Delegation is a one-to-one design pattern used to pass data or communicate between structs and classes. It allows one object to act on behalf of, or in coordination with, another object, typically by defining a protocol that encapsulates the delegated responsibilities."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "How is memory managed in iOS, and what is a retain cycle? [Mid]",
+    "answer": "* **Memory Management (ARC):** iOS handles memory management using **Automatic Reference Counting (ARC)**. When an object has a strong reference pointing to it, ARC increases its retain count by 1. When the retain count drops to 0, ARC automatically deallocates the object from memory. ARC handles this automatically, but it cannot prevent reference cycles.\n* **Retain Cycle:** A memory leak condition that occurs when two or more objects hold strong references to each other. Because they retain each other, their ARC reference counts never drop to zero, making it impossible for the system to release them from memory.\n* **Avoiding Retain Cycles:** You can break retain cycles by using `weak` or `unowned` references."
+  },
+  {
+    "category": "Objective-C",
+    "question": "What is the difference between strong, retain, and copy property attributes? [Mid]",
+    "answer": "* **`retain` / `strong`:** `strong` in ARC is equivalent to `retain` in manual reference counting. It increases the object's reference count by one. When you retain an object, you share the exact same instance in memory with whoever passed it to you.\n* **`copy`:** Makes a full duplicate of an object and returns it with a retain count of 1. When you copy an object, you own the copied instance, and it is entirely independent of the original. This is commonly used for mutable types (like `NSString` or `NSArray`) to prevent the underlying data from changing unexpectedly."
+  },
+  {
+    "category": "Core Data & Persistence",
+    "question": "Is Core Data thread-safe? [Mid]",
+    "answer": "No, Core Data is not thread-safe. `NSManagedObject` and `NSManagedObjectContext` instances must only be accessed on the thread where they were created. To safely use Core Data across multiple threads, you should use the `perform(_:)` or `performAndWait(_:)` blocks provided by `NSManagedObjectContext`, which guarantee that operations are executed on the context's designated queue."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between a static function and a class function? [Easy]",
+    "answer": "Both are type methods, meaning they are called on the type itself rather than on an instance of the type.\n* **`static func`:** Cannot be overridden by subclasses. It is used in both value types (structs and enums) and reference types (classes).\n* **`class func`:** Can only be used within classes. It behaves similarly to a static method but allows subclasses to override the method's implementation."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are the different access modifiers in Swift? [Mid]",
+    "answer": "Swift provides several access levels to restrict access to code:\n* **`open`:** The least restrictive. Allows access and subclassing/overriding outside the defining module.\n* **`public`:** Allows access outside the module, but subclassing/overriding is restricted to the module where it is defined.\n* **`internal`:** The default access level. Allows access anywhere within the defining module, but not outside.\n* **`fileprivate`:** Restricts access to the same source file.\n* **`private`:** The most restrictive. Restricts access to the enclosing declaration and its extensions within the same file."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "Why does a struct not have a deinitializer (deinit)? [Mid]",
+    "answer": "Structs are **value types** and are typically allocated on the stack, whereas classes are reference types allocated on the heap. Because structs are not managed by Automatic Reference Counting (ARC) and do not have reference counts, the system automatically destroys them the moment they go out of scope. Therefore, there is no need for a `deinit` method to handle complex teardown or release operations."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What are the differences between Delegation, Notification Center, and Key-Value Observing (KVO)? [Mid]",
+    "answer": "These are all communication patterns used to pass data between objects:\n* **Delegation:** A one-to-one communication pattern using protocols. It is tightly coupled (the sender knows the delegate's type via a protocol) and relies on explicit method calls.\n* **Notification Center:** A one-to-many communication pattern. It acts as a centralized hub where objects broadcast notifications and other objects observe them. It is loosely coupled, as the sender and receiver do not need to know about each other.\n* **Key-Value Observing (KVO):** A mechanism that allows an object to be notified directly when a specific property of another object changes. It is useful for observing state changes but requires Objective-C runtime integration in Swift (`@objc dynamic`)."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is an associated type in Swift? [Mid]",
+    "answer": "An `associatedtype` provides a placeholder name for a type that is used within a protocol. The actual type to use for that placeholder is not specified until the protocol is adopted. It is essentially Swift's way of introducing generics into protocols."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What constraints exist when trying to use Key-Value Observing (KVO) on a Swift property? [Mid]",
+    "answer": "Because KVO relies heavily on the Objective-C runtime, you must meet specific constraints to observe a property in Swift:\n1. The class containing the property must inherit from `NSObject`.\n2. The property itself must be marked with the `@objc` and `dynamic` modifiers to ensure it uses dynamic dispatch rather than Swift's static dispatch."
+  }
+]

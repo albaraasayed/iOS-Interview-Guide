@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What is KVO?",
+    "answer": "KVO stands for *Key-Value Observing*. It allows a controller or class to *observe* when a property value changes."
+  },
+  {
+    "question": "Q: Key-Value Observing VS NSNotificationCenter",
+    "answer": "* **Key-Value Observing (KVO)** adds observers for a specific *keypath* and is used to observe changes in a property of a single object.\n* **NSNotificationCenter** adds observers for *notifications* and is used when multiple, decoupled objects need to be notified of an event."
+  },
+  {
+    "question": "Why do you generally create a weak reference when using self in a block?",
+    "answer": "Sometimes it is necessary it capture self in a block such as when defining a callback block. However, since blocks maintain strong references to any captured objects including self, this may lead to a strong reference cycle and memory leak.\n\nInstead, capturing a weak reference to self is recommended in order to avoid this issue:\n\n<details open>\n<summary>Objective-C</summary>\n\n```objective-c\nSomeBlock* __weak weakSelf = self;\n```\n</details>"
+  },
+  {
+    "question": "What is a memory leak?",
+    "answer": "A memory leak commonly occurs when an object is allocated in such a way that when it is no longer in use or needed, it is not released. In iOS programming, you create certain objects with weak references in order to avoid a strong to strong relationship that creates a retain cycle and a memory leak."
+  },
+  {
+    "question": "What is the difference between a stack vs a heap?",
+    "answer": "A stack is a region of memory where data is added or removed in a last-in-first-out (LIFO) order. According to [Ates Goral](http://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap), it is the memory set aside as scratch space for a thread of execution. Meanwhile the heap is memory set aside for dynamic allocation. Unlike the stack, you can allocate a block at any time and free it at anytime. \n\nNote: In Objective-C, all objects are always allocated on the heap, or at least should be treated as if on the heap."
+  },
+  {
+    "question": "What is synthesize in Objective-C?",
+    "answer": "*Synthesize* generates getter and setter methods for your property."
+  },
+  {
+    "question": "Q: @synthesize VS @dynamic",
+    "answer": "* **`@synthesize`** will generate getter and setter methods for your property at compile time.\n* **`@dynamic`** just tells the compiler that the getter and setter methods are implemented not by the class itself but somewhere else (like the superclass or will be provided at runtime). Uses for `@dynamic` are e.g., with subclasses of `NSManagedObject` (CoreData) or when you want to create an outlet for a property defined by a superclass that was not defined as an outlet."
+  },
+  {
+    "question": "What is dynamic in Objective-C?",
+    "answer": "Dynamic is used for subclasses of NSManagedObject. @dynamic can also be used to delegate the responsibility of implementing the accessors. ([source](https://medium.com/ios-os-x-development/ios-interview-questions-13840247a57a))"
+  },
+  {
+    "question": "What is the difference between _ vs self. in Objective-C?",
+    "answer": "You typically use either when accessing a property in Objective-C. When you use _, you're referencing the actual instance variable directly. You should avoid this. Instead, you should use self. to ensure that any getter/setter actions are honored. \n\nIn the case that you would write your own setter method, using _ would not call that setter method. Using self. on the property, however, would call the setter method you implemented."
+  },
+  {
+    "question": "What are blocks in Objective-C?",
+    "answer": "Blocks are a language-level feature of Objective (C and C++ too). They are objects that allow you to create distinct segments of code that can be passed around to methods or functions as if they were values. This means that a block is capable of being added to collections such as NSArray or NSDictionary. Blocks are also able to take arguments and return values similar to methods and functions.\n\nThe syntax to define a block literal uses the caret symbol(^):\n\n<details open>\n<summary>Objective-C</summary>\n    \n```objective-c\n^{\n  NSLog(@\"This is an example of a block\")\n}\n```\n</details>"
+  },
+  {
+    "question": "What is the difference between category and extension in Objective-C?",
+    "answer": "A category and extension are similar in functionality where they can add additional instance and class methods to a class. However, an extension can only do so if the source code for the class being extended is available at compile time. This means that classes such as NSString cannot be extended. Instead, a category would be used to add additional methods to the NSString class"
+  },
+  {
+    "question": "What is the difference between public and open? Why is it important to have both?",
+    "answer": "Open access imposes limitations on class inheritance. Classes declared with open level access can be subclassed by modules they are defined in, modules that import the module in which the class is defined, and class members as well. While this sounds similar to the public access level defined in Swift 2, there is a small difference. In Swift 3, the meaning of public access level means that classes declared public can only be subclassed in the module they are defined in. This includes public class members which can be overridden by subclasses defined int he module they are defined in.\n\nSome classes of libraries and frameworks are not designed to be subclasses. For example, in the Core Data framework, Apple states that some methods of NSManagedObject should not be overridden. To prevent any unexpected behavior that may result from overriding those methods, Apple declares those methods public rather than open. As a result, those methods are not marked as open for developers to override. ([source](https://cocoacasts.com/what-is-the-difference-between-public-and-open-in-swift-3/))"
+  },
+  {
+    "question": "What is the difference between *var* and *let*?",
+    "answer": "*var* is a variable that can be changed while *let* denotes a constant that cannot be changed once set."
+  },
+  {
+    "question": "What is the difference between a struct and a class?",
+    "answer": "The main difference to note is that structs are value types (stored on stack) while classes are reference types (stored on heap). \n\nClasses have capabilities that structs do not:\n- Inheritance enables one class to inherit the characteristics of another. ([source](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html))\n- Type casting enables you to check and interpret the type of a class instance at runtime.\n- Deinitializers enable an instance of a class to free up any resources it has assigned.\n- Reference counting allows more than one reference to a class instance."
+  },
+  {
+    "question": "What is the difference between implicit and explicit?",
+    "answer": "When referring to something as implicit or explicit, it is often referring to how an object is declared. In the two examples below:\n\n<details open>\n<summary>Swift</summary>\n    \n```swift\nvar name: String = \"onthecodepath\" // explicit\nvar name = \"onthecodepath\" // implicit\n```\n</details>\n\nIn the first line above, the name variable is *explicitly* declared since the type of the variable follows the name of the variable. In the second line, the String type is not explicitly declared. However, Swift is able to infer that name is of a String type since the value that it is being set as is of a String type."
+  },
+  {
+    "question": "What is the difference between synchronous and asynchronous task?",
+    "answer": "Synchronous tasks wait until the task has been completed while asynchronous tasks can run in the background and send a notification when the task is complete."
+  },
+  {
+    "question": "9. What do you know about synchronous and asynchronous tasks in iOS?",
+    "answer": "* **Synchronous tasks** block the current thread of execution. You must wait for the task to finish completely before the program can move on to the next line of code.\n* **Asynchronous tasks** execute in the background, allowing the current thread to continue running without waiting. The task completes independently without blocking the application's flow."
+  },
+  {
+    "question": "Explain the difference between .task {} and Task {}",
+    "answer": "In SwiftUI, both `.task {}` and `Task {}` are utilized to perform asynchronous operations, but they differ in their integration with the view lifecycle and their management of tasks.\n\n**Key Differences:**\n\n* **Lifecycle Management:** `.task {}` is automatically managed by SwiftUI, starting and canceling tasks in sync with the view\u2019s lifecycle. In contrast, `Task {}` requires manual management of the task\u2019s lifecycle.\n* **Use Case Suitability:** Use `.task {}` when the asynchronous operation is closely tied to the view\u2019s presence. Opt for `Task {}` when the operation is independent of the view\u2019s lifecycle or when initiating tasks outside of a view context.\n\n**`.task {}` Modifier:**\n\n* **Lifecycle Integration:** The `.task {}` modifier attaches an asynchronous task directly to a SwiftUI view. This task begins execution when the view appears and is automatically canceled when the view disappears, ensuring that resources are managed efficiently in line with the view\u2019s presence on the screen.\n* **Automatic Cancellation:** By binding the task to the view\u2019s lifecycle, SwiftUI ensures that any ongoing operations are halted if the view is no longer visible, preventing unnecessary background activity.\n\n```swift\nimport SwiftUI\n\nstruct ContentView: View {\n    @State private var data: String = \"Loading...\"\n\n    var body: some View {\n        Text(data)\n            .task {\n                await fetchData()\n            }\n    }\n\n    func fetchData() async {\n        // Simulate a network request\n        try? await Task.sleep(nanoseconds: 1_000_000_000)\n        data = \"Data loaded\"\n    }\n}\n\n```\n\n**`Task {}` Initializer:**\n\n* **Manual Task Creation:** The `Task {}` initializer is used to create and start a new asynchronous task independently of the SwiftUI view lifecycle. These tasks are not automatically tied to any view\u2019s appearance or disappearance.\n* **Explicit Management:** Since `Task {}` does not integrate with the view lifecycle, developers are responsible for managing the task\u2019s cancellation and ensuring it doesn\u2019t continue running unnecessarily if the related view disappears.\n\n```swift\nimport SwiftUI\n\nstruct ContentView: View {\n    @State private var data: String = \"Loading...\"\n\n    var body: some View {\n        Text(data)\n            .onAppear {\n                Task {\n                    await fetchData()\n                }\n            }\n    }\n\n    func fetchData() async {\n        // Simulate a network request\n        try? await Task.sleep(nanoseconds: 1_000_000_000)\n        data = \"Data loaded\"\n    }\n}\n\n```\n\n---"
+  },
+  {
+    "question": "What is the difference between *atomic* and *non-atomic* synthesized properties?",
+    "answer": "First, properties are set to *atomic* by default. \n\n*Atomic* properties are more likely to guarentee thread-safety because it will ensure that a value is fully set (by the setter method) or fully retrieved (by the getter method) when accessor methods are called simultaneously.\n\n*Non-atomic* properties, however are not thread-safe. While they run faster, they may cause race conditions. In the event that accessor methods are called simultaneously and a race condition occurs, a setter value would first release the old value and a getter method would retrieve nil since no value has not been set yet."
+  },
+  {
+    "question": "What is GCD and how is it used?",
+    "answer": "GCD stands for Grand Central Dispatch. According to [Ray Wenderlich](https://www.raywenderlich.com/60749/grand-central-dispatch-in-depth-part-1), it offers the following benefits\n- Improving your app's responsiveness by helping to defer computationally expensive tasks and run them in the background.\n- Providing an easier concurrency model than locks and threads and helps to avoid concurrency bugs.\n- Potentially optimize your code with higher performance primitives for common patterns such as singletons.\n\nIn other words, GCD provides and manages queues of tasks in the iOS app. This is one of the most commonly used API to manage concurrent code and execute operations asynchronously. Network calls are often performed on a background thread while things like UI updates are executed on the main thread."
+  },
+  {
+    "question": "25. What do you know about Grand Central Dispatch (GCD) in iOS?",
+    "answer": "Grand Central Dispatch (GCD) is a low-level C API that allows developers to run tasks concurrently. It efficiently manages background threads, abstracting away the complex thread management code. GCD includes language features, system enhancements, and runtime libraries that provide comprehensive, systemic performance improvements on multicore hardware."
+  },
+  {
+    "question": "Explain the difference between Serial vs Concurrent",
+    "answer": "Tasks executed *serially* are executed one at a time while tasks that are executed *concurrently* may be executed at the same time."
+  },
+  {
+    "question": "Spot the bug that occurs in the code:",
+    "answer": "<details open>\n<summary>Swift</summary>\n\n```swift\nclass ViewController: UIViewController {\n    @IBOutlet var alert: UILabel!\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        let frame: CGRect = CGRect(x: 100, y: 100, width: 100, height: 50)\n        self.alert = UILabel(frame: frame)\n        self.alert.text = \"Please wait...\"\n        self.view.addSubview(self.alert)\n    }\n    DispatchQueue.global(qos: .default).async {\n        sleep(10)\n        self.alert.text = \"Waiting over\"\n    }\n}\n```\n</details>\n\n<details>\n<summary>Objective-C</summary>\n\n```objective-c\n@interface MyCustomController : UIViewController  \n@property (strong, nonatomic) UILabel *alert;  \n@end  \n\n@implementation MyCustomController  \n\n- (void)viewDidLoad {\n  CGRect frame = CGRectMake(100, 100, 100, 50);\n  self.alert = [[UILabel alloc] initWithFrame:frame];\n  self.alert.text = @\"Please wait...\";\n  [self.view addSubview:self.alert];\n  dispatch_async(\n    dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),\n    ^{\n      sleep(10);\n      self.alert.text = @\"Waiting over\";\n    }\n  ); \n}  \n```\n</details>\n<br>\n\nAll UI updates must be performed on the main thread. Global dispatch queues do not make any guarantees so code should be modified to run the UI update on the main thread. Here is the fix below:\n\n\n<details open>\n<summary>Swift</summary>\n\n```swift\nDispatchQueue.global(qos: .default).async {\n    sleep(10)\n    DispatchQueue.main.async {\n        self.alert.text = \"Waiting over\"\n    }\n}\n```\n</details>\n\n<details>\n<summary>Objective-C</summary>\n    \n```\ndispatch_async(\t\t\ndispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),\n^{\n    sleep(10);\n    dispatch_async(dispatch_get_main_queue(), ^{\n        self.alert.text = @\"Waiting over\";\n    });\n}); \n\n```\n</details>"
+  },
+  {
+    "question": "What is the difference between viewDidLoad and viewDidAppear? Which should you use to load data from a remote server to display in the view?",
+    "answer": "viewDidLoad is only called when the view is loaded (after loadView is called). viewDidAppear, on the other hand, is called everytime the view appears on the device. \n\nIf the data is static for the most part, it can be loaded in viewDidLoad and cached. But if the data is dynamic and likely to change often, it is preferrable to use viewDidAppear. In both instances, data should be loaded asynchronously on a background thread to avoid blocking the UI."
+  },
+  {
+    "question": "31. From two choices\u2014viewDidLoad and viewDidAppear\u2014which will you choose to load data from a remote server to display in the view?",
+    "answer": "The choice strictly depends on the data's lifecycle requirements:\n\n* Use **`viewDidLoad`** if the remote data is entirely static, highly cacheable, and only needs to be fetched exactly once when the view hierarchy is first created in memory.\n* Use **`viewDidAppear`** if the data is highly dynamic or changes frequently, as this method is called every time the view is presented to the user, ensuring the content is always fresh."
+  }
+]

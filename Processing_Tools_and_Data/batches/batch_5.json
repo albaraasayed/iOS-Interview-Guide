@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What is viewdidLayoutSubviews?",
+    "answer": ""
+  },
+  {
+    "question": "What is intrinsic content size?",
+    "answer": "Intrinsic content size is information that a view has about how big it should be based on what it displays. For example, a label\u2019s intrinsic content size is based on how much text it is displaying. In your case, the uiimageview intrinsic content size is the size of the image that you selected.\nAuto Layout takes this information into consideration by creating intrinsic content size constraints for each view. Unlike other constraints, these constraints have two priorities: a content hugging priority and a content compression resistance priority."
+  },
+  {
+    "question": "Q: Content Hugging VS Compression Resistance",
+    "answer": "* **Intrinsic Content Size:** Information a view has about how big it should be based on what it displays (e.g., a `UILabel`'s size based on its text, or a `UIImageView`'s size based on the image). \n* **Content Hugging (Content does not want to grow):** The higher this priority is, the more a view resists growing larger than its intrinsic content size.\n* **Compression Resistance (Content does not want to shrink):** The higher this priority is, the more a view resists shrinking smaller than its intrinsic content size."
+  },
+  {
+    "question": "Difference between nib file and storyboard?",
+    "answer": ""
+  },
+  {
+    "question": "Ways of navigation between view controllers?",
+    "answer": ""
+  },
+  {
+    "question": "What is the difference between plain and grouped UITableView style?",
+    "answer": ""
+  },
+  {
+    "question": "What are clips to bound?",
+    "answer": ""
+  },
+  {
+    "question": "RX Swift",
+    "answer": ""
+  },
+  {
+    "question": "What is the difference between Subject,Observable,Driver?",
+    "answer": "driver : a single observable that updates the entire UI to bindTo and reuse the same observable across the viewController.\nSubject: acts as an observer and observable\nObserver: subscribes on observables and reacts to whatever they emit.\nObservable: Data producer , responsible for posting notifications to be observed on."
+  },
+  {
+    "question": "Subjects",
+    "answer": "A Subject acts like a bridge in Rx, functioning as both an Observable and an Observer.\n* **As an Observer:** It can subscribe to one or more Observables.\n* **As an Observable:** It can pass through observed items by re-emitting them or emitting new items entirely.\n\nThere are 4 types of subjects:\n\n1. **Publish Subject:** Starts empty without an initial value and only emits *new* elements to subscribers.\n2. **Behavior Subject:** Works like a Publish Subject, but it requires an initial value and replays the latest `next` event to new subscribers.\n3. **Replay Subject:** Temporarily caches or buffers the latest elements it emits, up to a specified size of your choosing. It will then replay that entire buffer to new subscribers.\n4. **Variable Subject:** A Variable wraps a `BehaviorSubject` and stores its current value as state. You can access that current value via its `value` property, and, unlike other subjects/observables, you can use that property to set a new element. It works like a Behavior Subject but guarantees an initial value; upon subscription, it emits the initial or the latest value. *(Note: In modern RxSwift, `Variable` is deprecated in favor of `BehaviorRelay`)*."
+  },
+  {
+    "question": "Subject:",
+    "answer": "Zy l bridge kda l rx provides it to act as observable w observer\n* **As observer:** it can subscribe to one or more observable\n* **As observable:** it can pass through observes by reemitting them or emit new items\n\n**There are 4 types of subjects:**\n1. **Publish subject:** start empty without initial value and only emits new elements to subscribers\n2. **Behavior Subject:** works like publish but it replays it the latest. next event to the new subscriber\n3. **Replay Subject:** temporarily cache, or buffer, the latest elements it emits, up to a specified size of your choosing. It will then replay that buffer to new subscribers.\n4. **Variable Subject:** As mentioned earlier, a Variable wraps a BehaviorSubject and stores its current value as state. You can access that current value via its value property, and, unlike other subjects and observables in general, you also use that value property to set a new element onto a variable .. works like behavior subject but with initial value lw subcsibed y-emit l initial aw l latest value.\n\n---"
+  },
+  {
+    "question": "What is functional programming?",
+    "answer": "Functional programming is just a programming paradigm like oop, but in oop when we write a code we are telling how to do specific function, in contradiction with functional programming we just tell what to do"
+  },
+  {
+    "question": "What is reactive programming?",
+    "answer": "Reactive programming is the concept of  dealing with asynchronous streams of data safely (thread safe) like keyboard inputs, button taps , we can listen to the stream and react upon it"
+  },
+  {
+    "question": "What is the difference between  Publish, Reply , Behavior?",
+    "answer": "All three are subject object which used as an observer and observable\nPublish -> when the observer starts to listen or subscribe on the observable it will listen to the emits , but all previous emits which was fired before the subscription won\u2019t\nbehaviour -> It needs an initial value and replays it or the latest element to new subscribers. As BehaviorSubject always emits the latest element, you can\u2019t create one without giving a default initial value.\n\nReplay subject -> once an observer subscribe on observable all the previous emits (before subscription) will be fired again to the new observer, in addition any upcoming emits (after the subscription)"
+  },
+  {
+    "question": "What is dispose bag?",
+    "answer": "Dispose bag is an object that help the ARC (Automatic Reference Counting) to release the relation between observer and observable to prevent retain cycle"
+  },
+  {
+    "question": "What is the content of the dispose bag?",
+    "answer": ""
+  },
+  {
+    "question": "What is the Asynchronous event?",
+    "answer": ""
+  },
+  {
+    "question": "What are the RX three components?",
+    "answer": "1- Observer.\n2- Observable.\n3- DisposeBag."
+  },
+  {
+    "question": "Testing",
+    "answer": ""
+  },
+  {
+    "question": "What is the purpose of unit/UI testing? What are the benefits?",
+    "answer": "Unit/UI testing are the basic of test-driven development. This development approach allows you to codify requirements for your code before you implement it. Unit tests are important to make sure that code meets its design and requirements and behaves as expected. Parts of the program are segregated and tested to ensure that individual parts are working correctly."
+  },
+  {
+    "question": "29- Unit testing",
+    "answer": ""
+  },
+  {
+    "question": "What is TDD and BDD?",
+    "answer": "Tdd: test-driven development.\nBdd: behavior driven development."
+  },
+  {
+    "question": "What is the difference between TDD and BDD?",
+    "answer": ""
+  },
+  {
+    "question": "3. What is Test-Driven Development (TDD)?",
+    "answer": "Test-Driven Development (TDD) is a software development methodology where test cases are written to define the desired software characteristics *before* the actual code is written. It provides valuable insights into both code quality and architectural design. Developers create a test for a specific functionality; when the test fails, they write the minimum amount of straightforward, bug-free code required to pass that test, subsequently refactoring as needed."
+  },
+  {
+    "question": "What is Regression?",
+    "answer": "Regression occurs when a modification is made to the code base, but the expected output remains the same. If the previously passing test cases subsequently fail after this change, it indicates that the core functionality has been unintentionally altered or broken."
+  }
+]

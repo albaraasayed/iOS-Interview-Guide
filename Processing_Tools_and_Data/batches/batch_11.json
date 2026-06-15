@@ -1,0 +1,98 @@
+[
+  {
+    "question": "Q: What is UIStackView?",
+    "answer": "`UIStackView` provides a way to layout a series of views horizontally or vertically. We can define how the contained views adjust themselves to the available space."
+  },
+  {
+    "question": "Q: Explain the difference between points and pixels?",
+    "answer": "A **pixel** on iOS is the full resolution of the device, meaning if I have an image that is 100x100 pixels in length, the phone will render it 100x100 pixels on a standard non-retina device. However, because newer iPhones have a quadrupled pixel density, that same image will render at 100x100 pixels but look half that size. A **point** is a standard length equivalent to 1x1 pixels on a non-retina device, and 2x2 pixels on a retina device."
+  },
+  {
+    "question": "Q: What is the responder chain?",
+    "answer": "The first object in the Responder Chain is called the First Responder. The responder chain is a series of linked responder objects. It starts with the first responder and ends with the app object. If the first responder cannot handle an event, it forwards the event to the next responder in the responder chain."
+  },
+  {
+    "question": "Q: Explain view transitions?",
+    "answer": "View Transitions are effective ways of adding one view on another view with a proper transition animation effect."
+  },
+  {
+    "question": "Q: Explain the Update Cycle?",
+    "answer": "When an iOS app launches, `UIApplication` starts the main run loop for an app which runs on the main thread. The main run loop processes events (such as user touches) and handles updates to view-based interfaces. As events occur (such as touch, location updates, motion, and multimedia control), the run loop finds the appropriate handler for the events, calling appropriate methods, which call other methods, and so on. At some moment in time, all events will be handled, and control will return to the run loop. This point where control is returned to the run loop is called the **update cycle**.\n\nWhile the events are being processed and some changes are requested to the view, these changes are not updated immediately. Instead, the system waits for the existing process to finish and when the next redraw cycle is going to happen. There is a periodic interval between event processing and UI layout update handling."
+  },
+  {
+    "question": "Q: Explain setNeedsLayout vs layoutIfNeeded vs layoutSubviews?",
+    "answer": "* **setNeedsLayout:** Tells the system that you want it to layout and redraw a view and all of its subviews *when it is time for the next update cycle*. This is an asynchronous activity. It allows you to consolidate all layout updates into one cycle, which is usually better for performance.\n* **layoutIfNeeded:** A synchronous call that tells the system you want a layout and redraw of a view and its subviews *done immediately* without waiting for the update cycle.\n* **layoutSubviews:** The default implementation uses constraints to determine the size and position of subviews. Subclasses can override this method to perform more precise layouts. You should not call this method directly."
+  },
+  {
+    "question": "Q: Explain the 3 phases of layouts?",
+    "answer": "There are three phases associated with the layout and drawing of views:\n1. **Constraint pass:** Update of constraints (happens bottom-up).\n2. **Layout pass:** Layout of views and subviews (happens top-down and is dependent on constraint settings).\n3. **Display pass:** Where the views get redrawn based on the layout pass."
+  },
+  {
+    "question": "Q: How to make UITableView scrolling effective?",
+    "answer": "Scrolling in Table Views can be made efficient by following these practices:\n* Reuse cell instances: have only one instance for a specific type of cell.\n* Don\u2019t bind data at `cellForRowAtIndexPath:` because the cell is not displayed yet. Use `tableView:willDisplayCell:forRowAtIndexPath:` instead.\n* Reduce areas where iOS performs useless blending (e.g., don\u2019t use transparent backgrounds).\n* Perform code optimizations to achieve a balance of loading CPU & GPU.\n* Write specific code for specific cell types.\n* Perform rounding of all pixel-relating data (coordinates, heights, widths).\n* Ensure graphical resources and images are pixel-perfect to avoid unnecessary antialiasing.\n* Load images in the background.\n* Process images (like `clipToBounds`, corner radius) before assigning them.\n* Move heavy operations to background threads and refresh on the main thread.\n* Set up `CALayers` for asynchronous displaying mode to increase FPS."
+  },
+  {
+    "question": "Q: What is the UIButton hierarchy?",
+    "answer": "`UIButton` -> `UIControl` -> `UIView` -> `UIResponder` -> `NSObject`."
+  },
+  {
+    "question": "Q: Explain UIResponder and UIControl?",
+    "answer": "* **UIResponder:** Constitutes the event-handling backbone of a UIKit app. As events occur, UIKit dispatches them to your app\u2019s responder objects. If a responder does not handle an event, it forwards it to the next event in the responder chain.\n* **UIControl:** Implements elements such as buttons and sliders using the Target-Action mechanism to report user interactions. Its state (`UIControlState`) determines its appearance and interaction ability."
+  },
+  {
+    "question": "Q: Explain unwind segue?",
+    "answer": "An unwind segue moves backward through one or more segues to return the user to a scene managed by an existing view controller."
+  },
+  {
+    "question": "Q: What is intrinsic content size?",
+    "answer": "With Auto Layout, a view\u2019s content plays an important role in its layout. This is expressed through its `intrinsicContentSize`, which describes the minimum space needed to express the full view content without squeezing or clipping that data."
+  },
+  {
+    "question": "Q: What are layer objects?",
+    "answer": "Layer objects are data objects that represent visual content and are used by views to render their content. Custom layer objects can be added to implement complex animations and sophisticated visual effects."
+  },
+  {
+    "question": "Q: What are layer objects and what do they represent?",
+    "answer": "Layer objects (`CALayer`) represent visual content and are used by views to actually render their content to the screen. They can be heavily manipulated to implement complex animations and sophisticated visual effects without the overhead of heavy views."
+  },
+  {
+    "question": "Q: Explain push and modal segues?",
+    "answer": "* **Push Segue:** The parent view controller needs to be embedded in a navigation controller. The child view controller inherits the navigation bar and back button, sliding in horizontally.\n* **Modal Segue:** Presents over the current view controller. The child view controller does not inherit the navigation bar and typically animates up from the bottom of the page."
+  },
+  {
+    "question": "Q: Explain tabbar vs toolbar vs navigationbar: when to use which, can you combine them?",
+    "answer": "* **UINavigationBar:** Displays at the top of the screen for navigating hierarchical content (includes a back button, title, and optional right button).\n* **UIToolbar:** A control for selecting one of many buttons (toolbar items). It momentarily highlights when tapped.\n* **UITabBar:** A control for selecting one of two or more tabs. Commonly used to implement a modal interface where tapping an item changes the selection entirely."
+  },
+  {
+    "question": "Q: Explain Auto resizing mask?",
+    "answer": "An integer bit mask that determines how the receiver resizes itself when its superview\u2019s bounds change. You specify the value by combining constants in `UIViewAutoresizing`. The default value is `none`."
+  },
+  {
+    "question": "Q: What are the most important application delegate methods a developer should handle?",
+    "answer": "* `application:willFinishLaunchingWithOptions`: Launch process initiated. First opportunity to execute code.\n* `application:didFinishLaunchingWithOptions`: Launch process nearly complete. Last opportunity to prepare the interface.\n* `applicationDidBecomeActive`: App has become active (e.g., returning from a phone call).\n* `applicationWillResignActive`: Temporary event interrupts the app (e.g., incoming phone call). App moves to background.\n* `applicationDidEnterBackground`: App is running but UI is not displayed. You have ~5 seconds to perform tasks before termination.\n* `applicationWillEnterForeground`: App is preparing to move from background to foreground.\n* `applicationWillTerminate`: App is being force-quit or device is shutting down. Time to save configurations and preferences."
+  },
+  {
+    "question": "Q: Define App Delegate Lifecycle?",
+    "answer": "* `application:willFinishLaunchingWithOptions:` \u2014 Your app\u2019s first chance to execute code at launch time.\n* `application:didFinishLaunchingWithOptions:` \u2014 Perform any final initialization before your app is displayed to the user.\n* `applicationDidBecomeActive:` \u2014 Lets your app know that it is about to become the active foreground app.\n* `applicationWillResignActive:` \u2014 Lets you know that your app is transitioning away from being the foreground app (e.g., a phone call comes in).\n* `applicationDidEnterBackground:` \u2014 Lets you know that your app is now running in the background and may be suspended.\n* `applicationWillEnterForeground:` \u2014 Lets you know that your app is moving out of the background and back into the foreground.\n* `applicationWillTerminate:` \u2014 Lets you know that your app is being forcibly terminated by the system or user."
+  },
+  {
+    "question": "Q: Define Access control?",
+    "answer": "Access control restricts access to parts of your code from code in other source files and modules, hiding implementation details. Swift uses `open`, `public`, `internal`, `fileprivate`, and `private`. The default access level is `internal`."
+  },
+  {
+    "question": "Q: fileprivate VS private VS internal access level?",
+    "answer": "* **Internal:** Entities can be used within any source file from their defining module.\n* **File-private:** Restricts the use of an entity strictly to its own defining source file.\n* **Private:** Restricts the use of an entity to the enclosing declaration and to extensions of that declaration that are in the same file."
+  },
+  {
+    "question": "Q: open VS public access control?",
+    "answer": "* **Public:** Classes and members can only be subclassed/overridden *within* the defining module.\n* **Open:** Classes and members can be subclassed/overridden both *within and outside* the defining module."
+  },
+  {
+    "question": "Q: Explain the final keyword in a class?",
+    "answer": "The `final` keyword prevents a method, property, or subscript from being overridden, and prevents a class from being subclassed. Attempting to override/subclass a `final` entity results in a compile-time error."
+  },
+  {
+    "question": "Q: Explain [weak self] and [unowned self]?",
+    "answer": "* `[unowned self]`: The variable will not become nil and therefore must not be an optional.\n* `[weak self]`: Handles the case where the reference might become nil inside the closure at some point; therefore, the variable must be an optional."
+  }
+]

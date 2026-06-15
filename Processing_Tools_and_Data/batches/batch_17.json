@@ -1,0 +1,102 @@
+[
+  {
+    "question": "6- What is factory?",
+    "answer": "Dh mn esmo hwa msn3 byntgli l instance of classes w hwa creational design pattern tb bysht8l ezay -> 3ndi kza class A B C. W 3ndi class X dh l factory aw l msn3 bta3i. Gwa class X 3ndi function ms2ola enha t3ml production ll instances of A B C. W f l a8lb btb2a static function 3shan ma7tgsh a3ml instance mn class X."
+  },
+  {
+    "question": "7- What is Observer?",
+    "answer": "Observer pattern is used when there is one-to-many relationship between objects such as if one object is modified, its depenedent objects are to be notified automatically. Observer pattern falls under behavioral pattern category."
+  },
+  {
+    "question": "8- What is coordinator?",
+    "answer": "dh 7aga kda zy kano tour gudie f l application 3ndi tb ms2ol 3n l navigation between view controllers tb ht2oli tb m ana b3ml present aw push w l donia 7lw hwa dh s7 w kol 7aga bs 3shan n2ll l coupling between l controllers f e7na hn5li l coordinator hwa l y3mlna l navigation bnfso."
+  },
+  {
+    "question": "9- What is Fa\u00e7ade?",
+    "answer": "Facade pattern hides the complexities of the system and provides an interface to the client using which the client can access the system. This type of design pattern comes under structural pattern as this pattern adds an interface to existing system to hide its complexities. T2dr t2ol eno design pattern bytb2 l single reasonability."
+  },
+  {
+    "question": "11- What is proxy?",
+    "answer": "In proxy pattern, a class represents functionality of another class. This type of design pattern comes under structural pattern. In proxy pattern, we create object having original object to interface its functionality to outer world. Dh zy l security aw frd l amn m3ah l mafte7 bta3t kza function byshof meen leh l authority eno y access function moyena mn l class w y5leh y-accessha."
+  },
+  {
+    "question": "13- Architecture of iOS Operating System",
+    "answer": "* **Core OS:** Security \u2013 Bluetooth\n* **Core Services:** Health kit \u2013 core data \u2013 core location\n* **Media:** Media player \u2013 core animation \u2013 graphics\n* **Cocoa touch:** Map kit \u2013 UiKit"
+  },
+  {
+    "question": "14- iOS app life cycle",
+    "answer": "* **application: didFinishLaunchingWithOptions:** -> Bool : b3d ma l user clicked 3 l icon\n* **applicationWillEnterForeground:** l app hyzhr aho ll user\n* **applicationDidBecomeActive:** l app zhr ll user\n* **applicationWillResignActive:** l user galo call\n* **applicationDidEnterBackground:** l user sab l app f l background l ay sbb b2a\n* **applicationWillTerminate:** l app is terminated"
+  },
+  {
+    "question": "15- view controller life cycle",
+    "answer": "* **init**\n* **loadView:** when view controller is created\n* **viewDidLoad:** already created but no ui better to initialize variables here\n* **viewWillAppear:** ui will appear better for animation here\n* **viewWillLayoutSubviews:** It doesn\u2019t do Anything by default. When a view\u2019s bounds change, the view adjusts the position of its subviews.\n* **viewDidLayoutSubviews:** Add code here if you want to make changes to subviews after they have been set.\n* **viewDidAppear:** ui is appeared better to call network api\n* **viewWillDisappear:** ui will disapper when navigation is done better to stop animation or any loading processes\n* **viewDidDisappear:** stop notification observers\n* **deinit:** ARC is running now\n* **didReceiveMemoryWarning()**\n* **viewWillTransition(to:with:)**"
+  },
+  {
+    "question": "16- In an AppDelegate, how is the main UIWindow instantiated?",
+    "answer": "If you choose the Storyboard option as you specify a template, the process works a little differently. The app is given a main storyboard, pointed to by the Info.plist key \u201cMain storyboard file base name\u201d (UIMainStoryboardFile).\nAfter UIApplicationMain instantiates the app delegate class, it asks the app delegate for the value of its window property; if that value is nil, the window is created and assigned to the app delegate\u2019s window property. The storyboard\u2019s initial view controller is then instantiated and assigned to the window\u2019s rootViewController property, with the result that its view is placed in the window as its root view; the window is then sent the makeKeyAndVisible message. All of that is done behind the scenes by UIApplicationMain, with no visible code whatever. That is why, in a storyboard template, the application:didFinishLaunchingWithOptions: implementation is empty."
+  },
+  {
+    "question": "17- Escaping closure",
+    "answer": "L closure 3moumn hwa block of code bynfz functionality mo3iana n2dr n-pass ll function bta3tna aw k2no nasted function .. l escaping bnst5dmo f l asynchronous operations 3shan l function btkon 7slha execute kolha w 5lst b3dha bb2a 3aiz l closure ytnfz."
+  },
+  {
+    "question": "18- What is thread safe means?",
+    "answer": "It is about running multiple threads simultaneously without any crashing."
+  },
+  {
+    "question": "19- Array vs NSArray vs NSMutableArray",
+    "answer": ""
+  },
+  {
+    "question": "21- Recursive enumeration",
+    "answer": "L recursive enum dh lma yb2a l enum bta3i depends on enum tani k associated value l case aw aktr w dh bnst5dmo b enna bnktb indirct 2bl l case aw bl enum w e7na bn-create om l enum nfso."
+  },
+  {
+    "question": "22- Identity operator for reference types",
+    "answer": "=== !== and so on or use equality protocol w brdo and so onJ."
+  },
+  {
+    "question": "23- Property",
+    "answer": ""
+  },
+  {
+    "question": "24- Mutating function",
+    "answer": "L struct w enum homa value type f efrd ana 3ndi property w 3aiz a8ier f l value bta3tha through function mn l struct dh h3mlha ezay .. f bnst5dm l mutating function 3shan a2dr a8ier l value bta3 l property bta3ti. Kman mmokn a8ier mn l vlue bta3t self feha."
+  },
+  {
+    "question": "25- Error handling",
+    "answer": ""
+  },
+  {
+    "question": "26- Abstraction and interface in swift",
+    "answer": "There is no abstraction in swift but can be accessed by using protocols as In Swift Interface can achieve by Protocol. In Swift Abstraction can achieve by Protocol- Extension."
+  },
+  {
+    "question": "28- Concurrency w GCD w QOS",
+    "answer": ""
+  },
+  {
+    "question": "30- Git",
+    "answer": ""
+  },
+  {
+    "question": "31- APM",
+    "answer": ""
+  },
+  {
+    "question": "32- ARC",
+    "answer": "---"
+  },
+  {
+    "question": "Why does SwiftUI use structs for views?",
+    "answer": "1. **Performance Efficiency:** Structs are lightweight and faster to create compared to classes. In UIKit, every view inherits numerous properties and methods from `UIView`, leading to potential overhead. In contrast, SwiftUI views as structs contain only explicitly defined properties, enhancing performance.\n2. **Immutability and Predictability:** Structs are immutable by default, meaning their instances cannot be altered after creation. This immutability aligns with SwiftUI\u2019s declarative approach, where views are a function of state. When the state changes, SwiftUI creates new instances of view structs, ensuring a predictable and consistent UI without unintended side effects.\n3. **Value Semantics:** Structs are passed by value, not by reference. This characteristic prevents issues like retain cycles and reference counting, leading to fewer memory leaks and more straightforward memory management. Each modification results in a new copy, ensuring that changes in one part of the app don\u2019t inadvertently affect others.\n4. **Functional Design Encouragement:** By using structs, SwiftUI encourages a more functional design approach. Views become simple, inert entities that convert data into UI, rather than complex objects that can grow uncontrollably. This design promotes cleaner state management and reduces the likelihood of unintended side effects.\n\n---"
+  },
+  {
+    "question": "How does SwiftUI use the diffing algorithm to optimize UI updates?",
+    "answer": "SwiftUI uses a **diffing algorithm** to compare the previous and current states of the UI and **only updates the changed parts**. This is called \u201cstate-driven rendering.\u201d\n\n\n**How It Works:**\n* SwiftUI **recalculates** the `body` property every time a `@State`, `@ObservedObject`, or `@EnvironmentObject` value changes.\n* Instead of rebuilding the entire UI, SwiftUI **compares the new and old view trees**.\n* The **diffing engine** finds the **minimum number of changes** needed and applies them efficiently.\n\n---"
+  },
+  {
+    "question": "How does SwiftUI\u2019s declarative syntax differ from UIKit\u2019s imperative approach?",
+    "answer": "**Declarative Syntax in SwiftUI:**\nIn SwiftUI, developers describe the desired UI state, and the framework manages the rendering and updates. This approach focuses on **what** the UI should display, allowing SwiftUI to handle the **how**. For example, to create a button that toggles its label between \u201cActive\u201d and \u201cInactive\u201d:\n\n```swift\nstruct ContentView: View {\n    @State private var isActive = false\n\n    var body: some View {\n        Button(action: {\n            isActive.toggle()\n        }) {\n            Text(isActive ? \"Active\" : \"Inactive\")\n        }\n    }\n}\n\n```\n\nHere, the UI automatically reflects the current state of `isActive`, and any changes to this state prompt SwiftUI to update the relevant parts of the interface.\n\n**Imperative Approach in UIKit:**\nUIKit requires developers to explicitly define each step of the UI\u2019s behavior, focusing on **how** to achieve the desired outcome. This involves manually managing the state and ensuring the UI stays in sync. The equivalent button in UIKit would be:\n\n```swift\nclass ViewController: UIViewController {\n    var isActive = false\n    let button = UIButton(type: .system)\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        button.setTitle(\"Inactive\", for: .normal)\n        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)\n        view.addSubview(button)\n        // Layout code for button positioning goes here\n    }\n\n    @objc func buttonTapped() {\n        isActive.toggle()\n        button.setTitle(isActive ? \"Active\" : \"Inactive\", for: .normal)\n    }\n}\n\n```\n\nIn this scenario, the developer is responsible for updating the button\u2019s title and managing its layout, ensuring the UI accurately reflects the current state.\n\n**Key Differences:**\n\n* **State Management:** SwiftUI automatically updates the UI in response to state changes, reducing the potential for inconsistencies. In contrast, UIKit requires manual updates to synchronize the UI with the underlying state.\n* **Code Conciseness:** SwiftUI\u2019s declarative nature often results in more concise and readable code, as it abstracts much of the boilerplate involved in UI updates. UIKit\u2019s imperative style can lead to more verbose code due to explicit state and UI management.\n\n---"
+  }
+]

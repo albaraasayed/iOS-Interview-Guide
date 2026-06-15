@@ -1,0 +1,97 @@
+[
+  {
+    "category": "SwiftUI",
+    "question": "How do observable objects announce modifications in SwiftUI? [Mid]",
+    "answer": "In SwiftUI, observable objects announce modifications using two primary ways: the `@Published` property wrapper or by calling `objectWillChange.send()`:\n* **`@Published` property wrapper:** This is a very useful property wrapper in SwiftUI. It allows us to create observable objects that automatically announce when changes occur to the marked properties.\n* **`objectWillChange`:** This is a property defined on the `ObservableObject` protocol. Whenever any `@Published` properties of the object change, the compiler synthesizes a default implementation for the property, which emits a value before the object changes. You can also call `objectWillChange.send()` manually to trigger an update."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are circular references (strong reference cycles) in Swift? [Mid]",
+    "answer": "A **circular reference** (or strong reference cycle) occurs when two or more objects strongly refer to each other, creating a cycle.\n* When objects hold strong references to each other, it means that each object has strong ownership of the other.\n* Because their reference counts can never drop to zero, they can **never be deallocated** by Automatic Reference Counting (ARC).\n* This strong reference cycle keeps the objects alive indefinitely, leading to **memory leaks**."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are Extensions in Swift, can they contain stored properties, and how do they compare to Objective-C Categories? [Mid]",
+    "answer": "**Extensions in Swift** add new functionality to an existing class, structure, enumeration, or protocol type.\n* They can add **computed properties**, define **methods**, provide new **initializers**, define **subscripts**, and make existing types conform to **protocols**.\n* **Stored Properties:** You **cannot** add stored properties to a type through an extension in Swift. Stored properties must be initialized when an instance is created, and extensions cannot provide their own designated initializers.\n* **Comparison with Objective-C Categories:**\n  * **Extensions (Swift)** are similar to Objective-C Categories but do not have names. They can extend types for which you do not have the original source code.\n  * **Categories (Objective-C)** allow adding methods outside of the main interface file, useful for extending built-in classes or classes without source access.\n  * **Extensions (Objective-C)**, also known as Class Extensions, must be implemented in the main interface file and are used to declare private methods and properties. They cannot be used for extending built-in classes."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is a Half-Open Range Operator in Swift? [Easy]",
+    "answer": "A **Half-Open Range Operator** (`x..<y`) specifies a range between values `x` and `y` where `y` is **not included**.\n* The operator specifies a range that includes the first value but excludes the final value.\n* It is specifically useful when you work with **zero-based lists** such as arrays, where it's convenient to count from `0` up to (but not including) the length of the list."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the primary benefit of using child view controllers in iOS? [Mid]",
+    "answer": "One major benefit of using **child view controllers** is that it allows for better **modularization** and organization of code in an iOS app.\n* By breaking down a large, complex view controller into smaller, more manageable child view controllers, it becomes easier to understand, test, and maintain the codebase.\n* It promotes the **Single Responsibility Principle** by delegating distinct UI components or features to their own dedicated view controllers."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are reference types in Swift? [Easy]",
+    "answer": "A **reference type** contains the location in memory where the data lives.\n* When a reference type (like a `class`) is passed to a function or assigned to a new variable, instead of creating a new copy of the object, it just creates **another reference** to that same object.\n* The instance is **shared** among all the different references, meaning a modification through one reference will affect all other references pointing to that same instance."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are nested functions in Swift? [Easy]",
+    "answer": "In Swift, a **nested function** is a function defined within the body of another function.\n* Nested functions are useful for **organizing code** and encapsulating functionality within a larger function scope.\n* They help in abstracting complex logic and breaking down large functions into smaller, more manageable parts while keeping those helper functions hidden from the outside scope."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is a Regular Expression? [Easy]",
+    "answer": "**Regular Expressions** (Regex) are special string patterns that dictate how to search for a string.\n* They consist of a sequence of characters that specifies a precise **search pattern** in text.\n* They are heavily used to perform **find** or **find-and-replace** operations on strings, and to validate data formats."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the Responder Chain in iOS? [Mid]",
+    "answer": "The **Responder Chain** is a dynamic sequence of objects that receive the opportunity to respond to events.\n* It represents the series of events that occur once we start interacting with an iOS application.\n* Applications receive and handle events (like touches or motion) using **responder objects** (instances of `UIResponder`, such as `UIView`, `UIViewController`, and `UIApplication`).\n* If a responder cannot handle an event, it passes the event up the chain to its next responder."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are the different types of numeric literals in Swift? [Easy]",
+    "answer": "Swift supports several types of numeric literals to represent values in different bases:\n* **Decimal Literals:** Base 10 (no prefix).\n* **Binary Literals:** Base 2 (prefix `0b`).\n* **Octal Literals:** Base 8 (prefix `0o`).\n* **Hexadecimal Literals:** Base 16 (prefix `0x`)."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is processor management in operating systems? [Mid]",
+    "answer": "**Processor management** is a core operating system function that handles the allocation of the CPU to different processes.\n* It provides the tools and resources to steer processes toward better performance.\n* It ensures that each process and application receives **enough of the processor's time** to function properly.\n* It also handles the **deallocation** of the processor after a process is completed or interrupted."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are the different types of control transfer statements in Swift, and how is the `break` statement used? [Easy]",
+    "answer": "**Control Transfer Statements** change the order of execution in your code by transferring control from one piece of code to another. Swift has five control transfer statements:\n* **`continue`**\n* **`break`**\n* **`fallthrough`**\n* **`return`**\n* **`throw`**\n\nThe **`break`** statement is specifically utilized within a loop to **immediately terminate** its execution. Additionally, it is used to exit a `case` within a `switch` statement. When a program encounters a specific condition, the `break` statement interrupts the current control flow and terminates the execution of that specific loop or switch block."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is inheritance in Swift, and what are the roles of a superclass and subclass? [Easy]",
+    "answer": "**Inheritance** is a fundamental behavior that differentiates classes from other types in Swift. It is a process by which a class inherits properties, methods, or other features from another class. This allows for writing different implementations while maintaining the same behaviors by reusing existing code.\n* **Superclass:** The existing class from which properties and methods are inherited.\n* **Subclass:** The new class that inherits characteristics from the superclass. A subclass can be further modified with new characteristics or by overriding inherited ones."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "How does process and thread management work in iOS? [Mid]",
+    "answer": "In iOS, **process management** heavily relies on threading to execute tasks.\n* Every application in iOS starts with a **single main thread** that runs the application's primary functions and UI updates.\n* Each thread in iOS serves as a **single path of execution**.\n* Developers use concurrency APIs like Grand Central Dispatch (GCD) or Swift Concurrency to manage multiple threads and perform background operations efficiently."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "How do you write comments in Swift? [Easy]",
+    "answer": "Comments are non-executable text used to explain code. In Swift, you can write them in two ways:\n* **Single-line comments:** Use double forward slashes (`//`). Everything after the slashes on that line is ignored by the compiler.\n* **Multi-line comments:** Use a forward slash followed by an asterisk (`/*`) to start the comment, and an asterisk followed by a forward slash (`*/`) to end it. Swift also allows multi-line comments to be nested."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is Optional Chaining in Swift? [Easy]",
+    "answer": "**Optional Chaining** is a process of querying and calling properties, methods, and subscripts on an optional that might currently be `nil`.\n* If the optional contains a value, the property, method, or subscript call **succeeds**.\n* If the optional is `nil`, the property, method, or subscript call **fails gracefully** and returns `nil`.\n* Multiple queries can be chained together, and the entire chain fails if any link in the chain is `nil`."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "How do `switch` statements work in Swift, and how do they differ from other languages? [Mid]",
+    "answer": "In Swift, a `switch` statement evaluates a value and compares it against several possible matching patterns to determine which block of code to execute.\n* **No Implicit Fallthrough:** Unlike C and Objective-C, Swift's `switch` statements do **not** \"fall through\" by default to the next case. This makes them safer and less prone to errors. You must explicitly use the `fallthrough` keyword if you want this behavior.\n* **Exhaustiveness:** They must be **exhaustive**, meaning every possible value of the type being considered must be matched by a case (often handled by adding a `default` case).\n* **Advanced Features:** Swift supports advanced features like compound cases, value bindings, and `where` clauses for complex pattern matching within cases."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are Property Observers in Swift, and what is the difference between `willSet` and `didSet`? [Easy]",
+    "answer": "**Property Observers** respond to changes in a property's value. They are highly useful for performing additional logic when a property's value changes, such as updating the User Interface (UI) or triggering other dependent methods.\n* **`willSet`**: Called just **before** the value is stored. It provides a default parameter named `newValue` containing the upcoming value.\n* **`didSet`**: Called immediately **after** the new value is stored. It provides a default parameter named `oldValue` containing the previous value."
+  },
+  {
+    "category": "Core Data & Persistence",
+    "question": "What is UserDefaults (formerly NSUserDefaults) in iOS? [Easy]",
+    "answer": "`UserDefaults` provides a simple method to store small amounts of data without requiring a full database, utilizing a **key-value pair system**.\n* It offers a programmatic interface for interacting with the default system settings.\n* It allows an application to modify its behavior to match a user's preferences (for example, saving a user's preferred media playback speed so it persists across sessions).\n* Data saved in `UserDefaults` persists across app launches."
+  }
+]

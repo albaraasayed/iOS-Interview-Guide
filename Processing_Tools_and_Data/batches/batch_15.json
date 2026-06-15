@@ -1,0 +1,98 @@
+[
+  {
+    "question": "Q: NSInteger VS Int VS NSNumber",
+    "answer": "* **`NSInteger`** is a type definition that describes an integer \u2014 but it is NOT equivalent to `int` on 64-bit platforms. It is defined as `int` when building a 32-bit app and as `long` for 64-bit apps. Most of the time you can replace `int` with `NSInteger`, but there are some things to consider when doing so.\n* **`Int`** is a primitive data type in Swift.\n* **`NSNumber`** stores numeric types as objects and can convert them into different formats. It can also retrieve a string representation."
+  },
+  {
+    "question": "Q: Any VS AnyObject",
+    "answer": "According to Apple\u2019s Swift documentation:\n* **`Any`** can represent an instance of any type at all, including function types and optional types.\n* **`AnyObject`** can represent an instance of any class type."
+  },
+  {
+    "question": "The difference between any and anyObject data types in swift:",
+    "answer": "* **Any:** It is a type that represents any kind of value, including instances of any class, struct, enum, or any other type. It can also represent functions and closures. When a variable or constant is declared as type Any, it can hold any value of any type.\n* **AnyObject:** It is a type that represents any instance of a class, or any value that is derived from a class. It cannot represent structs, enums, or other non-class types. When a variable or constant is declared as type AnyObject, it can hold any instance of any class.\n\nThe main difference between Any and AnyObject is that Any can represent any type, including non-class types, while AnyObject can only represent instances of classes. Additionally, Any behaves depends on the type of value it is holding, while AnyObject is a reference type.\n\n---"
+  },
+  {
+    "question": "Q: Category VS Protocol",
+    "answer": "*This comparison is usually for the Objective-C implementation where we have the concept of categories. If we need to convert the respective functionality into Swift then we can use protocols with optional and required keywords.*\n* **Protocol** declares a set of methods that a class must implement. Methods can be marked as optional or required for the implementing class by `@optional` and `@required` keywords.\n* **Category** adds methods to an existing class (e.g., `NSObject`), without modifying the class itself."
+  },
+  {
+    "question": "Q: Category VS Inheritance",
+    "answer": "* **Categories** allow expanding the API of existing classes without changing their type. It is used to add new methods, not properties.\n* **Inheritance** also expands the API but introduces a new type. Additionally, subclassing lets you add state and add properties as well. *(Note: We can add properties in categories through Associated Objects).*"
+  },
+  {
+    "question": "Q: NSSet VS NSArray",
+    "answer": "* **`NSSet`** primarily accesses items by comparison. They are unordered, and no duplication is allowed.\n* **`NSArray`** accesses items by index. They allow duplicate items and are ordered."
+  },
+  {
+    "question": "Q: NSDictionary VS NSMutableArray",
+    "answer": "* **`NSDictionary`** is unordered and stores objects as key-value pairs. Objects are accessed by addressing them with an arbitrary string value.\n* **`NSMutableArray`** is similar to `NSArray` except that its content is dynamic (i.e., elements can be added/removed/changed after creating an object)."
+  },
+  {
+    "question": "Q: Delegate VS Notifications",
+    "answer": "* **Delegates** create a \"has-a\" relationship between two classes. It supports two-way communication (i.e., we can return a value and it also has a chance to modify or reject operations). It checks protocol method implementation at compile time. Only one designated object can listen to the message. Similar to a telephonic conversation. Delegation also avoids tight coupling and modifies behavior and appearance without the need to subclass objects.\n* **Notifications** are based on one-to-many communication. They cannot receive feedback and have no direct link between the objects communicating back and forth. There is no compile-time checking for method implementation. Any number of objects can receive the message."
+  },
+  {
+    "question": "Q: Atomic VS NonAtomic",
+    "answer": "* **Atomic** is the default behavior for properties. It ensures the present process is completed by the CPU before another process accesses the variable, hence it is thread-safe. It is not fast, as it ensures the process is completed entirely (adds a lock).\n* **Non-Atomic** is not the default behavior. It is faster (for synthesized code, that is, for variables created using `@property` and `@synthesize`). It is not thread-safe and may result in unexpected behavior when two different threads access the same variable at the same time.\n*(Note: A piece of code is called thread-safe if it gives correct results even in a multi-threaded environment.)*"
+  },
+  {
+    "question": "Q: Assign VS Weak",
+    "answer": "* Use **`weak`** if you only want a pointer to the object without retaining it (useful for avoiding retain cycles, e.g., delegates) \u2014 it will automatically nil out the pointer when the object is released.\n* Use **`assign`** for primitives (like `int`, `float`, `BOOL`). It behaves exactly like `weak` except it *doesn\u2019t* nil out the object when released, potentially leaving dangling pointers (i.e., accessing garbage values) if used on objects. `assign` and `unsafe_unretained` are identical in usage."
+  },
+  {
+    "question": "Q: Nil VS nil VS NSNull",
+    "answer": "* **`nil`** (Objective-C): A literal null value for Objective-C objects (e.g., `id obj = nil;`).\n* **`Nil`** (Objective-C): A literal null value for Objective-C classes (e.g., `Class cls = Nil;`).\n* **`NSNull`**: A singleton object used to represent a null value in collection objects (like `NSArray` or `NSDictionary`) which do not allow `nil` values."
+  },
+  {
+    "question": "Q: NSNotificationCenter VS local notification VS push notification",
+    "answer": "* **UILocalNotification:** Represents notifications that an application can schedule for presentation to its users at specific dates and times. The OS delivers the notification. It does not notify custom class objects. It appears as an alert if the app is in the background. If the app is running, `UIApplicationDelegate`'s `didReceiveLocalNotification` method gets called.\n* **NSNotificationCenter:** Internal to the running app and doesn\u2019t require a server or special setup. It is used to notify custom class objects internally. `NSNotification` is a message sent internally between objects in the app.\n* **Push Notification:** Requires Certificates, Identifiers & Profiles in the Apple Developer portal. This requires a server and special setup. The message is sent from the server through APNs to the device, and the app handles displaying it."
+  },
+  {
+    "question": "Q: Delegate vs target/action",
+    "answer": "* **Delegates** are implemented using Protocols. This is a formal way of communicating across classes and is useful when more than one method may be needed. It is used for 2-Way communication (methods can return values to the sender).\n* **Target/Action** is generally used to correspond to an \u201cevent-like\u201d situation, such as a button click or a timer firing. It is more suitable when communication is limited to control (events, state). It mostly manifests 1-Way communication."
+  },
+  {
+    "question": "Q: GCD VS NSOperation",
+    "answer": "* **GCD** is a low-level C-based API.\n* **NSOperation** and **NSOperationQueue** are Objective-C classes (an Objective-C wrapper over GCD).\n\n**GCD advantages over NSOperation:**\n* **Implementation:** Simple, lightweight, and uses lock-free algorithms. `NSOperationQueue` is complex, heavyweight, and involves locking.\n\n**NSOperation advantages over GCD:**\n* **Control:** You can Pause, Cancel, and Resume an `NSOperation`.\n* **Dependencies:** You can set up dependencies between two `NSOperations` (an operation will not start until its dependencies finish).\n* **State of Operation:** You can monitor the state (`ready`, `executing`, `finished`) and compute pending operations.\n* **Concurrency Limits:** You can specify the maximum number of queued operations that can run simultaneously.\n* **Observable:** The properties of `NSOperation` can be observed using KVO.\n\n**When to use which:** Use `NSOperation` when you want more control over the queue, states, and dependencies. Use GCD for simple cases where you want less overhead to quickly dispatch work to the background."
+  },
+  {
+    "question": "Q: Static Vs Dynamic typing",
+    "answer": "* **Static typing** is when type checking occurs at compile time. You must define a type for variables in your code, and operations are checked by the compiler.\n* **Dynamic typing** is when type checking occurs at runtime. You will get runtime errors if trying to perform operations on incompatible types, but it provides the benefit of writing versatile functions that handle multiple data types."
+  },
+  {
+    "question": "Q: KVC VS KVO?",
+    "answer": "* **KVC (Key-Value Coding):** A mechanism by which an object\u2019s properties can be accessed or modified using string keys at runtime rather than calling setter/getter methods directly.\n* **KVO (Key-Value Observing):** Allows an object to observe changes to a property value on another object. Whenever the property changes value, the observer is automatically notified."
+  },
+  {
+    "question": "Q: SVN VS Git",
+    "answer": "* **SVN** relies on a centralized system for version management. It\u2019s a central repository where working copies are generated, and a network connection is always required for access/commits.\n* **Git** relies on a distributed system. You have a local repository on which you can work and commit offline; a network connection is only required to synchronize (push/pull) with the remote repository."
+  },
+  {
+    "question": "Q: JSON VS XML",
+    "answer": "*(Summary of standard differences)*\n* **JSON:** Lighter weight, uses JavaScript object syntax (key-value pairs and arrays), easier to parse natively in most modern frameworks.\n* **XML:** Heavier, uses markup tags (like HTML), supports attributes, and is generally more verbose."
+  },
+  {
+    "question": "Q: REST VS SOAP",
+    "answer": "* **REST (Representational State Transfer):** An architectural style utilizing standard HTTP methods (GET, POST, PUT, DELETE). Uses lightweight formats like JSON.\n* **SOAP (Simple Object Access Protocol):** A strict protocol that relies exclusively on XML for messaging and often requires more bandwidth and overhead."
+  },
+  {
+    "question": "Q: Stack VS Heap",
+    "answer": "* **Stack:** Fast access, space managed efficiently by the CPU. Memory does not become fragmented, and variables are automatically deallocated when they go out of scope. There is an OS-dependent limit on stack size.\n* **Heap:** Slower access, used for dynamic memory allocation. Variables can be accessed globally and have no strict memory limit (other than physical RAM). Memory can become fragmented over time, and developers must manage it (via ARC in Swift/Objective-C)."
+  },
+  {
+    "question": "Q: Static VS Dynamic Library",
+    "answer": "* **Static Library (.a):** Allows an application to load code into its address space at *compile time*. Results in a larger app size on disk and slower build times. Code is directly linked into the binary, meaning updates to the library require recompiling the entire app.\n* **Dynamic Library (.dylib / .framework):** Loads code into the address space at *run time*. Results in smaller binaries and allows libraries to be updated independently without recompiling the executable. They can have their own initializers and cleanup tasks."
+  },
+  {
+    "question": "Q: CollectionViews VS TableViews",
+    "answer": "* **TableViews:** Display a list of items in a single column and are limited to vertical scrolling only.\n* **CollectionViews:** Display items in highly customizable layouts (multiple columns, grids, rows) and can be scrolled vertically and horizontally."
+  },
+  {
+    "question": "Q: LLVM VS Clang",
+    "answer": "* **Clang:** The front end of the LLVM toolchain for the C language family (C, C++, Objective-C). It takes the source code, performs lexical analysis and parsing, and generates an abstract syntax tree (LLVM IR).\n* **LLVM:** The broader compiler infrastructure. It takes the intermediate representation (IR) from Clang, optimizes it, and serves as the backend to generate machine code for the target architecture."
+  },
+  {
+    "question": "Q: ARC VS AutoRelease",
+    "answer": "Autorelease is still used within ARC. ARC handles memory management (retaining/releasing) at compile time inside the scope of functions, whereas autorelease pools (`@autoreleasepool`) are used to defer the release of temporary objects until the pool is explicitly drained (typically at the end of the run loop)."
+  }
+]

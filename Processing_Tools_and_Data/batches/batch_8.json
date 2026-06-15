@@ -1,0 +1,102 @@
+[
+  {
+    "question": "4. Which types are supported by NSUserDefaults?",
+    "answer": "The primary data types supported by `NSUserDefaults` are:\n* `NSString`\n* `NSDate`\n* `NSDictionary`\n* `NSData`\n* `NSNumber`"
+  },
+  {
+    "question": "5. What is the use of reuseIdentifier?",
+    "answer": "The `reuseIdentifier` is used to group together visually similar rows in a `UITableView` (i.e., rows that differ only in their content but share the same layout). A `UITableView` object maintains a queue of currently reusable cells, each labeled with its own reuse identifier, making them accessible to the delegate via the `dequeueReusableCell` method. This drastically improves scrolling performance and memory management."
+  },
+  {
+    "question": "6. Tell one difference between viewDidLoad and viewDidAppear.",
+    "answer": "* `viewDidLoad` is called exactly once when the view controller successfully loads its view hierarchy into memory. At this stage, you can instantiate variables and configure views that will remain throughout the lifecycle of this view controller.\n* `viewDidAppear` is called every time the view transitions onto the device's screen. At this stage, you can perform layout actions, trigger animations, or execute any dynamic drawing in the User Interface."
+  },
+  {
+    "question": "7. Through which methods can you identify the layout of elements in UIView?",
+    "answer": "* **Interface Builder:** This provides developers with a visual collection of user interface objects and a drag-and-drop canvas to design layouts.\n* **NSLayoutConstraints:** This defines the mathematical relationships between two user interface objects, which must be satisfied by the Auto Layout engine (the constraint-based layout system).\n* **CGRect:** This is a structure that explicitly defines the location (x, y coordinates) and dimensions (width, height) of a rectangle for frame-based layouts."
+  },
+  {
+    "question": "8. What is the significance of \u201c?\u201d in Swift?",
+    "answer": "When appended to a type declaration, `?` indicates that the property is an \"Optional.\" This means the variable can either hold a valid value of that type or hold no value at all (`nil`). Handling optionals safely helps prevent unexpected runtime crashes."
+  },
+  {
+    "question": "10. What is a de-initializer, and how is it used in Swift?",
+    "answer": "A de-initializer is a special method called immediately before a class instance is deallocated from memory. It is used to perform any necessary manual cleanup. To implement it, we use the `deinit` keyword:\n\n```swift\ndeinit {\n    // Perform deinitialization and cleanup here\n}\n\n```"
+  },
+  {
+    "question": "11. Explain lazy stored properties.",
+    "answer": "Lazy stored properties are properties whose initial values are not calculated until the very first time they are called or accessed. To declare one, you append the `lazy` modifier before the variable declaration. This is excellent for optimizing performance by delaying heavy resource allocation until it is actually needed."
+  },
+  {
+    "question": "Q: Explain Lazy stored Property?",
+    "answer": "The initial value of a `lazy` property is calculated only the first time it is accessed.\n\n* Cannot be used with `let`.\n* Cannot be a computed property.\n* Not atomically initialized (not thread-safe)."
+  },
+  {
+    "question": "12. What is the use of Size Classes?",
+    "answer": "Size Classes are a feature in iOS that allows developers to design adaptive interfaces capable of adjusting to various screen sizes and device orientations. They help create user interfaces that look great and function seamlessly across all iOS devices by specifying how the layout and UI behavior should dynamically change based on the device's current dimensions."
+  },
+  {
+    "question": "13. Can you name a JSON framework supported by iOS?",
+    "answer": "The **SBJson** framework is a syntax analyzer and generator for Objective-C that handles JSON (JavaScript Object Notation), a lightweight data interchange format. It provides flexible APIs that simplify JSON handling. By using SBJson, developers can reduce the apparent latency of download/parse cycles over slow connections, begin parsing and returning chunks of documents asynchronously, and parse large documents bit by bit to conserve memory. *(Note: While SBJson is historically relevant, modern Swift development typically utilizes the native `Codable` protocol or `JSONSerialization`.)*"
+  },
+  {
+    "question": "14. Explain one difference between atomic and nonatomic properties.",
+    "answer": "* **Atomic properties** (the default behavior in Objective-C) are thread-safe, meaning that only one thread can access the variable at a time. However, this safety lock makes them slower.\n* **Nonatomic properties** are not thread-safe, meaning multiple threads can access the variable simultaneously (dynamic type). This makes them significantly faster, but it requires the developer to explicitly add the `nonatomic` keyword. If two threads access a nonatomic variable simultaneously, it can lead to unexpected behavior."
+  },
+  {
+    "question": "16. List the ways to achieve concurrency in iOS.",
+    "answer": "* Threads (Manual management via `Thread`)\n* Grand Central Dispatch (Dispatch Queues)\n* Operation Queues (`Operation` and `OperationQueue`)"
+  },
+  {
+    "question": "17. Explain SpriteKit and SceneKit.",
+    "answer": "* **SpriteKit** is an Apple framework used to easily develop animated 2D objects and games.\n* **SceneKit** is an Apple framework (originally from OS X) that facilitates the design and rendering of 3D graphics and environments."
+  },
+  {
+    "question": "18. What is the difference between \"try\", \"try?\", and \"try!\" in Swift?",
+    "answer": "* `try` is used to call a throwing function and requires you to explicitly handle potential errors using a `do-catch` block.\n* `try?` is used to handle errors gracefully by converting the result into an optional; it returns `nil` if an error occurs, bypassing the need for a `catch` block.\n* `try!` is used to force-unwrap the result of a throwing function. It assumes the function will never fail and will immediately crash the application if an error does occur. It should be used sparingly."
+  },
+  {
+    "question": "19. Explain the autorelease pool in Swift.",
+    "answer": "The primary purpose of an autorelease pool is to help manage memory usage and reduce the memory footprint in applications that create a large volume of short-lived objects. It operates as a stack-like structure. When an object is added to an autorelease pool, it is not deallocated immediately; instead, it is added to a queue of objects that will be simultaneously released when the pool is drained at the end of the execution scope."
+  },
+  {
+    "question": "Q: Define Autorelease pool?",
+    "answer": "An autorelease pool stores objects and sends a release message when the pool itself is drained. If you use Automatic Reference Counting (ARC), you cannot use autorelease pools directly via objects. Instead, you use `@autoreleasepool` blocks.\n\nFor example, in place of:\n```objective-c\nNSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; \n// Code benefitting from a local autorelease pool. \n[pool release];\n\n```\n\nyou would write:\n\n```objective-c\n@autoreleasepool { \n    // Code benefitting from a local autorelease pool. \n}\n\n```\n\n`@autoreleasepool` blocks are more efficient than using an instance of `NSAutoreleasePool` directly; you can also use them even if you do not use ARC.\n\n**Where to use an autorelease pool in Swift?** Consider the scenario where you need to process a number of images in a loop:\n\n```swift\nfunc processDirectory() {\n    if let path = NSBundle.mainBundle().pathForResource(\"directory\", ofType: \"txt\") {\n        for i in 1...90000 {\n            autoreleasepool { () -> Result in\n                let data = NSData.dataWithContentsOfFile(path, options: nil, error: nil)\n                self.processData()\n             } \n        }\n   } \n}\n\n```\n\nHere, we are using `data` inside an autorelease pool, which gets drained with each iteration of the `for` loop. Releasing small chunks of memory quickly prevents performance/memory bloat issues."
+  },
+  {
+    "question": "20. Which API is suitable for writing test scripts to interact with the application\u2019s UI elements?",
+    "answer": "The **UI Automation API** is highly suitable, as it simulates user interaction with the application's interface and successfully returns detailed log information regarding the tests."
+  },
+  {
+    "question": "21. UIKit classes should be used from which application thread?",
+    "answer": "UIKit classes must **only** be used from the main application thread (often referred to as the main thread or UI thread). In iOS development, the main thread is strictly responsible for handling user interface updates, processing user interactions, layout changes, and animations."
+  },
+  {
+    "question": "22. What is the difference between an 'App ID' and a 'Bundle ID'? Why are they used?",
+    "answer": "* **App ID:** This is a unique identifier generated by Apple to identify a specific application developed by a specific registered development team. It is utilized to enable secure backend services like push notifications, set up app groups, and configure the app for the App Store.\n* **Bundle ID:** This is an identifier specified by the developer within Xcode that uniquely identifies the application locally. It is used by the operating system to identify the app's executable, map its underlying resources, and manage its metadata."
+  },
+  {
+    "question": "What is Bundle ID?",
+    "answer": "The `bundleIds` resource represents the app's unique identifier that you can register, modify, and delete. You need a bundle ID before you can assign capabilities with the Bundle ID Capabilities resource or create a provisioning profile with the Profiles resource."
+  },
+  {
+    "question": "Q: What is an \u201capp ID\u201d and a \u201cbundle ID\u201d?",
+    "answer": "* **Bundle ID:** A unique identifier of an app in Apple\u2019s ecosystem. No two apps can have the same bundle ID. It lets macOS/iOS recognize updates to your app and is used in validating the application signature.\n* **App ID:** A two-part string used to identify one or more apps from a single development team. It consists of the Team ID (supplied by Apple) and the bundle ID search string. There are explicit App IDs (for a single app) and wildcard App IDs (for a set of apps)."
+  },
+  {
+    "question": "23. Tell one difference between Cocoa and Cocoa Touch.",
+    "answer": "**Cocoa** is the application framework used for building desktop applications for macOS, whereas **Cocoa Touch** is the framework specifically optimized for building touch-based applications that run on iOS (iPhones and iPads)."
+  },
+  {
+    "question": "24. Explain Automatic Reference Counting (ARC).",
+    "answer": "ARC (Automatic Reference Counting) is a compiler-level memory management technique used in Swift and Objective-C to automatically track and manage the memory allocation of objects. Provided by the Clang compiler, it works by keeping a count of the strong references pointing to an instance. When an instance's reference count drops to zero, ARC automatically frees up the memory associated with that object."
+  },
+  {
+    "question": "What is ARC in swift:",
+    "answer": "ARC stands for **Automatic Reference Counting**, which is a memory management technique used in Swift to automatically manage the memory used by objects.\n\nThe basic idea behind ARC is to keep track of the number of references to an object, and to automatically deallocate the object when there are no more references to it. When an object is created, the ARC system sets its reference count to 1. When a reference to the object is created, such as by assigning the object to a variable or passing it as an argument to a function, the reference count is incremented by 1. When a reference to the object is destroyed, such as by assigning nil to a variable or when a function returns, the reference count is decremented by 1. When the reference count of an object reaches 0, the object is deallocated from memory.\n\n---"
+  },
+  {
+    "question": "26. What is Deep linking in iOS?",
+    "answer": "Deep linking is a routing technique that directs a user directly into a specific location within a mobile app, rather than opening a mobile website, utilizing standard URLs or Universal Links. For example, clicking a deep link could bypass the app's home screen and open a specific product page, a targeted view, or a certain tab directly."
+  }
+]

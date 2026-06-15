@@ -1,0 +1,107 @@
+[
+  {
+    "category": "UIKit",
+    "question": "What is the difference between `frame` and `bounds` of a `UIView`? [Easy]",
+    "answer": "A view object tracks its size and location using its `frame`, `bounds`, and `center` properties:\n\n* **`frame`**: Specifies the size and location of the view in its **superview's** coordinate system.\n* **`bounds`**: Specifies the size of the view (and its content origin) in the view's **own** local coordinate system. The `bounds.origin` is typically `(0, 0)`.\n* **`center`**: Contains the known center point of the view in the **superview's** coordinate system."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the purpose of the `reuseIdentifier`? [Easy]",
+    "answer": "The **`reuseIdentifier`** indicates that cells for a `UITableView` (or `UICollectionView`) can be reused. The view maintains an internal cache of cells with the appropriate identifier and allows them to be reused when `dequeueReusableCell(withIdentifier:)` is called. This significantly increases performance, as a new view does not have to be created from scratch for each cell that appears on the screen."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is Auto Layout and how does it work? [Easy]",
+    "answer": "**Auto Layout** dynamically calculates the size and position of all views in your view hierarchy based on constraints placed on those views. This constraint-based approach allows you to build user interfaces that dynamically respond to internal and external changes, such as screen rotations, different device sizes, or content size modifications."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the difference between Auto Resizing Masks and Auto Layout? [Mid]",
+    "answer": "* **Auto Resizing Masks**: An older, simpler system that determines how a view resizes relative to its superview's bounds. It only defines spring and strut behaviors (flexible margins and width/height) and cannot handle complex relationships between sibling views.\n* **Auto Layout**: A robust, constraint-based system that dynamically calculates the size and position of views based on mathematical relationships. It allows for complex layouts that adapt seamlessly to different screen sizes, orientations, and localization changes."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the difference between a shallow copy and a deep copy? [Mid]",
+    "answer": "* **Shallow Copy**: Also known as an address copy or call-by-reference. It duplicates the structure but not the elements themselves. Both the original and the copy point to the same objects in memory, meaning changes made in one reflect in the other. For collections, a shallow copy duplicates the collection structure, but the elements are shared.\n* **Deep Copy**: Similar to call-by-value. It duplicates everything, meaning any object pointed to by the source is copied, and the destination points to this new copy. Two completely separate objects are created in memory, which is less prone to race conditions and performs well in a multithreaded environment. Value types in Swift are copied deeply by default, while reference types require explicit deep copying."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between `Self` and `self` in Swift? [Easy]",
+    "answer": "* **`Self`** (capital **S**): Refers to the type that conforms to a protocol or the type of the current class, struct, or enum (e.g., `String` or `Int`).\n* **`self`** (lowercase **s**): Refers to the specific instance or value of that type within its own scope (e.g., `\"hello\"` or `556`)."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between functions and methods? [Easy]",
+    "answer": "* **Functions**: Self-contained chunks of code that perform a specific task. They are defined globally or outside of a specific type's scope.\n* **Methods**: Functions that are associated with a particular type. Classes, structures, and enumerations can define instance methods, which encapsulate specific tasks and functionality for working with an instance of that given type."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between class (type) methods and instance methods? [Easy]",
+    "answer": "* **Class (Type) Methods**: Methods called on the type itself. Defined using the `static` or `class` keyword. The `class` keyword allows subclasses to override the method, whereas `static` prevents overriding.\n\n```swift\nclass SomeClass {\n    static func someTypeMethod() {\n        // Implementation\n    }\n}\nSomeClass.someTypeMethod()\n```\n\n* **Instance Methods**: Functions that belong to instances of a particular class, structure, or enumeration. They are called on a specific instantiated object.\n\n```swift\nclass SomeClass {\n    func someMethod() {\n        // Implementation\n    }\n}\nlet someClass = SomeClass()\nsomeClass.someMethod()\n```"
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between static dispatch and dynamic dispatch? [Mid]",
+    "answer": "* **Static Dispatch**: Also known as compile-time dispatch or direct dispatch. It is a highly optimized, direct call where the compiler knows exactly which function implementation to execute at compile time. Used in value types, final classes, and protocol extensions.\n\n```swift\nextension Movable {\n    func crawl() {\n        print(\"Default crawling\")\n    }\n}\n```\n\n* **Dynamic Dispatch**: Also known as runtime dispatch or table dispatch. The system looks for the specific method implementation in a compiler-created dispatch table (called a witness table in Swift) at runtime. Commonly used for class inheritance and protocol requirements.\n\n```swift\nprotocol Movable {\n    func walk()\n}\n```"
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the difference between Intrinsic Content Size and Fitting Size? [Mid]",
+    "answer": "* **Intrinsic Content Size**: Acts as an **input** to Auto Layout. It is the natural size a view requires to display its content (e.g., the size of a `UILabel` based on its text and font). When a view has an intrinsic content size, the system generates constraints to represent that size.\n* **Fitting Size**: Acts as an **output** from the Auto Layout engine. It is the size calculated for a view based on its constraints. If the view lays out its subviews using Auto Layout, the system calculates a fitting size based on its content and relationships."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is a retain count and what is a retain cycle? [Mid]",
+    "answer": "* **Retain Count**: Represents the number of strong references (owners) pointing to a particular object in memory. When the retain count reaches zero, the object is deallocated.\n* **Retain Cycle**: Occurs when two or more objects hold strong references to each other, creating a cycle. Because their retain counts never reach zero, neither object can be deallocated, leading to a memory leak."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the difference between content hugging priority and content compression resistance priority? [Mid]",
+    "answer": "* **Content Hugging Priority**: Defines how much a view resists being made **larger** than its intrinsic content size. A higher hugging priority means the view will strongly resist growing beyond its content size.\n* **Content Compression Resistance Priority**: Defines how much a view resists being made **smaller** than its intrinsic content size. A higher compression resistance priority means the view will strongly resist shrinking below its intrinsic content size."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the difference between `layoutIfNeeded()` and `setNeedsLayout()`? [Mid]",
+    "answer": "* **`layoutIfNeeded()`**: A **synchronous** operation. It forces the system to calculate the layout and redraw the view and its subviews immediately. Typically used within animation blocks to ensure layout updates are animated smoothly.\n* **`setNeedsLayout()`**: An **asynchronous** operation. It simply invalidates the current layout and schedules a layout update for the next update cycle. The system will redraw the view and its subviews when it naturally processes the run loop."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between a `static` variable and a `class` variable? [Easy]",
+    "answer": "Both the `static` and `class` keywords allow us to attach properties to a type itself rather than to instances of the type.\n\n* **`static`**: The property becomes owned by the type and **cannot** be overridden by subclasses.\n* **`class`**: The property belongs to the type but **can** be overridden by subclasses.\n\n```swift\nclass Person {\n    static var count: Int {\n        return 250\n    }\n    \n    class var averageAge: Double {\n        return 30\n    }\n}\n\nclass Student: Person {\n    // THIS ISN'T ALLOWED:\n    // override static var count: Int { return 150 }\n    \n    // THIS IS ALLOWED:\n    override class var averageAge: Double {\n        return 19.5\n    }\n}\n```"
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What is the difference between Composition, Aggregation, and Association? [Mid]",
+    "answer": "* **Association**: Implies a basic relationship between two objects where one uses the other (a \"uses-a\" relationship). For example, `Foo` uses `Bar`.\n```swift\npublic class Foo {\n    func baz(bar: Bar) {\n        // Uses Bar\n    }\n}\n```\n\n* **Composition**: Implies strict ownership, where the parent object is entirely responsible for the lifetime of the child object (a \"part-of\" relationship). When `Foo` dies, `Bar` dies with it.\n```swift\npublic class Foo {\n    private let bar = Bar()\n}\n```\n\n* **Aggregation**: A \"has-a\" relationship where the parent object borrows another object. The child object can exist independently. When `Foo` dies, `Bar` may live on.\n```swift\npublic class Foo {\n    private var bar: Bar\n    \n    init(bar: Bar) {\n        self.bar = bar\n    }\n}\n```"
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What are the three main types of design patterns? [Easy]",
+    "answer": "1. **Creational**: Deal with object creation mechanisms, making a system independent of how its objects are created, composed, and represented. Examples: Singleton, Factory, Builder.\n2. **Behavioral**: Deal with communication and assignment of responsibilities between objects. Examples: Observer, Delegate, Command.\n3. **Structural**: Deal with object composition and defining relationships to form larger structures. Examples: Adapter, Facade, Decorator, Proxy."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between `super` and `self`? [Easy]",
+    "answer": "* **`super`**: A reference to the superclass (parent class), used to call implementations of properties or methods from the inherited class.\n* **`self`**: A reference to the current object (instance) of the class or struct within its own scope."
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What is Dependency Injection, why do we use it, and what are the different ways to implement it? [Mid]",
+    "answer": "**Dependency Injection** is a design pattern where an object receives its dependencies from the outside rather than creating them itself. This contrasts with Dependency Inversion, which states that high-level modules should not depend on low-level modules, but rather both should depend on abstractions.\n\n**Why use Dependency Injection?**\nIt provides abstraction, easier mocking, improved testability, readability, reusability, and less tight coupling.\n\n**Three ways to implement Dependency Injection:**\n\n1. **Initializer Injection**: Passing dependencies through the initializer.\n```swift\nfinal class ViewModel {\n    private let userService: UserServiceProtocol \n\n    init(userService: UserServiceProtocol) { \n        self.userService = userService\n    } \n}\n```\n\n2. **Property (Setter) Injection**: Exposing a property or method to inject the dependency after initialization.\n```swift\nfinal class ViewModel {\n    private var userService: UserServiceProtocol? \n\n    func setUserService(userService: UserServiceProtocol) { \n        self.userService = userService\n    }\n}\n```\n\n3. **Interface (Method) Injection**: Providing dependencies through a specific method defined by a protocol.\n```swift\nprotocol ServiceProtocol {\n    func inject(userService: UserServiceProtocol)\n}\n\nfinal class ViewModel: ServiceProtocol {\n    private var userService: UserServiceProtocol? \n\n    func inject(userService: UserServiceProtocol) { \n        self.userService = userService\n    }\n}\n```"
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "When is the Facade design pattern mostly used? [Easy]",
+    "answer": "The **Facade** pattern is mostly used when interacting with complex **frameworks, repositories, or subsystems**. It provides a simplified, unified interface to a larger body of code, hiding the internal complexity from the client and making the API easier to consume."
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What are the downsides of using the Singleton design pattern? [Mid]",
+    "answer": "1. **Thread Safety**: Singletons are not inherently thread-safe. If initialization and access are not handled properly, you might end up with race conditions or multiple instances.\n2. **Testing**: They introduce global state into an application, making unit testing very difficult as tests can unintentionally affect one another. It becomes challenging to run tests in isolation.\n3. **Mocking**: It is hard to mock a Singleton because its dependencies are hidden inside the class rather than being explicitly injected.\n4. **Hidden Dependencies**: Classes that use Singletons internally hide their dependencies, making the code harder to understand, track, and maintain."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the difference between `UITableView` and `UICollectionView`? [Easy]",
+    "answer": "* **`UITableView`**: Displays data in a single-column, vertical list of rows. It is highly optimized for standard list layouts and provides built-in styles and standard accessories (like disclosure indicators or deletion controls).\n* **`UICollectionView`**: A more flexible and customizable component. It can display items in grids, horizontal scrolls, custom layouts (using `UICollectionViewLayout`), and multiple columns. It easily handles complex arrangements compared to a table view, but it requires slightly more setup."
+  }
+]

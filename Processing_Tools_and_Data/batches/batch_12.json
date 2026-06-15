@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Q: Non-Escaping and Escaping Closures?",
+    "answer": "* **Non-escaping:** The function runs the closure and then returns.\n* **Escaping:** The closure is passed as an argument but is called *after* the function returns (e.g., asynchronous execution or storing the closure in a variable). You must explicitly use `self` inside an escaping closure."
+  },
+  {
+    "question": "What is the Difference Between @escaping and Non-@escaping Closures?",
+    "answer": "Closures are **self-contained blocks of functionality** that can be passed around and used later. In Swift, closures are **non-escaping by default**, but we can mark them as `@escaping` when needed.\n\n**\ud83d\udd39 What is a Non-Escaping Closure?**\nA **non-escaping closure** is a closure that **does not outlive the function** it was passed into. Swift automatically assumes that closures are **non-escaping** unless explicitly marked with `@escaping`.\n\n* \u2705 **Characteristics of Non-Escaping Closures:**\n* Executed **before** the function returns.\n* No need for memory management concerns.\n* The compiler can **optimize performance**.\n\n\n\n*\ud83d\udd39 Example of a Non-Escaping Closure:*\n\n```swift\nfunc performTask(action: () -> Void) {\n    action()  // Executed immediately within this function\n}\nperformTask {\n    print(\"Task completed!\")\n}\n\n```\n\n\u2705 Since `action` executes before `performTask` returns, it is a non-escaping closure.\n\n**\ud83d\udd39 What is an Escaping Closure?**\nAn **escaping closure** is a closure that **outlives the function** it was passed into, meaning it can be executed **later**. In Swift, we must explicitly mark these closures using `@escaping`.\n\n* \u2705 **Characteristics of Escaping Closures:**\n* Stored **beyond** the function\u2019s scope.\n* Typically used in **asynchronous operations** (e.g., network calls).\n* Needs careful handling to **avoid memory leaks**.\n\n\n\n*\ud83d\udd39 Example of an Escaping Closure:*\n\n```swift\nclass NetworkManager {\n    var completionHandler: (() -> Void)?\n    \n    func fetchData(completion: @escaping () -> Void) {\n        completionHandler = completion  // Stored for later use\n        DispatchQueue.global().async {\n            sleep(2) // Simulating a network request\n            DispatchQueue.main.async {\n                completion()\n            }\n        }\n    }\n}\nlet manager = NetworkManager()\nmanager.fetchData {\n    print(\"Data fetched!\")\n}\n\n```\n\n\u2705 Since the `completion` closure is stored and executed after `fetchData()` returns, it must be marked as `@escaping`.\n\n**\ud83d\udd39 Key Differences Between Non-Escaping and Escaping Closures**\n\n| Feature | Non-Escaping | Escaping (`@escaping`) |\n| --- | --- | --- |\n| **Lifetime** | Exists only inside the function | Can exist beyond function scope |\n| **Memory Management** | No risk of retain cycles | Risk of retain cycles (must use `[weak self]`) |\n| **Performance** | Optimized by the compiler | Less optimized due to storage overhead |\n| **Use Cases** | `.map()`, `.filter()`, local function calls | Async tasks, network requests, completion handlers |\n\n**\ud83d\udd39 Handling Memory Leaks in Escaping Closures**\nSince **escaping closures** can be stored for later execution, they may lead to **retain cycles** if a class holds a strong reference to `self`. To **prevent memory leaks**, use **weak references** (`[weak self]`).\n\n*\ud83d\udd39 Example: Preventing Retain Cycles*\n\n```swift\nclass DataFetcher {\n    func loadData(completion: @escaping () -> Void) {\n        DispatchQueue.global().async { [weak self] in\n            sleep(2)  // Simulating delay\n            DispatchQueue.main.async {\n                completion()\n            }\n        }\n    }\n}\n\n```\n\n\u2705 Using `[weak self]` ensures that `self` is not strongly retained, preventing memory leaks.\n\n\ud83d\udca1 **Tip:** Prefer non-escaping closures whenever possible for better performance and safer memory management.\n\n\ud83d\ude80 **Conclusion**\n\n* **Non-escaping closures** execute within the function and are optimized for performance.\n* **Escaping closures** persist beyond the function\u2019s scope and require careful memory management.\n* Always **use `[weak self]**` in escaping closures to prevent **retain cycles**.\n\n---"
+  },
+  {
+    "question": "Q: map vs flatMap?",
+    "answer": "* **map:** Loops over a collection and applies a transform function to each item, returning an array of results.\n* **flatMap:** Iterates, transforms, and flattens a collection of collections. It also removes optionals and `nil` values from the resulting array."
+  },
+  {
+    "question": "Q: filter VS reduce?",
+    "answer": "* **filter:** Loops over a collection and returns an array containing only elements that match a specific condition.\n* **reduce:** Combines all items in a collection to create a single new aggregated value."
+  },
+  {
+    "question": "Q: Define Type alias?",
+    "answer": "A type alias introduces a named alias for an existing type using the `typealias` keyword.\n```swift\ntypealias MyDict = Dictionary<String, Int>\n\n```"
+  },
+  {
+    "question": "Q: Type safety & Type Inference?",
+    "answer": "* **Type Safety:** Swift ensures you are clear about the types of values your code works with. You cannot pass an `Int` to a `String` variable.\n* **Type Inference:** If you don\u2019t specify the type, the compiler automatically deduces the type based on the provided initial value."
+  },
+  {
+    "question": "Q: Type annotation?",
+    "answer": "A type annotation explicitly specifies the type of a variable using a colon.\n\n```swift\nlet someTuple: (Double, Double) = (3.14159, 2.71828)\n\n```"
+  },
+  {
+    "question": "Q: Explain Forced Unwrapping?",
+    "answer": "When getting a value from an optional, putting an exclamation mark (`!`) at the end of the variable force-unwraps it. If it is `nil`, the app will crash."
+  },
+  {
+    "question": "Q: Optional binding?",
+    "answer": "Use optional binding (`if let` or `guard let`) to safely check whether an optional contains a value and assign it to a temporary constant.\n\n```swift\nif let constantName = someOptional {\n   // statements\n}\n\n```"
+  },
+  {
+    "question": "Q: Closures VS blocks?",
+    "answer": "Swift closures and Objective-C blocks are compatible. The key difference in capture semantics is that Swift closures mutate variables by default, which behaves similarly to the `__block` modifier in Objective-C."
+  },
+  {
+    "question": "Q: Explain the Identical operator?",
+    "answer": "* `===` (or `!==`): Checks if values are strictly identical (pointing to the same exact memory address). Used for reference types.\n* `==` (or `!=`): Checks if values are logically equal. Used for value types."
+  },
+  {
+    "question": "Q: What is Downcasting?",
+    "answer": "* `as`: Upcasting and bridging.\n* `as?`: Safe downcasting; returns `nil` if it fails.\n* `as!`: Forced downcasting; crashes if it fails."
+  },
+  {
+    "question": "Q: What is Nil Coalescing & the Ternary Operator?",
+    "answer": "* **Ternary Operator:** `question ? answer1 : answer2` (evaluates a condition to return one of two expressions).\n* **Nil-Coalescing:** `a ?? b` (unwraps optional `a` if it has a value, otherwise returns default value `b`)."
+  },
+  {
+    "question": "Q: Explain defer?",
+    "answer": "The `defer` keyword provides a block of code that is guaranteed to execute right before execution leaves the current scope, regardless of how the scope is exited."
+  },
+  {
+    "question": "Q: What are the benefits of Guard?",
+    "answer": "It avoids the \"pyramid of doom\" (deeply nested `if-let` statements) and provides an early exit out of a function using `return`, `break`, or `continue`."
+  },
+  {
+    "question": "Q: Explain generics in Swift?",
+    "answer": "Generics allow you to write flexible, reusable code that works with any data type, abstracting away underlying specific types."
+  },
+  {
+    "question": "Q: What is Swift's main advantage?",
+    "answer": "* Optional types prevent null-pointer crashes.\n* Built-in error handling.\n* Fast execution.\n* Type-safe language.\n* Unified Memory Management (ARC).\n* Playground features."
+  },
+  {
+    "question": "Q: How is an \u201cinout\u201d parameter different from a regular parameter?",
+    "answer": "An `inout` parameter passes the variable by reference (allowing modification), while a regular parameter passes by value."
+  },
+  {
+    "question": "Q: Define Properties in Swift?",
+    "answer": "* **Stored properties:** Store constant/variable values directly in an instance (Classes/Structs).\n* **Computed properties:** Calculate and return a value dynamically rather than storing it."
+  },
+  {
+    "question": "Q: Explain Stored Property?",
+    "answer": "Stored properties use `var` (variables) or `let` (constants). If you create an instance of a value type (struct) and assign it to a `let` constant, you cannot modify its properties, even if they were declared as variables. This is not true for classes (reference types)."
+  },
+  {
+    "question": "Q: Explain Type Property?",
+    "answer": "Properties that belong to the type itself, not an instance. Defined with the `static` keyword. For class types, `class` can be used instead of `static` to allow subclasses to override them."
+  },
+  {
+    "question": "Q: What is Initialization in Swift?",
+    "answer": "The process of preparing an instance of a class, structure, or enumeration for use. It ensures all stored properties are set to an appropriate initial value."
+  },
+  {
+    "question": "Q: Explain Parameter Names and Argument Labels?",
+    "answer": "Initializers provide automatic argument labels for every parameter. To initialize without an argument label, use an underscore (`_`) in the declaration."
+  },
+  {
+    "question": "Q: Explain Default Initializer?",
+    "answer": "Swift provides a default initializer for any struct or class that provides default values for all properties and lacks custom initializers. Structs automatically receive a memberwise initializer if no custom ones are defined."
+  },
+  {
+    "question": "Q: Explain Initializer Delegation for Value Types?",
+    "answer": "Initializers can call other initializers within the same struct using `self.init`. This avoids duplicating initialization code."
+  }
+]

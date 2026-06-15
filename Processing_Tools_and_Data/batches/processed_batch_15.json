@@ -1,0 +1,117 @@
+[
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the difference between `NSInteger`, `Int`, and `NSNumber`? [Mid]",
+    "answer": "- **`NSInteger`**: A type definition that describes an integer \u2014 but it is not equivalent to `int` on 64-bit platforms. It is defined as `int` when building a 32-bit app and as `long` for 64-bit apps. Most of the time you can replace `int` with `NSInteger`.\n- **`Int`**: A primitive data type in Swift.\n- **`NSNumber`**: Stores numeric types as objects and can convert them into different formats. It can also retrieve a string representation."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between `Any` and `AnyObject` in Swift? [Easy]",
+    "answer": "- **`Any`**: Represents an instance of any type at all, including function types, optional types, structs, enums, and classes. When a variable or constant is declared as type `Any`, it can hold any value of any type.\n- **`AnyObject`**: Represents an instance of any class type, or any value derived from a class. It cannot represent structs, enums, or other non-class types. `AnyObject` is a reference type."
+  },
+  {
+    "category": "Objective-C",
+    "question": "What is the difference between a Category and a Protocol? [Easy]",
+    "answer": "*This comparison is typically for Objective-C, where we have the concept of categories. In Swift, we use protocols and extensions.*\n- **Protocol**: Declares a set of methods that a class must implement. Methods can be marked as optional or required for the implementing class using `@optional` and `@required` keywords.\n- **Category**: Adds methods to an existing class (e.g., `NSObject`), without modifying the class itself or requiring subclassing."
+  },
+  {
+    "category": "Objective-C",
+    "question": "What is the difference between a Category and Inheritance? [Mid]",
+    "answer": "- **Categories**: Allow expanding the API of existing classes without changing their type. They are used to add new methods, not properties. *(Note: We can add properties in categories through Associated Objects).*\n- **Inheritance**: Expands the API but introduces a new type. Additionally, subclassing lets you add state and properties."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the difference between `NSSet` and `NSArray`? [Easy]",
+    "answer": "- **`NSSet`**: Primarily accesses items by comparison. They are unordered, and no duplication is allowed.\n- **`NSArray`**: Accesses items by index. They allow duplicate items and are ordered."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the difference between `NSDictionary` and `NSMutableArray`? [Easy]",
+    "answer": "- **`NSDictionary`**: Unordered and stores objects as key-value pairs. Objects are accessed by addressing them with an arbitrary string key.\n- **`NSMutableArray`**: An ordered collection similar to `NSArray`, but its content is dynamic (i.e., elements can be added, removed, or changed after creation)."
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What is the difference between Delegation and Notifications? [Mid]",
+    "answer": "- **Delegates**: Create a \"has-a\" relationship between two classes. It supports two-way communication (we can return a value and the delegate has a chance to modify or reject operations). It checks protocol method implementation at compile time. Only one designated object can listen to the message. It avoids tight coupling.\n- **Notifications**: Based on one-to-many communication. They cannot receive feedback and have no direct link between the objects communicating back and forth. There is no compile-time checking for method implementation. Any number of objects can receive the message."
+  },
+  {
+    "category": "Objective-C",
+    "question": "What is the difference between `atomic` and `nonatomic` properties? [Mid]",
+    "answer": "- **Atomic**: The default behavior for properties in Objective-C. It ensures the present process is completed by the CPU before another process accesses the variable, making the getter/setter thread-safe. It is slower due to locking mechanisms.\n- **Non-Atomic**: Faster for synthesized code but not thread-safe. It may result in unexpected behavior or crashes when two different threads access the same variable at the same time."
+  },
+  {
+    "category": "Objective-C",
+    "question": "What is the difference between `assign` and `weak`? [Mid]",
+    "answer": "- **`weak`**: Used when you only want a pointer to the object without retaining it (useful for avoiding retain cycles, e.g., delegates). It will automatically nil out the pointer when the object is released.\n- **`assign`**: Used for primitives (like `int`, `float`, `BOOL`). It behaves exactly like `weak` except it *does not* nil out the object when released, potentially leaving dangling pointers if used on objects. `assign` and `unsafe_unretained` are identical in usage."
+  },
+  {
+    "category": "Objective-C",
+    "question": "What is the difference between `nil`, `Nil`, and `NSNull` in Objective-C? [Easy]",
+    "answer": "- **`nil`**: A literal null value for Objective-C objects (e.g., `id obj = nil;`).\n- **`Nil`**: A literal null value for Objective-C classes (e.g., `Class cls = Nil;`).\n- **`NSNull`**: A singleton object used to represent a null value in collection objects (like `NSArray` or `NSDictionary`), which do not allow `nil` values."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What are the differences between `NSNotificationCenter`, Local Notifications, and Push Notifications? [Mid]",
+    "answer": "- **Local Notification**: Represents notifications that an application can schedule for presentation to its users at specific dates and times. The OS delivers the notification. It appears as an alert if the app is in the background.\n- **`NSNotificationCenter`**: Internal to the running app and doesn't require a server or special setup. It is used to notify custom class objects internally using `NSNotification` messages.\n- **Push Notification**: Requires Certificates, Identifiers & Profiles in the Apple Developer portal. This requires a server and special setup. The message is sent from the remote server through APNs (Apple Push Notification service) to the device."
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What is the difference between Delegate and Target-Action? [Mid]",
+    "answer": "- **Delegates**: Implemented using Protocols. This is a formal way of communicating across classes and is useful when more than one method may be needed. It is used for two-way communication where methods can return values to the sender.\n- **Target-Action**: Generally used to correspond to an \"event-like\" situation, such as a button click or a timer firing. It is more suitable when communication is limited to control events or state changes. It mostly manifests one-way communication."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What are the differences between GCD and `NSOperation`? [Mid]",
+    "answer": "- **GCD (Grand Central Dispatch)**: A low-level C-based API that is lightweight, simple, and uses lock-free algorithms. Best for simple cases where you want less overhead to quickly dispatch work to the background.\n- **`NSOperation` and `NSOperationQueue`**: Objective-C classes providing an object-oriented wrapper over GCD.\n\n**Advantages of NSOperation over GCD**:\n- **Control**: You can pause, cancel, and resume an `NSOperation`.\n- **Dependencies**: You can set up dependencies between multiple operations.\n- **State Monitoring**: You can monitor the state (`ready`, `executing`, `finished`).\n- **Concurrency Limits**: Specify the maximum number of queued operations that can run simultaneously.\n- **Observability**: Properties can be observed using KVO."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is the difference between static and dynamic typing? [Mid]",
+    "answer": "- **Static typing**: Type checking occurs at compile time. You must define a type for variables, and operations are validated by the compiler.\n- **Dynamic typing**: Type checking occurs at runtime. You will get runtime errors if trying to perform operations on incompatible types, but it provides the benefit of writing versatile functions that handle multiple data types."
+  },
+  {
+    "category": "Objective-C",
+    "question": "What is the difference between KVC and KVO? [Mid]",
+    "answer": "- **KVC (Key-Value Coding)**: A mechanism by which an object's properties can be accessed or modified using string keys at runtime rather than calling setter/getter methods directly.\n- **KVO (Key-Value Observing)**: Allows an object to observe changes to a property value on another object. Whenever the property changes value, the observer is automatically notified."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is the difference between SVN and Git? [Easy]",
+    "answer": "- **SVN (Subversion)**: Relies on a centralized system for version management. It has a central repository where working copies are generated, and a network connection is always required for access and commits.\n- **Git**: Relies on a distributed system. You have a local repository on which you can work and commit offline; a network connection is only required to synchronize (push/pull) with the remote repository."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is the difference between JSON and XML? [Easy]",
+    "answer": "- **JSON (JavaScript Object Notation)**: Lighter weight, uses JavaScript object syntax (key-value pairs and arrays), and is easier to parse natively in most modern frameworks.\n- **XML (eXtensible Markup Language)**: Heavier, uses markup tags (like HTML), supports attributes, and is generally more verbose."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is the difference between REST and SOAP? [Easy]",
+    "answer": "- **REST (Representational State Transfer)**: An architectural style utilizing standard HTTP methods (GET, POST, PUT, DELETE). It typically uses lightweight formats like JSON.\n- **SOAP (Simple Object Access Protocol)**: A strict protocol that relies exclusively on XML for messaging and often requires more bandwidth and overhead."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is the difference between Stack and Heap memory? [Mid]",
+    "answer": "- **Stack**: Fast access, space managed efficiently by the CPU. Memory does not become fragmented, and variables are automatically deallocated when they go out of scope. There is an OS-dependent limit on stack size.\n- **Heap**: Slower access, used for dynamic memory allocation. Variables can be accessed globally and have no strict memory limit (other than physical RAM). Memory can become fragmented over time, and developers must manage it (via ARC in Swift/Objective-C)."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the difference between a Static and a Dynamic Library? [Mid]",
+    "answer": "- **Static Library (`.a`)**: Allows an application to load code into its address space at *compile time*. Results in a larger app size on disk and slower build times. Code is directly linked into the binary, meaning updates to the library require recompiling the entire app.\n- **Dynamic Library (`.dylib` / `.framework`)**: Loads code into the address space at *run time*. Results in smaller binaries and allows libraries to be updated independently without recompiling the executable. They can have their own initializers and cleanup tasks."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the difference between `UITableView` and `UICollectionView`? [Easy]",
+    "answer": "- **`UITableView`**: Displays a list of items in a single column and is limited to vertical scrolling only.\n- **`UICollectionView`**: Displays items in highly customizable layouts (multiple columns, grids, rows) and can be scrolled both vertically and horizontally."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the difference between LLVM and Clang? [Expert]",
+    "answer": "- **Clang**: The front end of the LLVM toolchain for the C language family (C, C++, Objective-C). It takes the source code, performs lexical analysis and parsing, and generates an abstract syntax tree (LLVM IR).\n- **LLVM**: The broader compiler infrastructure. It takes the intermediate representation (IR) from Clang, optimizes it, and serves as the backend to generate machine code for the target architecture."
+  },
+  {
+    "category": "Objective-C",
+    "question": "What is the difference between ARC and AutoRelease? [Expert]",
+    "answer": "- **ARC (Automatic Reference Counting)**: Handles memory management (retaining and releasing objects) at compile time inside the scope of functions.\n- **Autorelease**: Still used within ARC. Autorelease pools (`@autoreleasepool`) are used to defer the release of temporary objects until the pool is explicitly drained (typically at the end of the run loop)."
+  }
+]

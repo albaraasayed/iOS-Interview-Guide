@@ -1,0 +1,127 @@
+[
+  {
+    "category": "Core Data & Persistence",
+    "question": "What is `NSCoding`? [Easy]",
+    "answer": "`NSCoding` is a protocol that enables an object to be encoded and decoded for archiving and distribution (e.g., saving custom objects to `UserDefaults` or a file)."
+  },
+  {
+    "category": "Objective-C",
+    "question": "How do you access a variable inside a block in Objective-C? [Mid]",
+    "answer": "By using the `__block` storage type modifier in Objective-C, which allows the block to mutate the original captured variable."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "Where should we perform UI tasks in GCD? [Easy]",
+    "answer": "The **Main Queue** is perfect for updating the UI and handling user interactions, whereas any other heavy or long-running tasks should run on a **Background Thread**.\n\n```objective-c\ndispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{\n    // Load your data here in the background.\n    dispatch_async(dispatch_get_main_queue(), ^{\n        // Update UI on the main thread.\n    });\n});\n```"
+  },
+  {
+    "category": "Objective-C",
+    "question": "What is fast enumeration in Objective-C? [Easy]",
+    "answer": "Several Cocoa classes, including the collection classes, adopt the `NSFastEnumeration` protocol. You use it to retrieve elements held by an instance using a syntax similar to that of a standard C `for` loop:\n\n```objective-c\nNSArray *anArray = // get an array;\nfor (id element in anArray) {\n    /* code that acts on the element */\n}\n```"
+  },
+  {
+    "category": "Objective-C",
+    "question": "What is the difference between the `+` and `-` notation in Objective-C methods? [Easy]",
+    "answer": "In Objective-C, **Instance methods** begin with a `-` (minus) sign, while **Class-level methods** (similar to static methods) begin with a `+` (plus) sign."
+  },
+  {
+    "category": "Third-Party Libraries & Dependency Management",
+    "question": "What is CocoaPods? [Easy]",
+    "answer": "CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It is built with Ruby and is installable with the default Ruby available on macOS. The dependencies for your projects are specified in a single text file called a `Podfile`. CocoaPods resolves dependencies, fetches the source code, and links it together in an Xcode workspace."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is TestFlight? [Easy]",
+    "answer": "TestFlight is an Apple product that makes it easy to invite users to test your iOS, watchOS, and tvOS apps before you release them into the App Store. You can invite up to 10,000 testers using just their email addresses."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is `NSXMLParserDelegate`? [Mid]",
+    "answer": "It is a protocol in the Foundation framework used to define the behavior of a delegate object that manages the parsing of XML documents using `XMLParser`."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is the HTTP protocol and what are its common methods? [Easy]",
+    "answer": "HTTP is the application protocol, or set of rules, that websites use to transfer data from the web server to a client.\n\n* **GET:** Used to retrieve data without altering any data on the server.\n* **HEAD:** Identical to GET but only sends back the headers and none of the actual data.\n* **POST:** Used to send data to the server, commonly used when filling out a form.\n* **PUT:** Used to send or replace data at a specific location.\n* **DELETE:** Deletes data from the specific location provided."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What are the major purposes of Frameworks in iOS development? [Easy]",
+    "answer": "Frameworks have three major purposes:\n\n* **Code encapsulation**\n* **Code modularity**\n* **Code reuse**"
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is Continuous Integration (CI)? [Easy]",
+    "answer": "Continuous Integration (CI) is a development practice that requires developers to integrate code into a shared repository several times a day. Each check-in is then verified by an automated build, allowing teams to detect problems early. Common tools include Xcode Server, Jenkins, Travis CI, and Fastlane."
+  },
+  {
+    "category": "Core Data & Persistence",
+    "question": "What is the Keychain in iOS? [Easy]",
+    "answer": "Keychain is an Apple API for persisting sensitive data (like passwords, keys, and tokens) securely in an iOS app."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is `accessibilityHint` in iOS? [Easy]",
+    "answer": "`accessibilityHint` describes the results of interacting with a user interface element. A hint should be supplied *only* if the result of an interaction is not obvious from the element’s standard label."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is `UNNotificationContent`? [Mid]",
+    "answer": "`UNNotificationContent` is a read-only object that stores the content data inside a scheduled or delivered local or remote notification."
+  },
+  {
+    "category": "UIKit",
+    "question": "Explain `CAEmitterLayer` and `CAEmitterCell`? [Mid]",
+    "answer": "UIKit (via Core Animation) provides these classes for creating particle effects.\n\n* **`CAEmitterLayer`**: The layer that emits, animates, and renders the particle system.\n* **`CAEmitterCell`**: Represents the source and defines the direction, velocity, and visual properties of the emitted particles."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What are the different types of In-App Purchase products? [Mid]",
+    "answer": "There are four main types of In-App Purchases:\n\n* **Consumable products:** Can be purchased more than once and are depleted as they are used (e.g., extra lives in a game).\n* **Non-consumable products:** Purchased once and do not expire. Users can restore this functionality in the future if they reinstall the app (e.g., premium features).\n* **Non-Renewing Subscription:** Used for a certain amount of time and certain content without automatically renewing.\n* **Auto-Renewing Subscription:** Used for recurring, automatically renewing subscriptions (e.g., monthly service access)."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is HealthKit? [Easy]",
+    "answer": "HealthKit is an iOS framework that stores health and fitness data in a central, secure location. It takes in data from multiple sources (like different devices and apps) and allows users to control access to their data to maintain privacy."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is Core ML? [Mid]",
+    "answer": "Core ML is an iOS framework that allows you to efficiently process and run machine learning models directly on the device. It is commonly used for tasks like face detection, image recognition, and natural language processing."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What are `libssl_iOS` and `libcrypto_iOS`? [Expert]",
+    "answer": "These are static libraries that help with the secure on-device cryptographic verification of App Store receipt files for In-App Purchases."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What are the benefits of using Xcode Server? [Easy]",
+    "answer": "Xcode Server automates the integration process. It automatically checks out a project from source control, builds the app, runs automated tests, and archives the app for distribution."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the AVFoundation framework? [Mid]",
+    "answer": "AVFoundation allows developers to create, play, and edit audio and visual media on a detailed level with time-based data. It provides separate sets of APIs for advanced video and audio manipulation."
+  },
+  {
+    "category": "UIKit",
+    "question": "How is the app delegate declared by the Xcode project template? [Easy]",
+    "answer": "By default, the App Delegate is declared as a subclass of `UIResponder` and conforms to the `UIApplicationDelegate` protocol."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the purpose of the `UIWindow` object? [Mid]",
+    "answer": "The presentation of one or more views on a screen is coordinated by the `UIWindow` object. It provides the basic container for an app's views and routes events to them."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the lifecycle of a `UIViewController`? [Mid]",
+    "answer": "According to Apple's Documentation, the typical lifecycle methods include:\n\n* **`loadView()`**: Subclasses should create their custom view hierarchy here if they aren’t using a storyboard/nib. Should never be called directly.\n* **`loadViewIfNeeded()`**: Loads the view controller’s view if it has not already been set.\n* **`viewDidLoad()`**: Called after the view has been loaded into memory.\n* **`viewWillAppear(_:)`**: Called when the view is about to be made visible.\n* **`viewWillLayoutSubviews()`**: Called just before the view controller’s view’s `layoutSubviews` method is invoked.\n* **`viewDidLayoutSubviews()`**: Called when the size, position, and constraints have been applied to all objects.\n* **`viewDidAppear(_:)`**: Called when the view has fully transitioned onto the screen.\n* **`viewWillDisappear(_:)`**: Called when the view is about to be dismissed, covered, or hidden.\n* **`viewDidDisappear(_:)`**: Called after the view was dismissed, covered, or hidden.\n* **`viewWillTransition(to:with:)`**: Called when the view is transitioning or rotating.\n* **`willMove(toParent:)`**: Called when transitioning between child controllers.\n* **`didMove(toParent:)`**: Called after transitioning between child controllers.\n* **`didReceiveMemoryWarning()`**: Called when the parent application receives a system memory warning."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the difference between a XIB and a NIB? [Easy]",
+    "answer": "* **XIB (XML Interface Builder)**: These are flat XML files used for executable code in Xcode. They are editable but comparatively larger in size than a NIB.\n* **NIB (NeXT Interface Builder)**: A non-editable, inoperable binary or archive file. After compilation, an Xcode XIB file is converted into a smaller, optimized NIB file."
+  }
+]

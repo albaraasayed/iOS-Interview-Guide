@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Q: Explain Two Phase Initialization?",
+    "answer": "1. **Phase 1:** Each stored property is assigned an initial value by the class that introduced it.\n2. **Phase 2:** Each class is given the opportunity to further customize its stored properties before the instance is ready."
+  },
+  {
+    "question": "Q: Explain Failable initializers?",
+    "answer": "Denoted by `init?`, this initializer creates an *optional* instance that can fail. Use `return nil` within the initializer to trigger a failure."
+  },
+  {
+    "question": "Q: Explain Initializing with closures?",
+    "answer": "If a default value requires complex setup, you can use a self-executing closure `{ ... }()` to provide a customized initial value."
+  },
+  {
+    "question": "Q: Define Capture list?",
+    "answer": "Used in closures to capture a variable's value at the exact moment of closure creation, rather than referencing the live variable. Written in square brackets: `[localVar = varToCapture]`."
+  },
+  {
+    "question": "Q: Explain Enum and associated value?",
+    "answer": "An enumeration consists of a set of related values. Associated values allow you to attach specific variables/types to individual enum cases.\n\n```swift\nenum Barcode {\n  case upc(Int, Int, Int, Int)\n  case qrCode(String)\n}\n\n```"
+  },
+  {
+    "question": "Q: Explain Implicitly Assigned Raw Values?",
+    "answer": "When assigning integer or string raw values to an enum, you don't have to define every case. Swift automatically assigns them (e.g., integers automatically increment by 1 starting from 0)."
+  },
+  {
+    "question": "Q: Value type vs Reference type?",
+    "answer": "* **Value Types (Structs, Enums):** Keep a unique copy of their data. Assignment copies the data (Copy On Write). Bound by `let` immutability strictly. Shares fields inline.\n* **Reference Types (Classes):** Share a single copy of data in memory (Heap). Variables point to the same memory address. Passing references is fast. Memory is managed via Automatic Reference Counting (ARC)."
+  },
+  {
+    "question": "Q: Define @synchronized?",
+    "answer": "The `@synchronized` directive is a convenient way to create mutex locks on the fly in Objective-C code. The `@synchronized` directive does what any other mutex lock would do\u2014it prevents different threads from acquiring the same lock at the same time."
+  },
+  {
+    "question": "Q: What is a selector? How to call a selector?",
+    "answer": "A selector is the name used to select a method to execute for an object, or the unique identifier that replaces the name when the source code is compiled. A selector by itself doesn\u2019t do anything. It simply identifies a method. The only thing that makes the selector method name different from a plain string is that the compiler makes sure that selectors are unique."
+  },
+  {
+    "question": "Q: What is NSBundle and main bundle?",
+    "answer": "A bundle is a structure used for packaging software on Mac OS X. Applications, frameworks, and plug-ins are all different kinds of bundles. Bundles may contain executable code, resources, header files, and other stuff (including other bundles) if you so wish. \n\nBundles are implemented as directory trees with a defined structure. Applications, frameworks, and plug-ins each have their own variation on the structure of the tree. However, to the Finder, bundles look like single files. The main bundle is simply the bundle of the application that is running. So, for instance, the main bundle of the Apple mail program is `/Applications/Mail.app`."
+  },
+  {
+    "question": "Q: Define \u2018id\u2019 type in Objective-C?",
+    "answer": "`id` is a data type of object identifiers in Objective-C, which can be used for an object of any type no matter what class it has, except native or primitive types. `id` is the final supertype of all objects."
+  },
+  {
+    "question": "Q: What does the Main function really do in an iOS app?",
+    "answer": "It hands over the control to the UIKit framework with the help of the `UIApplicationMain` function."
+  },
+  {
+    "question": "Q: What are the UIApplicationMain function roles?",
+    "answer": "It creates or starts several core objects of our app. It loads the UI from the available storyboard. It allows custom code (`AppDelegate`) to do some initial setup. It also starts the app by setting the app run loop in motion. We need to provide Storyboard files and custom initializing code to the `UIApplicationMain` function."
+  },
+  {
+    "question": "Q: What is UIApplication and what does it really do?",
+    "answer": "It is the heart of the iOS app and makes interaction easy between the system and other objects of the app."
+  },
+  {
+    "question": "Q: Define NSUserDefaults?",
+    "answer": "With the `NSUserDefaults` class, you can save settings and properties related to application or user data. For example, you could save a profile image set by the user or a default color scheme for the application. The objects will be saved in what is known as the iOS \u201cdefaults system\u201d. The iOS defaults system is available throughout all of the code in your app, and any data saved to the defaults system will persist through application sessions. This means that even if the user closes your application or reboots their phone, the saved data will still be available the next time they open the app!\n\nWith `NSUserDefaults` you can save objects from the following class types: `NSData`, `NSString`, `NSNumber`, `NSDate`, `NSArray`, `NSDictionary`. If you want to store any other type of object, such as a `UIImage`, you will typically need to archive it or wrap it in an instance of `NSData`, `NSNumber`, or `NSString`."
+  },
+  {
+    "question": "Q: What is the APNS payload size?",
+    "answer": "As per the updated Apple docs, the sizes are:\n* For regular remote notifications, the maximum size is **4KB** (4096 bytes).\n* For Voice over Internet Protocol (VoIP) notifications, the maximum size is **5KB** (5120 bytes).\n* *Note:* If you are using the legacy APNs binary interface to send notifications instead of an HTTP/2 request, the maximum payload size is **2KB** (2048 bytes)."
+  },
+  {
+    "question": "Q: Define Quality of Service (QoS)?",
+    "answer": "The quality of service API was introduced in iOS 8. QoS can be applied all over iOS. One can prioritize queues, thread objects, dispatch queues, and POSIX threads. This is important since asynchronous work is typically spread out across all of these techniques. By assigning the correct priority, iOS apps remain quick, snappy, and responsive.\n\n* **User Interactive:** Work that happens on the main thread, such as animations or drawing operations.\n* **User Initiated:** Work that the user kicks off and should yield immediate results. This work must be completed for the user to continue.\n* **Utility:** Work that may take a bit and doesn\u2019t need to finish right away. Analogous to progress bars and importing data.\n* **Background:** This work isn\u2019t visible to the user. Backups, syncs, indexing, etc.\n* **Default:** The priority level falls between user-initiated and utility. Work with no QoS information assigned is treated as default, and the GCD global queue runs at this level.\n* **Unspecified:** Represents the absence of QoS information and cues the system that an environmental QoS should be inferred."
+  },
+  {
+    "question": "Q: What are VoIP notifications?",
+    "answer": "A few of the advantages are:\n* The app is automatically relaunched if it\u2019s not running when a VoIP push is received.\n* The device is woken up only when a VoIP push occurs (saves battery).\n* VoIP pushes go straight to your app for processing and are delivered without delay.\n\nApple provides us with a framework called `PushKit` to support using this VoIP push feature. We also need to generate a VoIP push certificate for implementation."
+  },
+  {
+    "question": "Q: Why do we need to specify `self` to refer to a stored property or a method when writing asynchronous code?",
+    "answer": "Since the code is dispatched to a background thread, we need to carefully capture a reference to the correct object to ensure it remains in memory and we access the correct instance."
+  },
+  {
+    "question": "Q: What is Deep Linking?",
+    "answer": "Deep linking is a way to pass data to your application from any platform, like a website or another application. By tapping once on a link, you can pass necessary data and route the user directly to a specific view in your application."
+  },
+  {
+    "question": "Q: Explain the `super` keyword in a child class?",
+    "answer": "We use the `super` keyword to call the parent class initializer or method implementation, often after or before setting the child class's specific properties."
+  },
+  {
+    "question": "Q: What are the biggest changes in UserNotifications?",
+    "answer": "* We can add audio, video, and images.\n* We can create custom interfaces for notifications.\n* We can manage notifications with interfaces in the notification center.\n* New Notification extensions allow us to manage remote notification payloads before they\u2019re delivered."
+  },
+  {
+    "question": "Q: What are the 3 triggers for a local notification?",
+    "answer": "Location, Calendar, and Time Interval. \n* A **Location** notification fires when the GPS on your phone is at a specific location or geographic region. \n* A **Calendar** trigger is based on calendar data broken into date components. \n* A **Time Interval** is a count of seconds until the timer goes off."
+  },
+  {
+    "question": "Q: Define Autorelease?",
+    "answer": "By sending an object an `autorelease` message, it is added to the local `AutoReleasePool`, and you no longer need to worry about it. When the `AutoReleasePool` is destroyed (on the main run loop), the object will receive a `release` message (retain count is decremented by one), and the system will destroy the object if the Retain Count becomes zero.\n*Release:* Retain count is decreased by one when we send a release message to an object."
+  },
+  {
+    "question": "Q: What is Method Swizzling?",
+    "answer": "Swizzling is the act of changing the functionality of a method by replacing the implementation of that method with another, usually at runtime. Reasons to use swizzling include: introspection, overriding default behavior, or dynamic method loading. This dynamic program modification is similar to monkey patching."
+  }
+]

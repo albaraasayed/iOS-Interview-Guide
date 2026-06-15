@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Can we capture a lazy variable inside a closure or not?",
+    "answer": ""
+  },
+  {
+    "question": "What is the ARC?",
+    "answer": "-Automatic reference counting, which is the way that apple deals with memory management, it is like garbage collector in java as eg.\n-For each object it\u2019s keeping a count of how many strong references are pointing to the object, if the count reaches 0 then the deinint function of the object\u2019s class will be called and the object will be released from the memory"
+  },
+  {
+    "question": "What is codable?",
+    "answer": "-Codable is a type alias that combine decodable and decodable\n-it is used to encode and decode the custom data formats (json,xml) to a native swift object and vice versa"
+  },
+  {
+    "question": "Do enums have strong or weak references in the memory ?",
+    "answer": "Enums have weak references because they are a value type so they generally pass a copy of the object and not a reference of it.\n\n**Value and Reference Types**\nTypes in Swift fall into one of two categories: first, \"value types\", where each instance keeps a unique copy of its data, usually defined as a `struct`, `enum`, or tuple. The second, \"reference types\", where instances share a single copy of the data, and the type is usually defined as a `class`. In this post we explore the merits of value and reference types, and how to choose between them."
+  },
+  {
+    "question": "How do you handle deadlock situations in iOS ?",
+    "answer": ""
+  },
+  {
+    "question": "What is the difference between enum associated value vs raw value?",
+    "answer": ""
+  },
+  {
+    "question": "20- Associated value vs raw value in enum",
+    "answer": ""
+  },
+  {
+    "question": "What are higher order functions ?",
+    "answer": "Higher order functions are simply functions that operate on other functions by either taking a function as an argument, or returning a function. Swift\u2019s Array type has a few methods that are higher order functions: sorted, map, filter, and reduce. These methods use closures to allow us to pass in functionality that can then determine how we want the method to sort, map, filter, or reduce an array of objects."
+  },
+  {
+    "question": "27- Higher order function",
+    "answer": "A higher order function is a function that takes one or more functions as arguments, or returns a function as its result. There are several different types of higher order functions like map w filter and reduce."
+  },
+  {
+    "question": "What Are Higher-Order Functions?",
+    "answer": "In Swift, a **higher-order function** is a function that:\n* \u2705 Takes another function as an argument (function as a parameter).\n* \u2705 Returns a function as its result (function as a return value).\n* \u2705 Or both!\n\nHigher-order functions make Swift **more expressive, concise, and functional**.\n\n**\ud83d\udd39 Why Use Higher-Order Functions?**\n* \u2705 **Reduces boilerplate code** \u2014 Eliminates `for` loops.\n* \u2705 **Improves code readability** \u2014 Makes code **declarative** rather than **imperative**.\n* \u2705 **Encourages functional programming** \u2014 Makes operations **composable**.\n\n**Common Higher-Order Functions in Swift**\n\n| Function | Purpose | Example Use Case |\n| :--- | :--- | :--- |\n| **map** | Transforms each element in a collection | Convert an array of numbers into strings |\n| **filter** | Filters elements based on a condition | Get only even numbers from an array |\n| **reduce** | Combines all elements into a single value | Find the sum or product of an array |\n| **compactMap** | Removes nil values while transforming elements | Convert an array of optional strings into non-optional numbers |\n| **flatMap** | Flattens nested collections into a single array | Convert an array of arrays into a flat list |\n| **sorted** | Sorts elements based on criteria | Sort an array in ascending or descending order |\n\n**\ud83d\udd39 1. map(_:) \u2014 Transform Elements**\n`map(_:)` applies a function to **each element in a collection** and returns a new collection.\n*Example: Squaring Numbers*\n```swift\nlet numbers = [1, 2, 3, 4, 5]\nlet squaredNumbers = numbers.map { $0 * $0 }\n\nprint(squaredNumbers) // Output: [1, 4, 9, 16, 25]\n\n```\n\n**\ud83d\udd39 2. filter(_:) \u2014 Selecting Elements**\n`filter(_:)` returns a **new collection** containing only elements that match a condition.\n\n```swift\nlet numbers = [1, 2, 3, 4, 5, 6]\nlet evenNumbers = numbers.filter { $0 % 2 == 0 }\n\nprint(evenNumbers) // Output: [2, 4, 6]\n\n```\n\n**\ud83d\udd39 3. reduce(*:*:) \u2014 Combine Elements**\n`reduce(_:_:)` combines all elements into a single value.\n*Example: Summing an Array*\n\n```swift\nlet numbers = [1, 2, 3, 4, 5]\nlet sum = numbers.reduce(0) { $0 + $1 }\nlet sumV2 = numbers.reduce(0, +)\n\nprint(sum) // Output: 15\nprint(sumV2) // Output: 15\n\n```\n\n**\ud83d\udd39 4. compactMap(_:) \u2014 Remove nil Values**\n`compactMap(_:)` transforms elements and removes `nil` values.\n\n```swift\nlet strings = [\"1\", \"two\", \"3\", \"four\", \"5\"]\nlet numbers = strings.compactMap { Int($0) }\n\nprint(numbers) // Output: [1, 3, 5]\n\n```\n\nIt **automatically removes nil values** while transforming elements.\n\n**\ud83d\udd39 5. flatMap(_:) \u2014 Flatten Nested Collections**\n`flatMap(_:)` transforms each element and **flattens** the result into a single array.\n*Example: Flattening an Array of Arrays*\n\n```swift\nlet nestedArray = [[1, 2], [3, 4], [5, 6]]\nlet flatArray = nestedArray.flatMap { $0 }\n\nprint(flatArray) // Output: [1, 2, 3, 4, 5, 6]\n\n```\n\nEliminates nested loops when working with arrays of arrays.\n\n**\ud83d\udd39 6. sorted(_:) \u2014 Sorting Collections**\n`sorted(_:)` arranges elements based on a condition.\n*Example: Sorting in Descending Order*\n\n```swift\nlet numbers = [5, 1, 4, 2, 3]\nlet sortedNumbers = numbers.sorted { $0 > $1 }\n\nprint(sortedNumbers) // Output: [5, 4, 3, 2, 1]\n\n```\n\n\ud83d\ude80 **Final Thoughts**\nHigher-order functions **simplify code** and make Swift more **expressive and functional**. \ud83c\udfaf\n\n* \u2705 **Use map, filter, and reduce** to write **concise, declarative, and efficient code**.\n* \u2705 **Practice using them instead of loops** to improve code readability.\n\n---"
+  },
+  {
+    "question": "What is the view controller lifecycle?",
+    "answer": "1- init\n2- loadView\n3- viewDidLoad\n4-viewWillAppear\n5- viewDidAppear\n6- viewWillDisappear\n7- viewDidDisappear\n8- viewDidUnload (objective-c & debricated)\n9-viewDidDispose (objective-c & debricated)"
+  },
+  {
+    "question": "What is the difference between hugging and compression resident?",
+    "answer": ""
+  },
+  {
+    "question": "What is the difference between keychain and user defaults?",
+    "answer": "* A **keychain** is an encrypted container that holds passwords for multiple applications and secure services. Apple Inc. uses keychains as password management system in Mac OS and iOS.\n* **NSUserDefaults** Provides a way for application behavior customization based on user preferences. Belongs to the Foundation framework for Cocoa and Cocoa Touch.\n* Addition: When we saved userName and Password. and Remove app from device.\n* In Keychain: UserName and Password still is there.\n* In NSUserDefaults: UserName and Password also remove from device with your app.\n\n\n\nNote that NSUserDefaults is not thread safe as it is a singleton object which is not thread safe"
+  },
+  {
+    "question": "What is the difference between library and Framework?",
+    "answer": "**Framework:** consist of some libraries + some resources, and it can control the code flow\n**Library:** Reusable code can be imported and used anywhere"
+  },
+  {
+    "question": "What is a Race condition?",
+    "answer": "A race condition occurs when two or more tasks with the same priority compete to execute first, leading to an unpredictable execution order that cannot be controlled or guaranteed by the developer."
+  },
+  {
+    "question": "What is the first method that gets called in IOS?",
+    "answer": "```swift\nUIApplicationMain(_:_:_:_:)\n\n// didFinishLaunchingWithOptions\n\n```"
+  },
+  {
+    "question": "What is resueIdentifier?",
+    "answer": ""
+  },
+  {
+    "question": "What is Quality Of Service (QoS)?",
+    "answer": "```swift\nlet queue = DispatchQueue(label: \"com.swiftpal.dispatch.qos\")\n\n// async with background type\nqueue.async(qos: .background) {\n    print(\"Background Code\")\n}\n\n// async with userInitiated type\nqueue.async(qos: .userInitiated) {\n    print(\"User Initiated Code\")\n}\n\n```\n\nQoS can be used with **.async()** function, and the priorities are divided into four main categories.\n\n* **userInteractive:** Used for animations, or updating UI.\n* **userInitiated:** Used for tasks like loading data from API, preventing the user from making interactions.\n* **utility:** Used for tasks that do not need to be tracked by the user.\n* **background:** Used for tasks like saving data in the local database or any maintenance code which is not on high priority."
+  },
+  {
+    "question": "UI",
+    "answer": ""
+  },
+  {
+    "question": "UI Test",
+    "answer": ""
+  },
+  {
+    "question": "Swift UI",
+    "answer": ""
+  },
+  {
+    "question": "How to make a reusable view?",
+    "answer": ""
+  },
+  {
+    "question": "How to Make Custom Views?",
+    "answer": ""
+  },
+  {
+    "question": "Explain Difference between UIWindow and UIView ?",
+    "answer": "Windows do not have any visible content themselves but provide a basic container for your application\u2019s views. Views define a portion of a window that you want to fill with some content."
+  },
+  {
+    "question": "Q: Explain the difference between UIWindow and UIView?",
+    "answer": "**Windows** do not have any visible content themselves but provide a basic container for your application\u2019s views. **Views** define a portion of a window that you want to fill with some content."
+  }
+]

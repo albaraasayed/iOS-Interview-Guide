@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Moking",
+    "answer": ""
+  },
+  {
+    "question": "Can we make a UI test on UIVIew element color?",
+    "answer": "No, because in testing I don\u2019t have access to any property of the UIComponent"
+  },
+  {
+    "question": "1. Talk about CoreData.",
+    "answer": "CoreData is used as a framework for managing object graphs. It helps manage a graph of object instances that is potentially very large. This allows the app to use a graph that would not completely fit in the memory, by bringing objects in and out of the memory when needed. CoreData also helps in managing the limitations on properties and relationships and in maintaining the integrity of references. This means that when objects are added to or removed from a relationship, the forward and backward links remain consistent. Therefore, CoreData is considered to be the perfect framework for creating the \u201cmodel\u201d of an MVC architecture.\n\nCoreData uses SQLite for disk storage to implement graph management. It is possible to implement graph management using some other relational database or even a non-relational database like CouchDB. CoreData is more of an API that abstracts from the actual datastore than a database engine. Therefore you can tell how CoreData must store itself - as a plist, an SQLite database, a binary file, or a custom data store type.\n\n*Giving a detailed answer to an iOS interview question like this is good, but your answer can become great if you can add your perspective as well to the answer.*"
+  },
+  {
+    "question": "3. Talk about code signing for iOS apps.",
+    "answer": "A signed application helps the system to know who signed the application and also to determine that no changes were made to the application after it was signed. This is a necessary step to submit the application to the App Store for iOS and Mac. There is a signature verification process in OS X and iOS to confirm that the applications do not run with invalid signatures. This builds trust for the users who know that the application is signed by a verified Apple Source and no changes were made to it since signing.\n\nDuring the build process, your digital identity is used by Xcode to sign your application. The digital identity comprises a public-private key pair and a certificate. The cryptographic functions use the private key to create the signature. Apple issues the certificate that contains the public key and helps identify you as the key pair owner.\n\nThe signature protects the executable code of the application because as soon as the executable code in the application changes even slightly, the signature becomes invalid. However, changes to images or nib files do not invalidate the signatures as these resources are not signed.\n\nThe signature of an application can be removed and a different digital identity can be used to re-sign the application. For example, all applications on App Store are re-signed by Apple when they are sold.\n\n*For an iOS interview question of this type, it may be good to add if you have any prior experience of a project with similar requirements, code-signing for iOS apps in this case.*"
+  },
+  {
+    "question": "4. What are the different iOS App States?",
+    "answer": "There are five app states in iOS. While the app state is managed by the OS, the important tasks are managed by the app itself so that transitions between states happen smoothly. The iOS programming guide lists the five iOS app states as follows:\n\n* **Non-running** - When the app is not in the running state.\n* **Inactive** - When the app runs in the foreground but does not receive any events. This can happen with an iOS app when a call or SMS is received or some other function takes precedence.\n* **Active** - This is the state when the app runs in the foreground and receives events.\n* **Background** - When the app runs in the background and executes code at the same time.\n* **Suspended** - When the app runs in the background but does not execute any code at that time.\n\n*iOS interview questions like the above where you need to talk about multiple states or steps are popular in iOS interviews.*"
+  },
+  {
+    "question": "5. Mention the main features of Swift. Also, outline its advantages and disadvantages.",
+    "answer": "The main features of Swift are as follows:\n* Generics\n* Optionals\n* Reference types\n* Value types\n* Static typing\n* Protocols\n\nThe biggest feature of Swift is that it is a strongly-typed language. Being a strongly-typed language is an advantage as well as a disadvantage. Development in Swift is easy because of protocols, generics, and optionals which exist because of static typing. While static timing throws several compilation errors and compile-time warnings, it also offers more security at runtime and helps in determinism for optionals, generics, etc. This is, therefore, a big advantage of Swift. The security offered by strict type is most useful under the following circumstances:\n* When creating a client application requires more strict clarity than flexibility and dynamism\n* When you don\u2019t want inexperienced developers to have excessive power and cause damage to themselves or their work and thus, need to add restrictions\n* When your code needs refactoring and using the compiler can help in writing proper and correct code\n\nAll the above are scenarios where developers build customer-facing iOS applications.\n\nThe disadvantage of Swift is that it can be too restrictive, especially when the app you are building needs flexibility. For example, when you build a library or a framework, it needs to be flexible and dynamic. In such a case, Objective-C which offers meta-programming capabilities can be a better choice than Swift, though presently, Objective-C seems to be going obsolete."
+  },
+  {
+    "question": "7. Can you differentiate between delegate and KVO?",
+    "answer": "Both, delegate and KVO, create relationships between objects. Delegation creates a one-to-one relationship in which the delegate protocol is implemented by one object, and the other object uses protocol-defined methods to send messages to the first object. KVO, on the other hand, creates a many-to-many relationship in which the message is broadcast by one object, and one or more objects receive the message and react to it. KVO is not protocol-dependent.\n\n*When preparing for your iOS interview, ensure that you go through all such concepts where you could be asked to differentiate between two things.*"
+  },
+  {
+    "question": "8. Mention some design patterns apart from the common Cocoa patterns.",
+    "answer": "Apart from MVC, Singleton, Observer, and Delegate patterns that are commonly used, there are other patterns too that could be used for developing iOS applications:\n* **Factory Method:** With the Factory Method, one can replace class constructors for abstracting and hiding initialization of objects so that the type is determined when the application is run. This method also helps to hide and contain the switch/if statements that help identify which objects to create instances for.\n* **Adapter:** With the help of the Adapter design pattern one can adapt one object\u2019s interface to that of the other. It is useful when a third-party code cannot be changed to one\u2019s own code or when something with an inconvenient or incompatible API needs to be used.\n* **Decorator:** The Decorator is a wrapper that can be wrapped around different classes to enhance their capabilities. One can wrap it around things one wants to decorate. Once wrapped, it implements the interface and delegates the messages that were sent to it to the underlying objects, or it changes and improves objects or gives its own implementation to them.\n* **Command:** The Command design pattern allows you to implement an object representing an operation that you want to perform. The operation you want to execute may have its own state and logic for performing the task. As an advantage, you can hide the operation\u2019s internal implementation from the users, add undo/redo capabilities to it, and even execute operations later instead of at the time of operation creation.\n* **Template:** The Template design pattern has a base class outlining the algorithm for what is required to be done. There are several abstract methods of the base class. These abstract methods must be implemented by the concrete subclasses of the base class. These abstract methods are also referred to as hook methods. The interaction of the Template Method class users happens through the base class that implements the algorithm steps. The subclasses supply the concrete implementations for those steps."
+  },
+  {
+    "question": "Design principles & patterns",
+    "answer": ""
+  },
+  {
+    "question": "What are the main design principles?",
+    "answer": "**Recap**\n\n| Low-level Design Principles | High-level Design Principles |\n| --- | --- |\n| 1) Tell don\u2019t Ask | 1) Single Responsibility Principle |\n| 2) Once and Only Once | 2) Open Closed Principle |\n| 3) Law of Demeter | 3) Liskov Substitution Principle |\n| 4) Favor Composition over Inheritance | 4) Interface Segregation Principle |\n| 5) Command Query Separation | 5) Dependency Inversion Principle |\n\n**1- Tell don\u2019t ask:**\nThis means instructing a method to perform the calculation and return the final result directly, rather than fetching the variables and performing the calculation externally where the method was called.\n\n**2- Once and only once:**\nThis implies avoiding code duplication. If a block of code is repeated multiple times, it should be extracted and encapsulated within its own dedicated method.\n\n**3- Law of Demeter:**\nThis dictates that an object should only communicate with its immediate neighbors (objects it holds a direct reference to). It should not chain method calls through multiple objects to retrieve data (e.g., Object A calling Object B to get Object C, to get Object D). The correct approach is to communicate with the immediate dependency, which then communicates with its own dependency, continuing this chain until the data is retrieved and returned in the same manner.\n\n**4- Favour composition over inheritance:**\nThis is preferred because composition allows for behavior changes dynamically at runtime, whereas inheritance establishes a rigid, static structure that cannot be altered during execution.\n\n**5- Query command separation:**\nMethods should either make calculations or retrieve data, but one method shouldn\u2019t do both."
+  },
+  {
+    "question": "Q: Explain Swift\u2019s pattern matching techniques?",
+    "answer": "* Tuple patterns\n* Type-casting patterns\n* Wildcard patterns (ignoring values)\n* Optional patterns\n* Enumeration case patterns\n* Expression patterns"
+  },
+  {
+    "question": "9. Mention different options for implementing storage and persistence in iOS.",
+    "answer": "Outlined below are the ways to store data in simple to complex order:\n* For intermediate data storage or for storage that doesn\u2019t need to last long, we can use in-memory arrays, dictionaries, sets, and other data structures.\n* For simple key-value storage, we can use NSUserDefaults/Keychain. Here, one thing is insecure, and the other is secure, respectively.\n* For writing data to or from a disk, we can take the help of NSFileManager, whether the data is serialized or not, we can use File or Disk storage.\n* When trying to simplify working with databases, frameworks like Core Data and Realm are useful.\n* When your requirements include implementing complex querying mechanics, the SQLite relational database is what you should use.\n\n*The above iOS interview question is an example of questions where you can use the traditional answer outline above and be safe, but if you add examples of having implemented each or any of the options above, you may earn the interviewer\u2019s attention.*"
+  },
+  {
+    "question": "10. When must you use strong, weak, and unowned references?",
+    "answer": "When you work with Structs or Enums, ARC doesn\u2019t manage these memory types. Thus, there isn\u2019t any need to worry about specifying whether you are using weak or unowned references for the constants or variables there.\n\nIn hierarchical relationships, where the parent references the child but the reverse does not occur, you can use strong references. In most cases, anyway, strong references are apt. However, where the relationship of two instances is optional, you must ensure that one instance is weakly referenced to the other.\n\nWhen one instance is linked to another in a way that it cannot exist in the other\u2019s absence, there is a mandatory dependency of one variable on the other. In such a case, the instance that has mandatory dependence on the other must hold an unowned reference to the other."
+  },
+  {
+    "question": "11. What programming language is used for iOS development?",
+    "answer": "The primary programming language used for iOS development is Swift. Objective-C is also used, but its usage has been declining in favor of Swift."
+  },
+  {
+    "question": "12. Explain overlays.",
+    "answer": "Overlays are a technique used in operating systems to allow programs to use more memory than they would otherwise be able to.\nWhen a program is loaded into memory, it takes up a certain amount of space. If the program is large and requires more memory than is available, overlays can be used to load only the portions of the program that are currently needed into memory. As the program executes, different portions can be swapped in and out of memory as needed."
+  },
+  {
+    "question": "13. List some important features of Swift.",
+    "answer": "Some of the important features of Swift include:\n* Safety\n* Simplicity in syntax\n* Readability\n* Support for multiplatform"
+  },
+  {
+    "question": "14. Explain conditional conformances in Swift?",
+    "answer": "In Swift, conditional conformances allow you to declare that a generic type conforms to a protocol only under certain conditions. This means that a type will only conform to a protocol if some condition is met, such as the type's generic parameter satisfying certain constraints."
+  },
+  {
+    "question": "15. Explain ButtonStyle protocol in Swift.",
+    "answer": "ButtonStyle protocol allow to customize new button styles that can be reused without the need for new views. Using this protocol, you can create a button that will appear the way you want. You will make your own style that sets a decent background for a button. You can use the `buttonStyle(_:)` modifier."
+  },
+  {
+    "question": "16. Tell one difference between an array and a set.",
+    "answer": "Where arrays are an ordered collection of values, sets are an unordered collection. Also, an array can duplicate elements, while a set cannot."
+  },
+  {
+    "question": "17. Explain tuples and their use in Swift.",
+    "answer": "A tuple is a set of multiple values inside Swift. They occupy space between dictionaries and structures and return values from a function call."
+  },
+  {
+    "question": "18. What is the use of GeometryReader?",
+    "answer": "GeometryReader reads all the size and position information and passes that information to its child views via GeometryProxy. It is a flexible view and takes over all the available space provided by the parent view."
+  },
+  {
+    "question": "19. Explain the bounding box.",
+    "answer": "A bounding box is a rectangular frame that represents the smallest rectangle that completely encloses a particular object or shape. This object can be an image, a text character, or any other graphical element on the screen. The bounding box is defined by its position and size. The position is specified by the coordinates of the top-left corner of the rectangle, while the size is specified by the width and height of the rectangle."
+  },
+  {
+    "question": "20. What purpose does IBDesignable serve?",
+    "answer": "When a custom view is set to IBDesignable, it allows Xcode to preview it while storyboards are edited. Interface Builder helps directly with making custom layouts. You can easily provide any effects like border width shadow color, shadow width, border color, corner radius, and shadow Opacity."
+  },
+  {
+    "question": "21. Can you tell the type of settings that are stored in your Info.plist file?",
+    "answer": "It stores those settings that must be available even when the app is not running. It is a file in the Mac and GNUstep environments that stores user settings. There are three formats plist: Text, Binary, and XML. A plist can store string, number, data(binary data), boolean, dictionary(associative array), and array."
+  },
+  {
+    "question": "22. Explain raw strings in Swift.",
+    "answer": "They create strings that print what you see, unlike some escape orders that make your string print in a different form. Raw strings are denoted by the `#` hash symbol, also known as pound symbol. It is used before and after quotation marks by using `#` at the starting and ending point."
+  }
+]

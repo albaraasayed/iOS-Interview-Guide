@@ -1,0 +1,102 @@
+[
+  {
+    "question": "23. Through what observable objects announce modifications to SwiftUI?",
+    "answer": "Using two primary ways `@Published` property wrapper or calling `objectWillChange.send()`:\n* **@Published property wrapper:** It is very useful in SwiftUI. It allows us to create observable objects that automatically announce when changes occur.\n* **objectWillChange:** It is a property defined on the ObservableObject protocol. Whenever any `@Published` properties of the objects change, the compiler synthesizes a default implementation for the property, which emits a value."
+  },
+  {
+    "question": "24. Tell me about circular references in Swift.",
+    "answer": "When two objects strongly refer each other, they can never be deallocated. And this strong reference also enables them to keep each other alive. When objects hold strong references to each other, it means that each object has a strong ownership of the other, which creates a cycle, and this cycle is referred to as a circular reference."
+  },
+  {
+    "question": "25. Can we add a stored property to type through an extension?",
+    "answer": "No, we cannot add a stored property to a type through an extension in Swift.\nExtensions in Swift can add computed properties, instance methods, class methods, and initializers to a type, but they cannot add stored properties. This is because stored properties must be initialized when an instance of the type is created, and extensions cannot provide their own initializers."
+  },
+  {
+    "question": "Q: Extensions in Swift?",
+    "answer": "Extensions add new functionality to an existing class, structure, enumeration, or protocol type. They can add computed properties, define methods, provide new initializers, define subscripts, and make existing types conform to protocols."
+  },
+  {
+    "question": "Q: Category VS Extension",
+    "answer": "*(Note: Extensions in Swift are similar to categories in Objective-C. Unlike Objective-C categories, Swift extensions do not have names.)*\n* **Extensions (Swift)** add new functionality to an existing class, structure, enumeration, or protocol type. This includes the ability to extend types for which you do not have access to the original source code.\n* **Categories (Objective-C only)** allow you to add methods outside of the main interface file. \n* **Extensions (Objective-C)** must be implemented in the main Interface file. This means we cannot use Objective-C extensions for extending Built-in classes or Classes for which you don\u2019t have the source code; there you should use Categories."
+  },
+  {
+    "question": "26. What do you understand about Half Open Range Operators in Swift?",
+    "answer": "It specifies a range between values x and y (`x..<y`) where y is not included. The operator specifies a range that includes the first value but not the final value. It is specifically useful when you work with zero-based lists such as arrays, where it's useful to count up to the length of the list."
+  },
+  {
+    "question": "27. Explain one benefit of using child view controllers?",
+    "answer": "One benefit of using child view controllers is that it allows for better modularization and organization of code in an iOS app. By breaking down a large, complex view controller into smaller, more manageable child view controllers, it becomes easier to understand and maintain the codebase."
+  },
+  {
+    "question": "28. What are reference types?",
+    "answer": "A reference type contains the location in the memory where data lives. A reference type is passed to a function; instead of creating a new copy of the object, it just creates another reference to that object which is shared among all the different references."
+  },
+  {
+    "question": "29. Tell me about Nested Function in Swift.",
+    "answer": "In Swift, a nested function is a function defined within the body of another function. Nested functions are useful for organizing code and encapsulating functionality within a larger function scope. Nested functions can be useful for abstracting complex logic or for breaking down large functions into smaller, more manageable parts."
+  },
+  {
+    "question": "30. What is Regular Expression?",
+    "answer": "They are special string patterns that tell how to search for a string. It is a sequence of characters that specifies a search pattern in the text; it finds or finds and replaces operations on strings."
+  },
+  {
+    "question": "31. What is a Responder Chain?",
+    "answer": "It is an order of objects that receive the chance to respond to events. It is the series of events that happen once we start interacting with the application on iOS. Applications receive and handle events using responder objects."
+  },
+  {
+    "question": "32. List the different types of literals Swift has.",
+    "answer": "* Octal Literals\n* Hexadecimal Literals\n* Binary Literals\n* Decimal Literals"
+  },
+  {
+    "question": "33. Explain processor management.",
+    "answer": "It provides tools and resources to steer business processes toward better performance. It is an execution unit in which a program operates. It ensures that each process and application receives enough of the processor\u2019s time to function properly and deallocates after the process is completed."
+  },
+  {
+    "question": "34. Name different types of control transfer statements used in Swift.",
+    "answer": "* Continue\n* Fallthrough\n* Return\n* Break\n* Throw"
+  },
+  {
+    "question": "35. List two types of classes in Swift.",
+    "answer": "* **Subclass:** It is the act of constructing a new class on an existing class. They inherit characteristics from the existing class, and you can further modify them with new characteristics.\n* **Super Class:** When a class inherits properties from another class, the inheriting class is known as a subclass, and the class it inherits from is called a superclass."
+  },
+  {
+    "question": "36. What is Process management in iOS?",
+    "answer": "Each thread in iOS serves as a single path of execution. Every application in IOS starts with a single thread that runs the application's main functions."
+  },
+  {
+    "question": "37. Explain the process of writing a comment in Swift?",
+    "answer": "* For a single-line comment you can use double slashes (`//`)\n* And for multi-line comments you can use a forward slash followed by an asterisk (`/* ... */`)"
+  },
+  {
+    "question": "38. Explain Optional Chaining in Swift.",
+    "answer": "It is a process of querying and calling properties. Different queries can be chained here, but the chain fails if any link is `nil`."
+  },
+  {
+    "question": "Q: Optional Chaining?",
+    "answer": "A process for querying properties or methods on an optional that might be `nil`. If the optional contains a value, the call succeeds; if it is `nil`, the entire chain fails gracefully and returns `nil`."
+  },
+  {
+    "question": "39. What do you understand about inheritance in Swift?",
+    "answer": "It is a process by which a class inherits properties, methods, or any other features from some other class. It is a fundamental behavior that differentiates classes from other types in Swift. We can write different implementations while maintaining the same behaviors by reusing code we have already written."
+  },
+  {
+    "question": "40. Can you tell me about using Switch Statements in Swift language?",
+    "answer": "In Swift, a `switch` statement considers a value and compares it against several possible matching patterns to determine which block of code to execute. Unlike `switch` statements in C and Objective-C, Swift's `switch` statements do not \"fall through\" by default to the next case, making them safer and less prone to errors. They must also be exhaustive, meaning every possible value of the type being considered must be matched by a case (often handled by adding a `default` case). Additionally, Swift `switch` statements support advanced features like compound cases, value bindings, and `where` clauses for complex pattern matching.\n\n\n---"
+  },
+  {
+    "question": "1. Explain the use of break statements in the Swift language.",
+    "answer": "A `break` statement is utilized within a loop to immediately terminate its execution. Additionally, it is used to exit a `case` within a `switch` statement. In essence, when a program encounters a specific condition, the `break` statement interrupts the current control flow and terminates the execution of that specific loop or switch block."
+  },
+  {
+    "question": "2. What is the difference between \"didSet\" and \"willSet\" in Swift?",
+    "answer": "`didSet` is a property observer that is called immediately *after* the property's value has been set, whereas `willSet` is a property observer called just *before* the property's value is set. Both `didSet` and `willSet` are highly useful for performing additional logic when a property's value changes, such as updating the User Interface (UI) or triggering other dependent methods."
+  },
+  {
+    "question": "Q: Explain Property observers?",
+    "answer": "Property observers respond to changes in a property\u2019s value.\n\n* `willSet`: Called just before the value is stored (default parameter: `newValue`).\n* `didSet`: Called immediately after the value is stored (default parameter: `oldValue`)."
+  },
+  {
+    "question": "3. What is NSUserDefaults?",
+    "answer": "`NSUserDefaults` provides the simplest method to store small amounts of data without requiring a database, utilizing a key-value pair system. It offers a programmatic interface for interacting with the default system settings. Through this default system, an application can modify its behavior to match a user's preferences (for example, saving a user's preferred media playback speed so it persists across sessions)."
+  }
+]

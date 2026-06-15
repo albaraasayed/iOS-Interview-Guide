@@ -1,0 +1,77 @@
+[
+  {
+    "category": "UIKit",
+    "question": "What is `viewDidLayoutSubviews` and when is it called? [Mid]",
+    "answer": "`viewDidLayoutSubviews` is a lifecycle method in `UIViewController` that is called to notify the view controller that its view has just finished laying out its subviews. It is called every time the view's bounds change (e.g., device rotation, or when the view's frame is modified). This is the ideal place to make final adjustments to the UI, such as updating frames or calculating layout-dependent values, because the bounds and frames of the subviews are accurate at this point."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is Intrinsic Content Size, and how do Content Hugging and Compression Resistance priorities work? [Mid]",
+    "answer": "* **Intrinsic Content Size:** This is the natural size a view wants to be based on its content. For example, a `UILabel`'s intrinsic size is determined by its text and font, while a `UIImageView`'s size depends on the image it displays. Auto Layout uses this information to automatically create constraints for the view's width and height.\n* **Content Hugging Priority (Content does not want to grow):** This priority dictates how strongly a view resists being stretched larger than its intrinsic content size. A higher hugging priority means the view will try to stay at its natural size and avoid expanding.\n* **Content Compression Resistance Priority (Content does not want to shrink):** This priority defines how strongly a view resists being squished smaller than its intrinsic content size. A higher compression resistance priority ensures the view's content is not clipped or truncated."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the difference between a NIB (XIB) file and a Storyboard? [Easy]",
+    "answer": "Both are used to visually design user interfaces in iOS, but they serve slightly different purposes:\n* **NIB/XIB:** Used for designing a single view or a reusable component (e.g., custom `UITableViewCell` or a standalone view). It is better suited for modular, decoupled UI components and makes version control (merging conflicts) easier.\n* **Storyboard:** Used to design the entire flow of an application. It contains multiple view controllers and defines the transitions (segues) between them. While it provides a great overview of the app's navigation, storyboards can become complex, slow to load, and prone to merge conflicts in larger teams."
+  },
+  {
+    "category": "UIKit",
+    "question": "What are the different ways to navigate between view controllers in iOS? [Easy]",
+    "answer": "There are several ways to transition between view controllers in iOS:\n* **UINavigationController:** Pushing and popping view controllers using a navigation stack (`pushViewController(_:animated:)` and `popViewController(animated:)`).\n* **Modal Presentation:** Presenting a view controller modally over the current one (`present(_:animated:completion:)` and `dismiss(animated:completion:)`).\n* **UITabBarController:** Switching between different view controllers using tabs at the bottom of the screen.\n* **Segues (Storyboards):** Using visual transitions defined in Storyboards (e.g., Show, Present Modally, Custom).\n* **Container View Controllers:** Embedding child view controllers within a parent view controller and transitioning between them programmatically."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the difference between `plain` and `grouped` `UITableView` styles? [Easy]",
+    "answer": "* **Plain (`UITableView.Style.plain`):** Sections sit flush with each other. A key characteristic is that section headers and footers \"float\" or stick to the top/bottom of the screen as the user scrolls through the section's rows.\n* **Grouped (`UITableView.Style.grouped`):** Sections are visually separated with default padding and a distinct background color. Section headers and footers scroll inline with the content and do not float at the top."
+  },
+  {
+    "category": "UIKit",
+    "question": "What does the `clipsToBounds` property do? [Easy]",
+    "answer": "`clipsToBounds` is a boolean property on `UIView`.\n* When set to **`true`**, any subviews that extend beyond the view's bounds will be clipped (hidden) at the view's edges.\n* When set to **`false`** (the default), subviews will be completely visible even if they draw outside the parent view's frame. It is often used in combination with `layer.cornerRadius` to clip content to rounded corners."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is Functional Programming? [Mid]",
+    "answer": "Functional programming is a declarative programming paradigm, much like Object-Oriented Programming (OOP) is an imperative one. In OOP, you write code that tells the computer *how* to perform a specific task step-by-step. In contrast, functional programming focuses on telling the computer *what* to do by evaluating mathematical-style functions. It emphasizes immutability, pure functions (functions without side effects), and higher-order functions."
+  },
+  {
+    "category": "Reactive Programming - RxSwift",
+    "question": "What is Reactive Programming? [Mid]",
+    "answer": "Reactive programming is a declarative programming paradigm focused on dealing with asynchronous data streams and the propagation of change. It allows developers to safely observe and react to continuous streams of data (e.g., network responses, UI events like button taps or keyboard inputs) over time. In iOS, this is often implemented using frameworks like **RxSwift** or **Combine**."
+  },
+  {
+    "category": "Reactive Programming - RxSwift",
+    "question": "What are the primary components of RxSwift? [Easy]",
+    "answer": "The core building blocks of RxSwift are:\n* **Observable:** The data producer. It represents a stream of data or events that can be observed over time.\n* **Observer:** The consumer. It subscribes to an `Observable` and reacts to the items or events it emits.\n* **DisposeBag:** A memory management tool used to automatically cancel subscriptions and release resources when the owning object is deallocated, preventing memory leaks and retain cycles."
+  },
+  {
+    "category": "Reactive Programming - RxSwift",
+    "question": "What are Observables, Subjects, and Drivers in RxSwift, and what are the different types of Subjects? [Expert]",
+    "answer": "* **Observable:** A data producer that emits events or notifications over time. Observers subscribe to it to react to these emissions.\n* **Subject:** Acts as a bridge, functioning as both an **Observable** and an **Observer**. It can subscribe to other Observables and can also emit new elements to its own subscribers.\n* **Driver:** A specialized `Observable` trait intended for the UI layer. It guarantees that events are delivered on the main thread, it never fails (cannot emit an error), and it shares side effects (multicasts).\n\n**Types of Subjects:**\n1. **PublishSubject:** Starts empty and only emits *new* elements to subscribers after they have subscribed. Previous events are not replayed.\n2. **BehaviorSubject:** Requires an initial value. Upon subscription, it immediately replays its latest (or initial) value to the new subscriber, followed by any new elements.\n3. **ReplaySubject:** Maintains a buffer of a specified size. When a new observer subscribes, it replays the entire buffer of previously emitted elements before emitting new ones.\n4. **BehaviorRelay (formerly Variable):** A wrapper around a `BehaviorSubject` that stores its current value as state. It requires an initial value, replays the latest value upon subscription, and guarantees it will not terminate with an error."
+  },
+  {
+    "category": "Reactive Programming - RxSwift",
+    "question": "What is a `DisposeBag` and how does it work? [Mid]",
+    "answer": "A `DisposeBag` is an object used in RxSwift to manage memory and prevent retain cycles. In Rx, subscriptions to Observables return a `Disposable` object, which keeps the subscription active. By adding this `Disposable` to a `DisposeBag`, you tie the lifecycle of the subscription to the lifecycle of the object holding the `DisposeBag` (e.g., a `UIViewController`). When the owner of the `DisposeBag` is deallocated, the bag automatically calls `dispose()` on all its contents, safely releasing the subscriptions and freeing up memory."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is an asynchronous event? [Easy]",
+    "answer": "An asynchronous event is an operation or task that runs independently of the main program flow. Instead of blocking the current thread and waiting for the task to finish, the program can continue executing other code. When the asynchronous task completes, it notifies the system (often via a callback, closure, or delegate), allowing the program to handle the result or update the UI. Common examples include network requests, file I/O operations, and background computations."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the purpose of Unit and UI Testing, and what are their benefits? [Mid]",
+    "answer": "**Unit Testing** and **UI Testing** are fundamental practices for ensuring code quality and reliability, often utilized in Test-Driven Development (TDD).\n* **Unit Testing:** Involves isolating specific parts of the program (like individual functions, classes, or modules) and testing them independently to ensure they behave exactly as expected.\n* **UI Testing:** Focuses on simulating user interactions with the application's interface to verify that the app responds correctly to user inputs and visually functions as designed.\n\n**Benefits:**\n* Ensures that code meets its design and requirements.\n* Catches bugs early in the development cycle.\n* Facilitates safer code refactoring (acting as a safety net against regressions).\n* Serves as living documentation for how the code is supposed to work."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is Test-Driven Development (TDD) and Behavior-Driven Development (BDD)? [Mid]",
+    "answer": "Both are software development methodologies that emphasize writing tests, but they differ in their approach and scope:\n* **Test-Driven Development (TDD):** A process where test cases are written to define the desired software characteristics *before* the actual code is written. Developers create a failing unit test for a specific functionality, write the minimum amount of bug-free code required to pass that test, and then refactor the code. It focuses heavily on code quality, architectural design, and developer-level specifications.\n* **Behavior-Driven Development (BDD):** An extension of TDD that focuses on the behavior of the application from the end-user's perspective. BDD uses human-readable, domain-specific language (often structured as Given-When-Then) to define system behavior. This bridges the communication gap between developers, QA, and non-technical stakeholders to ensure the software meets business requirements."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is Regression in software testing? [Easy]",
+    "answer": "Regression occurs when a modification made to the codebase unintentionally alters or breaks previously working functionality. In testing, a \"regression failure\" happens when an existing passing test case suddenly fails after new changes (such as bug fixes or new features) are integrated. Automated unit and UI tests act as a critical safety net to catch regressions immediately, ensuring that core app behavior remains intact over time."
+  }
+]

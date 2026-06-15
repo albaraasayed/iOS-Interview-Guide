@@ -1,0 +1,102 @@
+[
+  {
+    "question": "14. List the APIs for battery-efficient location tracking.",
+    "answer": "* **Significant-Change Location Service:** Highly power-efficient; it delivers updates only when the user\u2019s location changes significantly (e.g., transitioning between cell towers, often tracking movements up to 1km).\n* **Region Monitoring (Geofencing):** Triggers enter or exit events when the device crosses a defined geographical boundary (typically a radius of 100 meters or more).\n* **Visit Events:** Monitors and logs when a user arrives at or departs from frequently visited locations (like a home or office)."
+  },
+  {
+    "question": "Q: Which APIs are used for battery-efficient location tracking?",
+    "answer": "* **Significant location changes:** The location is delivered approximately every 500 meters (usually up to 1 km).\n* **Region monitoring:** Tracks enter/exit events from geographical regions with a radius equal to 100m or more.\n* **Visit events:** Monitors enter/exit events from frequently visited places (like a home or office)."
+  },
+  {
+    "question": "15. What method do you prefer to cache data in memory?",
+    "answer": "`NSCache` is vastly preferable to a standard `Dictionary` for in-memory caching. `NSCache` is specifically engineered to automatically purge items when the system experiences low memory pressure, doing so intelligently to retain as much relevant data as possible. Furthermore, `NSCache` is thread-safe, supports arbitrary keys and values, and allows customizable eviction behaviors via delegate methods, making it a robust solution."
+  },
+  {
+    "question": "16. What is the difference between a delegate and a notification in iOS development?",
+    "answer": "* A **Delegate** represents a one-to-one communication pattern. It allows an object to communicate directly with exactly one assigned delegate object via a defined protocol.\n* A **Notification** represents a one-to-many communication pattern. Messages are broadcast via `NotificationCenter` to any number of registered observers simultaneously, without requiring the sender to know who is listening."
+  },
+  {
+    "question": "18. What is the use of computed properties?",
+    "answer": "Computed properties do not physically store a value in memory. Instead, they provide a getter (and optionally a setter) to calculate and return a value dynamically based on underlying logic or the state of other stored properties every time they are accessed."
+  },
+  {
+    "question": "Q: Explain Computed Property?",
+    "answer": "Computed properties do not store values. They provide a getter (and optionally a setter). They must always be declared as `var`. A computed property with only a getter is called read-only."
+  },
+  {
+    "question": "Computed Property vs. Method: When to Use Which?",
+    "answer": "In Swift, we often need to encapsulate logic that **returns a value**. We have two options:\n\n1. **Computed Properties**\n2. **Methods** (Functions)\n\n**\ud83d\udd39 What is a Computed Property?**\nA **computed property** is a property that doesn\u2019t store a value but **computes it dynamically** whenever accessed.\n\n* \u2705 **Characteristics of Computed Properties:**\n* **No stored value** \u2014 it calculates a result each time it\u2019s accessed.\n* **Idempotent** \u2014 should return the same result when called multiple times with the same state.\n* **No Side Effects** \u2014 should not modify any external state.\n\n\n\n*\ud83d\udd39 Example: Computed Property*\n\n```swift\nstruct Circle {\n    var radius: Double\n    var area: Double {  // Computed Property\n        return Double.pi * radius * radius\n    }\n}\n\nlet circle = Circle(radius: 5)\nprint(circle.area) // Output: 78.54\n\n```\n\n\u2705 **Why is `area` a computed property?**\n\n* It does **not** modify any state.\n* It returns the **same result** for the same radius.\n* It runs in **constant time (O(1))**.\n\n**\ud83d\udd39 What is a Method?**\nA **method** is a function inside a struct or class that performs an operation.\n\n* \u2705 **Characteristics of Methods:**\n* Can **modify state** (`mutating` for struct).\n* Can have **side effects**.\n* Can take **parameters**.\n\n\n\n*\ud83d\udd39 Example: Using a Method*\n\n```swift\nstruct Counter {\n    var count = 0\n    \n    mutating func increment() {\n        count += 1  // Modifies state\n    }\n}\n\nvar counter = Counter()\ncounter.increment()\nprint(counter.count) // Output: 1\n\n```\n\n**\ud83d\udd39 Comparison Table: Computed Property vs. Method**\n\n| Feature | Computed Property | Method |\n| --- | --- | --- |\n| **Stores Value?** | \u274c No, computed dynamically | \u2705 No, but can modify state |\n| **Idempotent?** | \u2705 Yes (same input \u2192 same output) | \u274c No (can change state) |\n| **Has Side Effects?** | \u274c No | \u2705 Yes (if it modifies state) |\n| **Execution Complexity** | \u26a1 `O(1)` (should be quick) | \ud83d\udd52 Can be more complex |\n| **Can Take Parameters?** | \u274c No | \u2705 Yes |\n| **Use Case** | Returning a **derived value** | Performing an **action** |\n\n**\ud83d\udd39 When to Use a Computed Property vs. a Method?**\n\n| \u2705 Use a **Computed Property** when: | \u2705 Use a **Method** when: |\n| --- | --- |\n| It **does not** modify any state | It **modifies** state (e.g., `count += 1`) |\n| The result is **deterministic** (same input \u2192 same output) | The operation has **side effects** |\n| Execution is **fast** (`O(1)`) | The computation is **expensive** (`O(n)` or more) |\n| No need for **parameters** | You need to **pass arguments** |\n\n**\ud83d\udd39 Examples: When to Use Each?**\n\n*\u2705 Good Use of a Computed Property*\n\n```swift\nstruct Square {\n    var side: Double\n    \n    var area: Double {  // Computed Property\n        return side * side\n    }\n}\nlet square = Square(side: 4)\nprint(square.area) // Output: 16\n\n```\n\n*\u2705 Good Use of a Method*\n\n```swift\nstruct BankAccount {\n    var balance: Double\n\n    mutating func deposit(amount: Double) {\n        balance += amount  // Modifies state\n    }\n}\n\nvar account = BankAccount(balance: 100)\naccount.deposit(amount: 50)\nprint(account.balance) // Output: 150\n\n```\n\n\ud83d\ude80 **Final Thoughts**\n\n* Use **computed properties** when calculating **static** values without side effects.\n* Use **methods** when an action **modifies state** or requires parameters.\n* If an operation **takes too long** (e.g., searching a list), **use a method instead** of a computed property.\n\n---"
+  },
+  {
+    "question": "19. What is dynamic dispatch?",
+    "answer": "Dynamic dispatch is the runtime mechanism that determines which specific implementation of a polymorphic method or function to invoke. It provides architectural flexibility by allowing subclasses to override methods inherited from a parent class, ensuring the correct subclass implementation is executed when called."
+  },
+  {
+    "question": "Q: What is Dynamic Dispatch?",
+    "answer": "Dynamic Dispatch is the process of selecting which implementation of a polymorphic operation (a method or a function) to call at run time. This means that when we want to invoke our methods (like an object method), the system determines the correct implementation to execute dynamically."
+  },
+  {
+    "question": "20. What are the different kinds of operations possible on a semaphore?",
+    "answer": "A semaphore relies on two primary atomic operations to manage thread synchronization:\n\n* **Wait():** Decrements the semaphore value by 1. If the value is already 0, the thread attempting the wait operation is blocked until the value becomes greater than 0.\n* **Signal():** Increments the semaphore value by 1. If other threads were blocked waiting on this semaphore, one of those threads is unblocked and permitted to proceed."
+  },
+  {
+    "question": "21. Define RTOS.",
+    "answer": "**RTOS** stands for Real-Time Operating System. It is engineered specifically for applications subjected to strict time constraints, where data processing must occur flawlessly within rigid deadlines (often measured in tenths of seconds). It is heavily used in systems interacting dynamically with external hardware events."
+  },
+  {
+    "question": "22. What is the purpose of the \"prepareForReuse\" method in a UITableViewCell in iOS?",
+    "answer": "The `prepareForReuse()` method is invoked on a reusable cell object immediately before it is returned by the table view to be populated with new data. It provides an opportunity to reset the cell's visual state\u2014such as clearing out old text, removing legacy images, or canceling obsolete network requests\u2014preventing visual artifacts when scrolling."
+  },
+  {
+    "question": "23. List two types of process synchronization.",
+    "answer": "* **Interprocess Communication (IPC):** Mechanisms that allow distinct processes to communicate and synchronize their state (e.g., shared memory, message passing).\n* **Mutual Exclusion (Mutex):** Techniques designed to ensure that only a single process or thread can access a shared resource or critical section of code at any given time (e.g., locks, binary semaphores)."
+  },
+  {
+    "question": "25. When will you assume an app to be in an active state?",
+    "answer": "An application is truly \"Active\" when it is executing in the foreground and directly receiving user interactions and system events. *(Note: If an app is executing code in the background for a limited, system-allotted time before being suspended, it is officially in the \"Background\" state, not the Active state.)*"
+  },
+  {
+    "question": "27. Which state does an app reach briefly before being suspended?",
+    "answer": "The **Background** state. Almost all applications pass through the Background state to execute final cleanup code before the operating system formally puts them into the Suspended state."
+  },
+  {
+    "question": "28. Can you tell the difference between == and === in Swift?",
+    "answer": "* **`==` (Equal To):** An operator used to evaluate whether the *values* contained within two variables are equivalent.\n* **`===` (Identical To / Strict Equality):** An identity operator used explicitly for reference types (classes) to determine if two variables both point to the exact same physical instance in memory."
+  },
+  {
+    "question": "29. When will you use deinit?",
+    "answer": "You utilize `deinit` to perform manual memory cleanup operations immediately before a class instance is permanently deallocated. While Swift's ARC handles standard memory deallocation automatically, `deinit` is vital for releasing custom system resources, invalidating timers, or removing notification observers."
+  },
+  {
+    "question": "30. What methods will you use to reduce the size of the App?",
+    "answer": "* **App Thinning:** A comprehensive suite of techniques to optimize installation size based on the user's specific device.\n* **App Slicing:** A subset of App Thinning where the App Store delivers only the assets (like 2x vs 3x images) strictly required for the target device's architecture.\n* **On-Demand Resources (ODR):** Hosting heavy, non-immediate assets (like later game levels) on Apple's servers to be downloaded only when the user needs them.\n* **Bitcode:** Compiling an intermediate representation of the code so Apple can re-optimize the binary on their end. *(Note: Apple deprecated Bitcode in Xcode 14, but it remains historically relevant).*\n* **Asset Cleanup:** Routinely identifying and removing obsolete or unused images and files from the project bundle."
+  },
+  {
+    "question": "32. Determine the value of \"u\" in the Swift code below.",
+    "answer": "```swift\nx1 = [10, 20, 30, 40, 50]\nx2 = [10, 20, 30, 40, 50, 65]\nu = 5\n\n```\n\nBased strictly on the provided code snippet, the value of `u` is definitively assigned as **`5`**."
+  },
+  {
+    "question": "33. What is the difference between a synchronous and asynchronous NSURLSession in iOS?",
+    "answer": "* A **Synchronous** network request forcibly blocks the thread it is called on until the entire data transfer completes. Doing this on the main thread causes the UI to freeze entirely.\n* An **Asynchronous** request dispatches the operation to a background thread, allowing the main thread to continue processing user interactions unhindered. A completion handler or delegate is notified once the download finishes."
+  },
+  {
+    "question": "34. Write code to swap two numbers?",
+    "answer": "```swift\nfunc swapping(x: inout Int, y: inout Int) {\n    let temp = x\n    x = y\n    y = temp\n}\n\nvar num1 = 20\nvar num2 = 60\n\nprint(\"Before the numbers are swapped: \\(num1) and \\(num2)\")\n\nswapping(x: &num1, y: &num2)\n\nprint(\"After the numbers are swapped: \\(num1) and \\(num2)\")\n\n// Output:\n// Before the numbers are swapped: 20 and 60\n// After the numbers are swapped: 60 and 20\n\n```"
+  },
+  {
+    "question": "Q: Can we have multiple UIWindows in an iOS application?",
+    "answer": "Yes, in scenarios like covering system `UIAlertView`s, the default keyboard, or covering the whole app before it is placed in the background to avoid screenshots. There are 3 default window enum levels defined: `UIWindowLevelNormal`, `UIWindowLevelStatusBar`, and `UIWindowLevelAlert`. Usage \u2014 create a new `UIWindow` and set its `makeKeyAndVisible` property."
+  },
+  {
+    "question": "Q: Explain the drawbacks of UITableViews?",
+    "answer": "Only **vertical scrolling** capability, which is otherwise covered by `UICollectionView`."
+  },
+  {
+    "question": "Q: What is very important while updating the UI in a multithreaded application? How can you do that?",
+    "answer": "Update only on the **main thread** or main queue."
+  },
+  {
+    "question": "Q: What should we do when the keyboard appears and hides some parts of the UI that are important?",
+    "answer": "This can be resolved by using a scroll view and keyboard notification delegates."
+  }
+]

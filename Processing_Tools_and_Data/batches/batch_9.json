@@ -1,0 +1,98 @@
+[
+  {
+    "question": "27. What is Objective-C in iOS?",
+    "answer": "Objective-C is an object-oriented programming language previously utilized as Apple's primary language for OS development. It combines the syntax and flow control benefits of C with the object-oriented messaging capabilities of Smalltalk. It acts as a superset of C, maintaining C's primitive types while adding specific syntax for defining classes and methods."
+  },
+  {
+    "question": "28. List the important data types in Objective-C.",
+    "answer": "* `BOOL`\n* `NSInteger`\n* `NSUInteger`\n* `NSString`"
+  },
+  {
+    "question": "29. What is the use of NotificationCenter?",
+    "answer": "`NotificationCenter` is a framework feature in iOS and macOS used for broadcasting and receiving system or custom messages across different parts of an application. It allows disparate objects to communicate without tightly coupling them together. *(Note: The provided text also mentions \"Notification centers\" in the context of the OS-level UI that displays notification history to the user, though programmatically, `NotificationCenter` acts as the internal broadcast hub).*"
+  },
+  {
+    "question": "30. What is a Dictionary in Swift?",
+    "answer": "A Dictionary in Swift is an unordered collection of items stored in key-value pairs. It uses the \"key\" as a unique identifier to reliably store and recover its associated \"value.\"\n\n**Syntax:**\n\n```swift\nvar dictionaryName = [KeyType: ValueType]()\n\n```\n\n**Example:**\n\n```swift\nvar examResult = [\"Neha\": \"44\", \"Adil\": \"56\", \"Era\": \"84\"]\nprint(examResult)\n\n// Output:\n// [\"Neha\": \"44\", \"Adil\": \"56\", \"Era\": \"84\"]\n// Keys: \"Neha\", \"Adil\", \"Era\"\n// Values: \"44\", \"56\", \"84\"\n\n```"
+  },
+  {
+    "question": "31. What are design patterns in iOS?",
+    "answer": "Design patterns are proven, repeatable solutions to commonly occurring software engineering problems that arise during an application's architectural design. They serve as templates designed to make code more robust, scalable, and easier to maintain. Common design patterns include:\n\n* Facade\n* Decorator\n* Memento\n* Adapter"
+  },
+  {
+    "question": "32. What is a completion handler?",
+    "answer": "Completion handlers are closures (or blocks) passed as parameters into other functions. They are primarily used in asynchronous tasks to notify the system when an operation has officially finished its execution. It is a highly effective technique for implementing callback functionality."
+  },
+  {
+    "question": "33. What are iBeacons in iOS?",
+    "answer": "*(Content ends here based on the provided text)*"
+  },
+  {
+    "question": "2. How do you create a custom UIView in iOS? Provide an example.",
+    "answer": "To create a custom `UIView`, you must create a subclass of `UIView` and implement the `draw(_:)` method to define its custom drawing behavior.\n\n**Example:**\n```swift\nclass CustomView: UIView {\n    override func draw(_ rect: CGRect) {\n        let context = UIGraphicsGetCurrentContext()!\n        context.setFillColor(UIColor.red.cgColor)\n        context.fill(rect)\n    }\n}\n\n```"
+  },
+  {
+    "question": "4. What is the difference between a closure and a function in Swift? Provide an example of each.",
+    "answer": "A **closure** is a self-contained block of code that can be passed around as a reference and executed at a later time. A **function** is essentially a named closure that performs a specific, defined task.\n\n**Example of a closure:**\n\n```swift\nlet numbers = [1, 2, 3, 4, 5]\nlet squaredNumbers = numbers.map { $0 * $0 }\n// The closure {$0 * $0} is passed to the map method and executed on each element of the array.\n\n```\n\n**Example of a function:**\n\n```swift\nfunc add(_ a: Int, _ b: Int) -> Int {\n    return a + b\n}\n\nlet sum = add(1, 2)\n\n```"
+  },
+  {
+    "question": "What is a Closure in Swift?",
+    "answer": "A **closure** in Swift is a **self-contained block of code** that can be passed around and executed at a later time. Closures are similar to **functions**, but they:\n\n* \u2705 Can be **stored in variables or constants**.\n* \u2705 Can **capture and store references** to variables from their surrounding context.\n* \u2705 Can be **used as function parameters and return values**.\n\nClosures are widely used in **completion handlers, higher-order functions, and asynchronous programming**.\n\n**Closure Syntax in Swift**\n\n1. **Parameters** (like function parameters).\n2. **Return Type** (optional).\n3. **Body** (actual implementation).\n\n*Basic Closure Syntax*\n\n```swift\n{ (parameters) -> ReturnType in\n    // Closure body (code to execute)\n}\n\n```\n\n**\ud83d\udd39 Examples of Closures**\n\n*\u2705 1. Assigning a Closure to a Variable*\n\n```swift\nlet greet = { (name: String) -> String in\n    return \"Hello, \\(name)!\"\n}\n\nprint(greet(\"Alice\")) // Output: Hello, Alice!\n\n```\n\n*\u2705 2. Closures as Function Parameters (Higher-Order Functions)*\nClosures are often used as **arguments** in functions.\n\n```swift\nfunc performAction(action: () -> Void) {\n    print(\"Starting action...\")\n    action()\n    print(\"Action completed.\")\n}\n\nperformAction {\n    print(\"Running custom action!\") \n}\n\n// Output:\n// Starting action...\n// Running custom action!\n// Action completed.\n\n```\n\n*\u2705 3. Trailing Closure Syntax (Simplifying Code)*\nWhen a closure is the **last argument** of a function, we can use **trailing closure syntax**.\n\n```swift\nlet numbers = [1, 2, 3, 4, 5]\nlet squaredNumbers = numbers.map { $0 * $0 }\nprint(squaredNumbers) // Output: [1, 4, 9, 16, 25]\n\n```\n\n* **Explanation:**\n* `map { $0 * $0 }` is a **trailing closure** that squares each element in `numbers`.\n* `$0` is **Swift\u2019s shorthand syntax** for referring to the first parameter.\n\n\n\n*\u2705 4. Capturing Values in Closures*\nClosures can **capture and store references** to variables from their surrounding scope.\n\n```swift\nfunc makeCounter() -> () -> Int {\n    var count = 0\n    return {\n        count += 1\n        return count\n    }\n}\n\nlet counter = makeCounter()\nprint(counter()) // Output: 1\nprint(counter()) // Output: 2\nprint(counter()) // Output: 3\n\n```\n\n* **Explanation:**\n* The closure **captures `count**` and maintains its state **even after `makeCounter()` exits**.\n* Each time `counter()` is called, **`count` is updated**.\n\n\n\n**5. Escaping vs. Non-Escaping Closures**\n\n| Closure Type | Description | Example Use Case |\n| --- | --- | --- |\n| **Non-Escaping (Default)** | Executed within the function and deallocated after execution. | `map`, `filter`, synchronous tasks. |\n| **Escaping (`@escaping`)** | Stored and executed later, potentially after the function exits. | **Asynchronous operations**, completion handlers. |\n\n**Use Cases of Closures**\n\n* \u2705 **Completion Handlers** (e.g., network requests)\n* \u2705 **Asynchronous Operations** (e.g., animations, downloading data)\n* \u2705 **Functional Programming** (e.g., `map`, `filter`, `reduce`)\n* \u2705 **Custom Sorting & Callbacks**\n\n---"
+  },
+  {
+    "question": "5. How do you implement a singleton in Swift? Provide an example.",
+    "answer": "To implement a singleton pattern in Swift, you create a `static` instance property representing the shared instance, and explicitly mark the initializer as `private` to prevent other instances from being created.\n\n**Example:**\n\n```swift\nclass MySingleton {\n    static let shared = MySingleton()\n    \n    private init() { }\n}\n\n```"
+  },
+  {
+    "question": "6. What are the different smart groups in Xcode?",
+    "answer": "* **Simple Smart Group:** A basic organizational group that allows you to filter your project files by type, name, or path.\n* **Simple Expression Smart Group:** This group enables filtering using more complex logical expressions, such as \"name contains 'ViewController' AND path contains 'Controllers'.\"\n* **Custom Smart Group:** This offers the highest level of flexibility, allowing you to create customized filters using advanced predicates."
+  },
+  {
+    "question": "7. What is the difference between a weak reference and a strong reference in iOS development?",
+    "answer": "A **strong reference** protects an object from being deallocated by ARC (Automatic Reference Counting) by keeping it in memory until the reference is explicitly released. A **weak reference** does not increase the object's reference count, allowing the object to be safely deallocated when no other strong references to it exist, effectively preventing retain cycles.\n\n**Example:**\n\n```swift\nclass Parent {\n    var child: Child?\n}\n\nclass Child {\n    weak var parent: Parent?\n}\n\nlet parent = Parent()\nlet child = Child()\n\n// The parent holds a strong reference to the child.\nparent.child = child\n\n// The child holds a weak reference to the parent, preventing a retain cycle.\nchild.parent = parent\n\n```"
+  },
+  {
+    "question": "What is the difference between *weak*, *strong* and *unowned*?",
+    "answer": "First, objects are *strong* by default.\n\n- *Strong* means that the reference count will be increased and the reference to it will be maintained through the life of the object. \n- *Weak*, means that we are pointing to an object but not increasing its reference count. It's always optional. It\u2019s often used when creating a parent child relationship. The parent has a strong reference to the child but the child only has a weak reference to the parent. ([source](https://medium.com/ios-os-x-development/ios-interview-questions-13840247a57a))\n- *Unowned* is the same as *Weak* in terms of reference counting but *Unowned* can be non-optional. It's useful when you are sure the object will not be accessed when it's nil (in this case\u00a0it would cause an Error) because *Unowned*\u00a0references don't\u00a0require\u00a0nil checking.\n\nCommon instances of *weak* references are delegate properties and subview/controls of a view controller's main view since those views are already strongly held by the main view. ([source](http://stackoverflow.com/questions/11013587/differences-between-strong-and-weak-in-objective-c))"
+  },
+  {
+    "question": "Q: Weak VS Strong",
+    "answer": "* A **STRONG** reference means that you want to \u201cown\u201d an object you are referencing with a property or variable. The compiler will take care of any object that you assign to the property and it will not be destroyed. Only once you set the property to `nil`, then it will get destroyed (unless other objects also hold a strong reference to it).\n* With a **WEAK** reference, you signify that you don\u2019t want to have control over the object\u2019s lifetime. The object you are referencing weakly only lives on because at least one other object holds a strong reference to it. Once that is no longer the case, the object gets destroyed and your weak property will automatically get set to `nil`. The most frequent use cases of weak references in iOS are delegate properties (to avoid retain cycles) and subviews/controls."
+  },
+  {
+    "question": "The difference between a weak and an unowned reference:",
+    "answer": "* A **weak** reference is a reference that does not increase the reference count of the object it points to, and can be set to nil automatically when the object is deallocated.\n* An **unowned** reference, on the other hand, is a reference that assumes the object it points to will always be valid, and does not increase the reference count of the object.\n\n> **Ex :** > ```swift\n> class Pet {\n>     unowned var owner: Person \n> }\n> ```\n> In this example, the owner property in the Pet class is declared as unowned, which means it assumes the object it points to (Person) will always be valid. If the Person object is deallocated before the Pet object, accessing the owner property will result in a runtime error."
+  },
+  {
+    "question": "8. Explain Code Coverage.",
+    "answer": "Code coverage is a software testing metric that measures the percentage of source code statements executed during automated testing. A program with high code coverage has had a large portion of its logic verified by tests, suggesting a lower probability of containing undetected software bugs compared to a program with low test coverage."
+  },
+  {
+    "question": "9. How do you use a guard statement in Swift?",
+    "answer": "A `guard` statement is utilized to transfer program control out of a scope (exiting a function or method early) if one or more conditions are not met. It is primarily used at the beginning of a function to validate input parameters or safely unwrap optionals, ensuring the \"happy path\" remains unnested.\n\n**Example:**\n\n```swift\nfunc divide(_ a: Int, by b: Int) -> Int? {\n    guard b != 0 else {\n        return nil\n    }\n    return a / b\n}\n\nif let result = divide(10, by: 2) {\n    print(result) // output: 5\n}\n\n```"
+  },
+  {
+    "question": "When to Use guard in Swift?",
+    "answer": "In Swift, `guard` is used to **exit early** from a function, loop, or scope when a certain condition is **not met**. It helps keep the **main execution path** clean by reducing **nested `if` statements**.\n\n**\ud83d\udd39 Why Use guard?**\n\n* \u2705 **Avoids Deep Nesting** \u2014 Keeps the \u201chappy path\u201d of your code clear.\n* \u2705 **Improves Readability** \u2014 The main logic stays at the **top level**.\n* \u2705 **Requires an `else` Block** \u2014 Ensures that errors are handled properly.\n* \u2705 **Unwraps Optionals** \u2014 Works well with `if let` or `guard let` for safe optional handling.\n\n**\ud83d\udd39 Basic Syntax of guard**\n\n```swift\nguard condition else {\n    // Handle failure case (exit early)\n    return // or throw an error, break, continue, etc.\n}\n\n```\n\n\ud83d\udd39 If the condition is **false**, the `else` block **executes**, and the function **exits**.\n\n*\ud83d\udd39 Example 1: Using guard to Validate Input*\n\n```swift\nfunc validateUserInput(name: String?) {\n    guard let name = name, !name.isEmpty else {\n        print(\"\u274c Invalid name. Please enter a valid name.\")\n        return\n    }\n    \n    print(\"\u2705 Welcome, \\(name)!\")\n}\nvalidateUserInput(name: nil) // Output: \u274c Invalid name. Please enter a valid name.\nvalidateUserInput(name: \"John\") // Output: \u2705 Welcome, John!\n\n```\n\n---"
+  },
+  {
+    "question": "10. What is the use of design patterns in Linux?",
+    "answer": "*(Note: While Linux is an OS, design patterns universally apply to software engineering.)* Design patterns are utilized to solve recurring problems in software architecture. They assist in writing simplified, structured code by providing proven templates. By applying design patterns, developers express a conceptual solution rather than a strict implementation, resulting in software that is highly flexible, reusable, and easier to maintain."
+  },
+  {
+    "question": "11. List some common Cocoa Design patterns.",
+    "answer": "* **Creational - Singleton:** Ensures that a class has only one globally accessible instance. It is highly useful for sharing resources or configuration settings across an entire application.\n* **Behavioral - Memento:** Allows an object's internal state to be captured, saved externally, and restored later without violating encapsulation. It is frequently used for Undo/Redo functionality.\n* **Structural - Decorator:** Enables behaviors to be added to individual objects dynamically without altering the class structure. This is ideal for modifying object behavior at runtime or stacking functional wrappers."
+  },
+  {
+    "question": "12. Tell me about the Adapter Pattern.",
+    "answer": "The Adapter Pattern is a structural design pattern that allows objects with incompatible interfaces to collaborate. It acts as a bridge or wrapper, translating the interface of one object into an interface that clients expect. A real-world analogy is a physical hardware dongle that allows an Ethernet cable to connect to a USB port."
+  },
+  {
+    "question": "10- What is Adapter?",
+    "answer": "Adapter pattern works as a bridge between two incompatible interfaces. This type of design pattern comes under structural pattern as this pattern combines the capability of two independent interfaces. This pattern involves a single class which is responsible to join functionalities of independent or incompatible interfaces. Zy l adapter bta3 l recycler view f l android."
+  },
+  {
+    "question": "13. How do you create a custom table view cell in iOS?",
+    "answer": "To create a custom table view cell, you define a new subclass of `UITableViewCell` and configure the necessary user interface elements within the cell's `contentView`.\n\n**Example:**\n\n```swift\nclass CustomTableViewCell: UITableViewCell {\n    @IBOutlet weak var titleLabel: UILabel!\n    @IBOutlet weak var subtitleLabel: UILabel!\n    @IBOutlet weak var imageView: UIImageView!\n\n    override func awakeFromNib() {\n        super.awakeFromNib()\n        // Customize the cell's initial appearance and behavior here\n    }\n}\n\n```"
+  }
+]

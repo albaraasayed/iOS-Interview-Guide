@@ -1,0 +1,117 @@
+[
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is mocking in the context of iOS unit testing? [Mid]",
+    "answer": "Mocking is a technique used in unit testing where you create a fake, controlled version of an object or dependency (a \"mock\").\n\nBy replacing real components (like network managers, databases, or complex services) with mocks, you can isolate the specific piece of code you are testing. This ensures that tests run quickly, behave deterministically, and are immune to external failures or side effects."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "Can you perform a UI test on a UIView element's color? [Easy]",
+    "answer": "No, because in UI testing, you do not have direct access to the properties of the UI components. UI tests interact with the application through the Accessibility API, which exposes elements as `XCUIElement`.\n\nThis API provides information about the element's frame, label, and state, but it does not expose visual properties like `backgroundColor` or `textColor`."
+  },
+  {
+    "category": "Core Data & Persistence",
+    "question": "What is Core Data and how does it work? [Mid]",
+    "answer": "Core Data is an Apple framework used for managing the model layer objects in an application. It provides robust object graph management and persistence solutions.\n\nKey features include:\n* **Object Graph Management**: Helps manage a potentially large graph of object instances, bringing them in and out of memory as needed.\n* **Relationship Integrity**: Maintains the integrity of relationships and references, ensuring backward and forward links remain consistent.\n* **Storage Agnostic**: Core Data abstracts the underlying data store. By default, it uses SQLite, but it can also be configured to store data as an XML file, a binary file, or an in-memory store.\n\nCore Data is highly suitable for managing the \"Model\" in an MVC architecture."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the process and purpose of code signing for iOS apps? [Mid]",
+    "answer": "Code signing ensures that an application was created by a known source and has not been tampered with or modified since it was signed. It is a mandatory requirement for running apps on physical iOS devices and submitting them to the App Store.\n\n* **Digital Identity**: During the build process, Xcode uses your digital identity (a public/private key pair and a certificate) to sign the application. The private key creates the signature, while the Apple-issued certificate contains the public key to identify the developer.\n* **Security**: If the executable code is modified even slightly, the signature becomes invalid, preventing the app from running. However, resources like images or `.nib` files are not signed and do not invalidate the signature.\n* **Re-signing**: Signatures can be removed and replaced. For example, Apple re-signs all applications before distributing them on the App Store."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What are the different app states in the iOS lifecycle? [Easy]",
+    "answer": "An iOS application transitions through several distinct states managed by the operating system:\n\n* **Non-running**: The app has not been launched or was terminated by the system.\n* **Inactive**: The app is running in the foreground but is not receiving events. This typically happens during brief transitions, such as receiving a phone call, an SMS, or a system prompt.\n* **Active**: The app is running in the foreground and actively receiving events.\n* **Background**: The app is running in the background and executing code (e.g., downloading content, playing audio).\n* **Suspended**: The app is in the background but is not executing code. The system keeps the app in memory, but it can be purged without warning to free up resources."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are the main features of Swift, and what are its advantages and disadvantages? [Mid]",
+    "answer": "Swift is a modern, fast, and safe programming language with several powerful features:\n\n**Main Features:**\n* **Generics**: Write flexible, reusable functions and types.\n* **Optionals**: Safely handle the absence of a value.\n* **Value and Reference Types**: Strong support for structs, enums (value types), and classes (reference types).\n* **Static Typing**: Type checking occurs at compile time, reducing runtime errors.\n* **Protocols**: Powerful protocol-oriented programming capabilities.\n* **Safety and Readability**: Clean syntax that prevents common programming errors.\n* **Multiplatform**: Supports iOS, macOS, Linux, and other platforms.\n\n**Advantages:**\n* **Strong Typing**: Catches errors at compile time and provides more runtime security.\n* **Predictability**: Deterministic behavior with optionals and generics ensures safe code.\n* **Maintainability**: Clear syntax makes code easier to read and refactor, which is ideal for large customer-facing applications.\n\n**Disadvantages:**\n* **Restrictiveness**: The strict type system can sometimes feel overly restrictive.\n* **Lack of Dynamism**: Unlike Objective-C, Swift lacks dynamic metaprogramming capabilities, which can be limiting when building highly dynamic libraries or frameworks."
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What is the difference between the Delegate pattern and Key-Value Observing (KVO)? [Mid]",
+    "answer": "Both the Delegate pattern and KVO establish communication between objects, but they serve different use cases:\n\n* **Delegation**: Creates a one-to-one relationship. An object communicates back to its owner or another object using a clearly defined protocol. The delegate implements specific methods to respond to events.\n* **Key-Value Observing (KVO)**: Creates a one-to-many relationship. An object broadcasts changes to a specific property. Any number of objects can observe this property and react when its value changes. Unlike delegation, KVO is not protocol-dependent and relies heavily on Objective-C runtime features."
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What are some design patterns commonly used in iOS development apart from MVC, Singleton, Observer, and Delegate? [Expert]",
+    "answer": "Beyond the standard Cocoa patterns, several other design patterns are frequently used in iOS development:\n\n* **Factory Method**: Abstracts the initialization of objects, allowing subclasses or factory methods to determine the exact type of object to create at runtime. This hides complex `switch` or `if` statements.\n* **Adapter**: Acts as a bridge between two incompatible interfaces. It wraps an existing class with a new interface, making it extremely useful when integrating third-party code without modifying the original source.\n* **Decorator**: Dynamically adds functionality to an object at runtime by wrapping it. The decorator implements the same interface as the original object and forwards messages to it, optionally performing additional actions before or after.\n* **Command**: Encapsulates a request or operation as an object. This allows you to parameterize clients with queues, requests, or operations, and provides support for undoable operations and delayed execution.\n* **Template Method**: Defines the skeleton of an algorithm in a base class, allowing subclasses to override specific steps without changing the algorithm's structure. The abstract methods to be overridden are often called \"hook\" methods."
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What are the main object-oriented design principles? [Mid]",
+    "answer": "Good software design relies on both low-level and high-level principles to maintain scalable and readable code.\n\n**High-Level Principles (SOLID):**\n1. **Single Responsibility Principle**: A class should have only one reason to change.\n2. **Open/Closed Principle**: Software entities should be open for extension but closed for modification.\n3. **Liskov Substitution Principle**: Subtypes must be substitutable for their base types without altering program correctness.\n4. **Interface Segregation Principle**: Clients should not be forced to depend on interfaces they do not use.\n5. **Dependency Inversion Principle**: High-level modules should not depend on low-level modules; both should depend on abstractions.\n\n**Low-Level Principles:**\n1. **Tell, Don’t Ask**: Instruct an object to perform an action using its own data, rather than asking for its data to perform the action externally.\n2. **Once and Only Once (DRY)**: Avoid code duplication by encapsulating repetitive logic in dedicated methods or components.\n3. **Law of Demeter**: An object should only communicate with its immediate neighbors (e.g., avoid deep chaining like `a.getB().getC().doSomething()`).\n4. **Favor Composition over Inheritance**: Composition allows for flexible behavior changes at runtime, whereas inheritance creates rigid, static hierarchies.\n5. **Command Query Separation**: A method should either perform an action (Command) or return data (Query), but not both."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are the different pattern matching techniques available in Swift? [Mid]",
+    "answer": "Swift provides several powerful pattern matching techniques, primarily used in `switch` statements, `if case`, and `guard case` constructs:\n\n* **Tuple Patterns**: Match values against the corresponding elements of a tuple.\n* **Type-Casting Patterns**: Use `is` or `as` to match values based on their specific type.\n* **Wildcard Patterns**: Use the underscore (`_`) to match and ignore values you don't care about.\n* **Optional Patterns**: Match against optional values using `x?` as a shorthand for `.some(x)`.\n* **Enumeration Case Patterns**: Match values against specific cases of an `enum`, often extracting associated values.\n* **Expression Patterns**: Match values against expressions, typically using the `~=` operator (e.g., checking if a number falls within a range)."
+  },
+  {
+    "category": "Core Data & Persistence",
+    "question": "What are the different options for implementing storage and persistence in iOS? [Mid]",
+    "answer": "iOS provides various persistence mechanisms ranging from simple to complex, depending on the requirements:\n\n* **In-Memory Storage**: Use arrays, dictionaries, or sets for temporary data that does not need to persist between app launches.\n* **UserDefaults & Keychain**: `UserDefaults` is ideal for simple key-value storage (like user preferences). `Keychain` is similar but provides secure, encrypted storage for sensitive data like passwords and tokens.\n* **File System (`FileManager`)**: Directly read and write files (e.g., images, JSON, Plists, or custom binary data) to disk using the iOS file system.\n* **Object Relational Mapping**: Frameworks like **Core Data** and third-party solutions like **Realm** simplify working with complex object graphs, relationships, and queries.\n* **Relational Databases**: For complex querying mechanics without the overhead of Core Data, you can use raw **SQLite** directly."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "When should you use strong, weak, and unowned references in Swift? [Mid]",
+    "answer": "Memory management in Swift relies on Automatic Reference Counting (ARC) for reference types (classes). Value types (structs and enums) are not managed by ARC.\n\n* **Strong**: This is the default reference type. Use it when an object needs to guarantee that another object remains in memory for as long as it holds the reference. It is primarily used in parent-to-child relationships.\n* **Weak**: Use it to avoid retain cycles, particularly when a child references its parent or in delegate relationships. A `weak` reference does not increment the retain count and must be an Optional variable, as ARC will automatically set it to `nil` when the object it points to is deallocated.\n* **Unowned**: Use it when the referenced object has the same or a longer lifetime than the referencing object. Like `weak`, it does not increment the retain count, but it is non-optional. If you try to access an `unowned` reference after its object has been deallocated, the app will crash."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What programming languages are primarily used for iOS development? [Easy]",
+    "answer": "The primary programming language used for modern iOS development is **Swift**. Introduced by Apple in 2014, it is fast, safe, and continuously evolving.\n\n**Objective-C** is the legacy language of iOS. While its usage for new projects has declined significantly in favor of Swift, it is still widely used in older codebases and framework integrations."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is an overlay in the context of operating systems and memory management? [Expert]",
+    "answer": "An overlay is a memory management technique used when a program is larger than the available physical memory.\n\nInstead of loading the entire program into memory at once, the program is divided into logical, self-contained sections called overlays. Only the required portions of the program are loaded into memory at any given time. As the program executes, different overlays are dynamically swapped in and out of the same memory space. While largely obsolete in modern systems due to the advent of virtual memory, it remains a fundamental concept in computing history."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are conditional conformances in Swift? [Mid]",
+    "answer": "Conditional conformances allow a generic type to conform to a protocol only if its underlying generic parameters satisfy specific conditions.\n\nFor example, you can declare that an `Array` conforms to the `Equatable` protocol, but *only if* the elements it contains also conform to `Equatable`. This ensures type safety and allows you to use protocol methods only when it makes logical sense.\n\n```swift\nextension Array: Equatable where Element: Equatable {\n    // Implementation\n}\n```"
+  },
+  {
+    "category": "SwiftUI",
+    "question": "What is the ButtonStyle protocol in SwiftUI? [Easy]",
+    "answer": "The `ButtonStyle` protocol in SwiftUI allows developers to create custom, reusable button designs without having to build entirely new views from scratch.\n\nBy conforming to `ButtonStyle`, you define a `makeBody(configuration:)` method that determines how the button looks based on its current state (e.g., whether it is being pressed). You can then apply this style to any button using the `.buttonStyle(_:)` modifier, ensuring a consistent UI appearance across your application."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the primary difference between an Array and a Set in Swift? [Easy]",
+    "answer": "The main differences between an Array and a Set are ordering and uniqueness:\n\n* **Array**: An ordered collection of elements. Items can appear multiple times (duplicates are allowed), and they are accessed by their index.\n* **Set**: An unordered collection of unique elements. Duplicates are automatically removed, and looking up elements is highly efficient (typically O(1) time complexity)."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are Tuples in Swift and when should they be used? [Easy]",
+    "answer": "A Tuple is a lightweight, unnamed structure that groups multiple values into a single compound value. The values within a tuple can be of any type and do not have to be the same.\n\nTuples are extremely useful for returning multiple values from a function call without needing to create a dedicated custom struct or class. For example, a function can return a tuple containing both a status code and a message:\n\n```swift\nfunc getStatus() -> (code: Int, message: String) {\n    return (200, \"Success\")\n}\n```"
+  },
+  {
+    "category": "SwiftUI",
+    "question": "What is the purpose of GeometryReader in SwiftUI? [Mid]",
+    "answer": "`GeometryReader` is a specialized container view in SwiftUI that provides its child views with information about their size and coordinate space.\n\nIt takes up all available space proposed by its parent. Using the `GeometryProxy` object provided in its closure, developers can dynamically read the exact width, height, and safe area insets of the view, making it an essential tool for building complex, responsive custom layouts that adapt to different screen sizes."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is a bounding box in iOS layout and graphics? [Easy]",
+    "answer": "A bounding box is the smallest rectangular frame that completely encloses an object, shape, text character, or graphical element on the screen.\n\nIn iOS, this is often represented by a `CGRect` (defined by an origin point `x, y` and a size `width, height`). It specifies the position and dimensions of the element within its parent coordinate system, serving as a fundamental concept in Core Graphics and view layout."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the purpose of `@IBDesignable` in iOS development? [Easy]",
+    "answer": "`@IBDesignable` is an attribute applied to custom `UIView` subclasses. It allows Interface Builder (Xcode's storyboard/xib editor) to render the custom view in real-time.\n\nWhen combined with `@IBInspectable` properties (like corner radius, border width, or shadow color), developers can see how their custom layouts and visual effects will appear directly in the Interface Builder canvas without needing to build and run the app."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What kind of settings are stored in the Info.plist file? [Easy]",
+    "answer": "The `Info.plist` (Information Property List) file stores essential configuration data and metadata about the application that the system needs before the app is even launched.\n\nCommon settings stored in this file include:\n* **App Metadata**: Bundle identifier, version numbers, and display name.\n* **Permissions**: Privacy usage descriptions (e.g., Camera, Location, Microphone access).\n* **Capabilities**: Background modes, supported device orientations, and launch screen configurations.\n\nA plist file can be formatted in Text, Binary, or XML, and typically stores data types like strings, numbers, booleans, arrays, dictionaries, and raw data."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are raw strings in Swift and how are they created? [Easy]",
+    "answer": "Raw strings in Swift allow you to write strings exactly as you see them, without needing to escape special characters like backslashes (`\\`) or double quotes (`\"`).\n\nThey are created by placing a pound symbol (`#`) before the opening quotation mark and after the closing quotation mark.\n\n```swift\nlet regularString = \"He said, \\\"Hello, World!\\\"\"\nlet rawString = #\"He said, \"Hello, World!\"\"#\n```\n\nRaw strings are particularly useful when writing regular expressions or multi-line JSON structures directly in code."
+  }
+]

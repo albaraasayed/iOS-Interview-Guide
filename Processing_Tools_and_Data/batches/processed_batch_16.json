@@ -1,0 +1,62 @@
+[
+  {
+    "category": "Reactive Programming - RxSwift",
+    "question": "What is Reactive Programming in RxSwift and what key issues does it address? [Mid]",
+    "answer": "Reactive programming is used to handle mutable data processing and threads, such as fetching large amounts of data from an API. It addresses several key areas:\n\n- **State:** Specifically, managing shared mutable state (the state of the data).\n- **Imperative Programming:** Traditional programming uses functions to tell the app exactly *when* and *how* to do things, which can lead to complex state management.\n- **Side Effects:** Issues arising during error handling or abnormal data processing (any change of state outside the current scope).\n- **Declarative Code:** We specify functions that define pieces of behavior, and the framework executes this code. This eliminates issues related to side effects and state changes commonly found in imperative programming.\n- **Reactive Systems:** Crucial for determining how the user interacts and how the response behaves. Reactive systems are:\n  - **Responsive:** Always keep the UI up to date, representing the latest app state.\n  - **Resilient:** Each behavior is defined in isolation, providing flexible error recovery.\n  - **Elastic:** The code handles varied workloads, often implementing features such as lazy pull-driven data collections, event throttling, and resource sharing.\n  - **Message-driven:** Components use message-based communication for improved reusability and isolation, decoupling the lifecycle and implementation of classes."
+  },
+  {
+    "category": "Reactive Programming - RxSwift",
+    "question": "What are the core building blocks of RxSwift, and how do they work? [Mid]",
+    "answer": "The three core building blocks of Rx code are **Observables**, **Operators**, and **Schedulers**.\n\n- **Observables:** The generic class `Observable<T>` provides the foundation of Rx code by asynchronously producing a sequence of events. A sequence consists of data or events occurring asynchronously:\n  - **Finite Observable Sequences:** Occur over a specific time (e.g., fetching data from an API).\n  - **Infinite Observable Sequences:** Occur after an event interaction (e.g., a button tap triggering an observation every time it occurs).\n  The `ObservableType` protocol allows one or more observers to react to any events in real-time. An Observable can emit only three types of events:\n  - **`next` Event:** Carries the latest data value.\n  - **`completed` Event:** Terminates the sequence with success, meaning the lifecycle completed successfully.\n  - **`error` Event:** Terminates the sequence with an error.\n- **Operators:** A set of methods used to apply Rx logic to the code. Operators like `filter`, `map`, and `subscribe` take an event as input, perform specific logic, and produce an output.\n- **Schedulers:** RxSwift acts as a dispatcher between your subscriptions (the work being done) and the schedulers (the execution context). They send pieces of work to the correct context and seamlessly allow them to work with each other's output."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What are the core concepts of Object-Oriented Programming (OOP)? [Easy]",
+    "answer": "The core concepts of Object-Oriented Programming (OOP) include:\n1. **Abstraction**\n2. **Encapsulation**\n3. **Inheritance**\n4. **Polymorphism**\n5. **Composition, Aggregation, and Association**"
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is the difference between composition, aggregation, and association in object-oriented programming? [Mid]",
+    "answer": "- **Composition** implies a relationship where the child cannot exist independently of the parent. \n  - *Example:* A House (parent) and a Room (child). Rooms don't exist separate from a House.\n- **Aggregation** implies a relationship where the child can exist independently of the parent. \n  - *Example:* A Class (parent) and a Student (child). If you delete the Class, the Students still exist.\n- **Association** is a \"relates-to\" relationship between two objects, where one object is related to another without relying on composition or aggregation. \n  - *Example:* A student may take a course. The student and the course are related, but neither is a part of the other."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between function overloading and function overriding? [Easy]",
+    "answer": "- **Function Overloading:** A way to define multiple functions with the same name in a class or a module, but with different parameters. Overloading allows a function to behave differently based on the number, type, and order of its parameters. The compiler determines which version of the function to call based on the arguments passed in at compile time.\n- **Function Overriding:** A way to provide a new implementation of a method that is already defined in a parent class or an interface. Overriding allows a subclass to provide its own implementation of a method inherited from its superclass. The version of the method called depends on the type of the object at runtime."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between a class name and a type name in Swift? [Mid]",
+    "answer": "- A **class name** refers specifically to a class, which is a blueprint for creating objects. A class defines properties, methods, and initializers that can be used to create instances of the class. A class is a reference type.\n- A **type name** is a more general term that refers to any type in Swift, including classes, structs, enums, and protocols. A type defines a blueprint for creating values of a certain kind. Unlike a class, a type can be either a value type or a reference type."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between class, static, and instance methods and properties in Swift? [Mid]",
+    "answer": "- **Instance Methods/Properties:** Associated with an instance of a class, struct, or enumeration. Each instance has its own copy of the property, and instance methods provide ways to access and modify those properties. They can only be called on an instance.\n- **Class Methods/Properties:** Associated with the type itself rather than an instance. They are indicated by the `class` keyword. Crucially, class methods and properties can be overridden by subclasses since they are dynamically dispatched. They can access other class-level properties but not instance-level ones.\n- **Static Methods/Properties:** Also associated with the type itself and shared among all instances of the type. They are indicated by the `static` keyword. However, static methods and properties *cannot* be overridden by subclasses (essentially acting as `final class` methods). They cannot be used in polymorphism."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are the differences between a struct and a class in Swift? [Easy]",
+    "answer": "- **Inheritance:** Classes support inheritance, while structs do not.\n- **Type:** Classes are reference types (passed by reference), while structs are value types (passed by value).\n- **Initialization:** Classes require a defined initializer if properties don't have default values, whereas structs automatically provide a memberwise initializer by default.\n- **Mutability:** When declaring a constant (`let`) of a struct type, the entire struct instance becomes immutable (properties cannot be changed even if marked as `var`). When declaring a constant (`let`) of a class type, the reference itself is immutable (cannot be reassigned), but the properties of the instance can still be modified."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What are the common algorithms used for array searching, and how do they differ? [Mid]",
+    "answer": "Common algorithms used to search for elements or indexes in an array include:\n- **Linear Search:** A sequential search algorithm that starts at one end and goes through each element of a list until the desired element is found. If not found, it continues until the end of the dataset. It has a time complexity of `O(N)`.\n- **Binary Search:** A more efficient algorithm that requires the array or list to be sorted. It repeatedly divides the search interval in half to find the desired element. It has a time complexity of `O(log N)`.\n- **Ternary Search:** A divide-and-conquer algorithm that is similar to binary search but divides a sorted array into three parts instead of two. It has a time complexity of `O(log3 N)`."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What are the main categories and types of data structures? [Easy]",
+    "answer": "Data structures generally fall into these categories:\n- **Linear (Static):** Arrays.\n- **Linear (Dynamic):** Linked lists (nodes and next pointers), Stacks (LIFO), and Queues (FIFO).\n- **Non-linear:** Graphs (edges and vertices, where multiple edges can connect nodes) and Trees (edges and vertices with a hierarchical structure)."
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What are the SOLID principles? [Mid]",
+    "answer": "The SOLID principles are a set of five design principles intended to make software designs more understandable, flexible, and maintainable:\n- **S**ingle Responsibility Principle: A class should have only one reason to change.\n- **O**pen/Closed Principle: Software entities should be open for extension but closed for modification.\n- **L**iskov Substitution Principle: Subtypes must be substitutable for their base types without altering the correctness of the program.\n- **I**nterface Segregation Principle: Clients should not be forced to depend on interfaces they do not use.\n- **D**ependency Inversion Principle: High-level modules should not depend on low-level modules; both should depend on abstractions."
+  },
+  {
+    "category": "Design Patterns & Architecture",
+    "question": "What is the Singleton design pattern and when should it be used? [Easy]",
+    "answer": "The Singleton is a creational design pattern that ensures a class has only one single shared instance throughout the application's lifecycle while providing a global point of access to it. It is typically used for managing shared resources like network managers, database connections, or user defaults.\n\n*Note:* Singletons can make unit testing more difficult because they carry global state across tests, so they should be used judiciously."
+  }
+]

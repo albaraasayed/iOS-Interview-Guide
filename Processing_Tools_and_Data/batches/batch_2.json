@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What is the difference between frame and bound of a UIView?",
+    "answer": "The *frame* of a UIView is the region relative to the superview it is contained within while the *bounds* of a UIView is the region relative to its own coordinate system."
+  },
+  {
+    "question": "What is the difference between frame and bound?",
+    "answer": "In frame: the coordinates for the view is relative to its superView\nIn boud: the coordinates for the view is relative to its own space"
+  },
+  {
+    "question": "17. What is the difference between the \"frame\" and \"bounds\" properties of a UIView in iOS?",
+    "answer": "* The **`frame`** property defines the view's location (x, y) and size (width, height) within the coordinate system of its *superview*.\n* The **`bounds`** property defines the view's location and size entirely within its *own* local coordinate system (meaning `bounds.origin` is almost always `(0, 0)`)."
+  },
+  {
+    "question": "Q: Bound VS Frame",
+    "answer": "A view object tracks its size and location using its frame, bounds, and center properties:\n* The **`frame`** property contains the frame rectangle, which specifies the size and location of the view in its *superview\u2019s* coordinate system.\n* The **`bounds`** property contains the bounds rectangle, which specifies the size of the view (and its content origin) in the view\u2019s *own* local coordinate system.\n* The **`center`** property contains the known center point of the view in the superview\u2019s coordinate system."
+  },
+  {
+    "question": "What is the reuseIdentifier for?",
+    "answer": "The *reuseIdentifier* indicates that cells for a UITableView (or UICollectionView) can be reused. UITableView maintains an internal cache of UITableViewCell with the appropriate identifier and allows them to be reused when dequeueForCellWithReuseIdentifier is called. As a result, this increases performance of UITableView since a new view does not have to be created for a cell."
+  },
+  {
+    "question": "What is the difference between UITableView and UICollectionView?",
+    "answer": ""
+  },
+  {
+    "question": "What is Auto Layout?",
+    "answer": "Auto Layout is used to dynamically calculate the size and position of views based on constraints."
+  },
+  {
+    "question": "Difference between auto resizing mask and auto layout?",
+    "answer": ""
+  },
+  {
+    "question": "Q: Explain Auto Layout?",
+    "answer": "Auto Layout dynamically calculates the size and position of all views in your view hierarchy based on constraints placed on those views. This constraint-based approach allows you to build user interfaces that dynamically respond to internal and external changes."
+  },
+  {
+    "question": "[EKAlgorithm](https://github.com/EvgenyKarkan/EKAlgorithms): Algorithm and data structures in Objc",
+    "answer": ""
+  },
+  {
+    "question": "[swift-algorithm-club](https://github.com/raywenderlich/swift-algorithm-club): Algorithm and data structures in Swift",
+    "answer": ""
+  },
+  {
+    "question": "There's a typo / an incorrect answer to one of your questions",
+    "answer": "Great! Creating an issue will let me know what changes should be made. You can even making the changes yourself and make a pull request which will expedite the process!"
+  },
+  {
+    "question": "Requesting questions to be answered and topics",
+    "answer": "If you open an issue, I would be happy to go ahead and add the question with the appropriate answer when I get to it!"
+  },
+  {
+    "question": "Contributors",
+    "answer": "- onthecodePath\n- Sergtsaeb\n\n\n\n1. Deep copy vs Shallow copy\n\n| Deep copy | Shallow copy |\n| --- | --- |\n| Duplicates everything | Duplicates as little as possible |\n| With a deep copy, any object pointed to by the source is copied and the copy is pointed to by the destination. So two completely separate objects will be created. | With a shallow copy, any object pointed to by the source is also pointed to by the destination. So only one object will be created in the memory. |\n| Collections\u2014A deep copy of a collection is two collections with all of the elements in the original collection duplicated. | Collections\u2014A shallow copy of a collection is a copy of the collection structure, not the elements. With a shallow copy, two collections now share the individual elements. |\n| Less prone to race conditions and performs well in a multithreaded environment\u2014changes in one object will have no effect on another object. | Faster\u2014only the reference is copied |\n| Value types are copied deeply | Reference types create a shallow copy<br><br>Every time we copy a reference type, a shallow copy is created by default until we explicitly specify that it should be copied deeply. |\n\n2. Self vs self\n\n| Self | self |\n| --- | --- |\n| When used with a capital **S**, Self refers to the type that conforms to the protocol, e.g. String or Int | When used with a lowercase **s**, self refers to the value inside that type, e.g. \"hello\" or 556 |\n\n\n3. Functions vs methods\n\n| Functions | Methods |\n| --- | --- |\n| Functions are self-contained chunks of code that perform a specific task. You give a function a name that identifies what it does, and this name is used to \"call\" the function to perform its task when needed. | Methods are functions that are associated with a particular type. Classes, structures, and enumerations can all define instance methods, which encapsulate specific tasks and functionality for working with an instance of a given type. |\n\n4. Class methods vs Instance methods\n\n| Class methods | Instance methods |\n| --- | --- |\n| We can define methods that are called on the type itself. These kinds of methods are called type methods | Instance methods are functions that belong to instances of a particular class, structure, or enumeration. |\n| `class SomeClass {`<br>&nbsp;&nbsp;&nbsp;&nbsp;`static func someTypeMethod() {`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`// type method`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`// implementation goes here`<br>&nbsp;&nbsp;&nbsp;&nbsp;`}`<br>`}`<br>`SomeClass.someTypeMethod()` | `class SomeClass {`<br>&nbsp;&nbsp;&nbsp;&nbsp;`func someMethod() {`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`// instance methods`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`// implementation goes here`<br>&nbsp;&nbsp;&nbsp;&nbsp;`}`<br>`}`<br>`let someClass = SomeClass()`<br>`someClass.someMethod()` |\n| The **'class'** keyword can be used in place of the **'static'** keyword to allow subclass overriding of the type method. | If we need to modify the properties of our structure or enumeration within a particular method, we can opt-in to mutating behaviour for that method. |\n\n5. Static dispatch vs Dynamic dispatch\n\n| Static dispatch | Dynamic dispatch |\n| --- | --- |\n| Also known as runtime dispatch or table dispatch | Also known as compile time dispatch or direct dispatch |\n| The system looks for specific method implementation in compiler created dispatch table (called witness table in Swift) in runtime, not in compilation time. In the protocol\u2019s world it is just protocol requirements: | Very effectively optimized direct call. This kind of method dispatch used in protocol extensions: |\n| `protocol Movable {`<br>&nbsp;&nbsp;&nbsp;&nbsp;`func walk()`<br>`}` | `extension Movable {`<br>&nbsp;&nbsp;&nbsp;&nbsp;`func crawl() {`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`print(\"Default crawling\")`<br>&nbsp;&nbsp;&nbsp;&nbsp;`}`<br>`}` |\n\n6. Intrinsic Content Size vs Fitting Size\n\n| Intrinsic Content Size | Fitting Size |\n| --- | --- |\n| The intrinsic content size acts as an input to Auto Layout. | The fitting size, on the other hand, is an output from the Autolayout engine. |\n| When a view has an intrinsic content size, the system generates constraints to represent that size and the constraints are used to calculate the layout | It is the size calculated for a view based on the view\u2019s constraints. If the view lays out its subviews using Auto Layout, then the system may be able to calculate a fitting size for the view based on its content. |\n\n7. Retain count and Retain cycle\n\n| Retain count | Retain Cycle |\n| --- | --- |\n| Retain Count represents a number of owners for a particular object. | Is the condition When 2 objects keep a reference to each other and are retained, |\n| It is zero till object does not have any owners. | Is the condition When 2 objects keep a reference to each other and are retained, |\n\n8. Content hugging priority vs Content compression priority\n\n| Content hugging priority | Content compression priority |\n| --- | --- |\n| View resists being made longer than its intrinsic size | View resists being made smaller than its intrinsic size |\n| Keeping high priority to this property means it will not grow than its content size | Keeping high priority to this property means it will not shrink than its intrinsic content size |\n\n9. layoutIfNeeded() vs setNeedsLayout()\n\n| layoutIfNeeded() | setNeedsLayout() |\n| --- | --- |\n| Synchronous activity | ASynchronous activity |\n| Will layout and redraw the view and its subviews immediately | Will layout and redraw the view and its subviews When it is time for the next update cycle |\n\n10. Static variable vs Class variable\n\n| Static variable | Class variable |\n| --- | --- |\n| Both the static and class keywords allow us to attach variables to a class rather than to instances of a class. | |\n| When we declare a static property it becomes owned by the class and cannot be changed by subclasses | Where as class property becomes overridden by subclasses |\n| `class Person {`<br>&nbsp;&nbsp;&nbsp;&nbsp;`static var count: Int {`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`return 250`<br>&nbsp;&nbsp;&nbsp;&nbsp;`}`<br><br>&nbsp;&nbsp;&nbsp;&nbsp;`class var averageAge: Double {`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`return 30`<br>&nbsp;&nbsp;&nbsp;&nbsp;`}`<br>`}` | `class Student: Person {`<br>&nbsp;&nbsp;&nbsp;&nbsp;`// THIS ISN'T ALLOWED`<br>&nbsp;&nbsp;&nbsp;&nbsp;`// override static var count: Int`<br>&nbsp;&nbsp;&nbsp;&nbsp;`// {`<br>&nbsp;&nbsp;&nbsp;&nbsp;`//      return 150`<br>&nbsp;&nbsp;&nbsp;&nbsp;`// }`<br><br>&nbsp;&nbsp;&nbsp;&nbsp;`// THIS IS ALLOWED`<br>&nbsp;&nbsp;&nbsp;&nbsp;`override class var averageAge: Double`<br>`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`return 19.5`<br>&nbsp;&nbsp;&nbsp;&nbsp;`}`<br>`}` |"
+  },
+  {
+    "question": "Q: Shallow VS Deep Copy",
+    "answer": "* **Shallow Copy** is also known as address copy, similar to Call by Reference. It copies the structure, not the data/element. Changes made in one object reflect in the other one as well. In Objective-C, it can be implemented with the `copy` or `mutableCopy` keyword (for collections, this copies the collection structure but not the elements).\n* **Deep Copy** is similar to Call by Value. It copies actual data and both objects have their own separate copy (i.e., they point to a different array and different elements). Changes made in one object do not reflect in another one. In Objective-C, it can be implemented using methods of the `NSKeyedArchiver`/`NSKeyedUnarchiver` classes."
+  },
+  {
+    "question": "OOP",
+    "answer": ""
+  },
+  {
+    "question": "What is the difference between composition vs aggregation vs association?",
+    "answer": "**Association** - I have a relationship with an object. `Foo` uses `Bar`\n```swift\npublic class Foo {\n    func baz(bar: Bar) {\n    }\n}\n```\n\n\n**Composition** - I own an object and I am responsible for its lifetime. When `Foo` dies, so does `Bar`\n\n```swift\npublic class Foo {\n    private let bar = Bar()\n}\n\n```\n\n**Aggregation** - I have an object which I've borrowed from someone else. When `Foo` dies, `Bar` may live on.\n\n```swift\npublic class Foo {\n    private var bar: Bar\n    \n    init(bar: Bar) {\n        self.bar = bar\n    }\n}\n\n```"
+  },
+  {
+    "question": "What are the 3 main types of design patterns?",
+    "answer": "1- Creational : Singleton, Factory\n2- Behavioral : Observer\n3- Structural : Decorator, Adapter, Facade"
+  },
+  {
+    "question": "4- Types of Design Patterns",
+    "answer": "* **Creational:** Singleton, Factory\n* **Behavioral:** Observer\n* **Structural:** Adapter, proxy, coordinator"
+  },
+  {
+    "question": "What is the difference between super and self?",
+    "answer": "**Super:** reference of the superclass which represent parent class\n**Self:** represent current object of the class"
+  },
+  {
+    "question": "What is dependency injection and its ways and why do we use dependency injection?",
+    "answer": ""
+  },
+  {
+    "question": "12- Dependency inversion vs dependency injection?",
+    "answer": "l dependency inversion e7na 3rfenha w heya en ma25lish high level depends on low level. tb eh heya l dependency injection de .. bbsata heya 3obara 3n eni b5li l property bta3ty tb2a depends on instances of another class or protocols tb dh hyfed b ehhh?\nHyfed f: Abstraction, Mocking, Testability, Readability, Reusability, Less coupling.\n\n**There are 3 ways:**\n\n**Initializer Injection**\n```swift\nprotocol UserServiceProtocol {\n    func fetchUsers() \n}\n\nprotocol RewardServiceProtocol { \n    func fetchRewards()\n}\n\nfinal class ViewModel {\n    private let userService: UserServiceProtocol \n    private let rewardService: RewardServiceProtocol\n\n    init(userService: UserServiceProtocol, rewardService: RewardServiceProtocol) { \n        self.userService = userService\n        self.rewardService = rewardService\n    } \n}\n\n```\n\n**Setter Injection**\n\n```swift\nprotocol UserServiceProtocol {\n    func fetchUsers() \n}\n\nprotocol RewardServiceProtocol { \n    func fetchRewards()\n}\n\nfinal class ViewModel {\n    private var userService: UserServiceProtocol? \n    private var rewardService: RewardServiceProtocol?\n\n    func setUserService(userService: UserServiceProtocol) { \n        self.userService = userService\n    }\n\n    func setRewardService(rewardService: RewardServiceProtocol) { \n        self.rewardService = rewardService\n    } \n}\n\n```\n\n**Interface Injection**\n\n```swift\nprotocol UserServiceProtocol {\n    func fetchUsers() \n}\n\nprotocol RewardServiceProtocol { \n    func fetchRewards()\n}\n\nprotocol ServiceProtocol {\n    func users(service: UserServiceProtocol)\n    func rewards(service: RewardServiceProtocol)\n}\n\nfinal class ViewModel: ServiceProtocol {\n    private var userService: UserServiceProtocol? \n    private var rewardService: RewardServiceProtocol?\n\n    func users(service: UserServiceProtocol) { \n        self.userService = service\n    }\n\n    func rewards(service: RewardServiceProtocol) {\n        self.rewardService = service \n    }\n}\n\n```"
+  },
+  {
+    "question": "When do we use the Fa\u00e7ade design pattern most?",
+    "answer": "Frameworks & repositories"
+  },
+  {
+    "question": "Design architecture",
+    "answer": ""
+  },
+  {
+    "question": "What are the downsides of using Singleton design pattern?",
+    "answer": "1-It\u2019s not thread safe, if we didn\u2019t take care of the initialization we might end up having two or more objects.\n2- Hard in testing.\n3- Hard to mock."
+  }
+]

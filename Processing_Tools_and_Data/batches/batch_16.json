@@ -1,0 +1,102 @@
+[
+  {
+    "question": "RxSwift",
+    "answer": ""
+  },
+  {
+    "question": "RxSwift",
+    "answer": ""
+  },
+  {
+    "question": "Introduction",
+    "answer": "Reactive programming is used to handle mutable data processing and threads, such as fetching large amounts of data from an API. It addresses several key areas:\n\n1. **State:** Specifically, managing shared mutable state (the state of the data).\n2. **Imperative programming:** Traditional programming uses functions to tell the app exactly *when* and *how* to do things, which can lead to complex state management.\n3. **Side effects:** Issues arising during error handling or abnormal data processing (any change of state outside the current scope).\n4. **Declarative code:** Here, we specify functions that define pieces of behavior, and Rx executes this code. This eliminates issues related to side effects and state changes commonly found in imperative programming.\n5. **Reactive systems:** This is crucial for determining how the user interacts and how the response behaves. Reactive systems are:\n    * **Responsive:** Always keep the UI up to date, representing the latest app state.\n    * **Resilient:** Each behavior is defined in isolation, providing flexible error recovery.\n    * **Elastic:** The code handles varied workloads, often implementing features such as lazy pull-driven data collections, event throttling, and resource sharing.\n    * **Message-driven:** Components use message-based communication for improved reusability and isolation, decoupling the lifecycle and implementation of classes."
+  },
+  {
+    "question": "Intro",
+    "answer": "Reactive programming is used to handle mutable data processing and threads such as fetching large data from an API that happens in some cases:\n1. **State:** and specifically, shared mutable state is about the state of the data.\n2. **Imperative programming:** it is about using function to tell the app exactly when and how to do things.\n3. **Side effects:** while error handling or abnormal processing of data (any change of the state outside of the current scope)\n4. **Declarative code:** hena e7na hn-spacify shewayt functions bt-define pieces of behavior f yegi l rx w y-run l code dh kda msh hyb2a f mshakel f 7tt l side effects wla mshakel f state changing during imperative programming.\n5. **Reactive systems:** w de aham 7aga 3shan l user hy-interact azay w l response hyb2a 3aml azay mn axial l reactive systems:\n* **Responsive:** Always keep the UI up to date, representing the latest app state.\n* **Resilient:** Each behavior is defined in isolation and provides for flexible error recovery.\n* **Elastic:** The code handles varied workload, often implementing features such as lazy pull-driven data collections, event throttling, and resource sharing.\n* **Message driven:** Components use message-based communication for improved reusability and isolation, decoupling the lifecycle and implementation of classes.\n\nTb dh bytm ezaaaay???\nbytm 3n tare2 the three building blocks of Rx code which are observables, operators, and schedulers. The sections below cover each of these in detail."
+  },
+  {
+    "question": "The Three Building Blocks",
+    "answer": "So, how does this happen? It happens through the three building blocks of Rx code: **Observables**, **Operators**, and **Schedulers**."
+  },
+  {
+    "question": "1. Observables",
+    "answer": "The generic class `Observable<T>` provides the foundation of Rx code by asynchronously producing a sequence of events. A sequence of events consists of data or events occurring asynchronously:\n* **Finite observable sequences:** Occur over a specific time (e.g., fetching data from an API).\n* **Infinite observable sequences:** Occur after an event interaction (e.g., depending on a button tap or a specific action; every time the action occurs, an observation is triggered).\n\n**How do Observables work?**\n* The `Observable<T>` class allows one or more observers to react to any events in real-time and update the app's UI.\n* The `ObservableType` protocol (to which `Observable<T>` conforms) is extremely simple. An Observable can emit (and observers can receive) only three types of events:\n    * **A `next` event:** An event that \"carries\" the latest (or \"next\") data value. This is how observers \"receive\" values.\n    * **A `completed` event:** This event terminates the event sequence with success. It means the Observable successfully completed its lifecycle and won't emit any more events.\n    * **An `error` event:** The Observable terminates with an error and will not emit any more events."
+  },
+  {
+    "question": "1- Observables:",
+    "answer": "da generic class of Observable<T> provides foundation of RX code3shan yb2a f asynchronously produce a sequence of events tb y3ni eh asln sequence of events.\nhwa dh l sequence of events 3obara 3n events aw data bt7sl asynchronously\n* **Finite observable sequences:** Dh In case fetching data from API (per specific time).\n* **Infinite observable sequences:** dh in case depending on button aw action mo3yn f m3 kol mara l action y7sl hyb2a f 3ndi observation (after event interaction).\n\n**How are observables being work?**\n* The Observable<T> class allows one or more observers to react to any events in real time and update the app UI.\n* The ObservableType protocol (to which the Observable<T> conforms) is extremely simple. An Observable can emit (and observers can receive) only three types of events:\n* **A next event:** An event which \u201ccarries\u201d the latest (or \"next\") data value. This is the way observers \u201creceive\u201d values.\n* **A completed event:** This event terminates the event sequence with success. It means the Observable completed its life-cycle successfully and won\u2019t emit any other events.\n* **An error event:** The Observable terminates with an error and it will not emit other events."
+  },
+  {
+    "question": "2. Operators",
+    "answer": "As the name implies, these are a set of operators used to apply Rx logic to the code. It often uses operators like `filter`, `map`, and `subscribe` to take an event as an input, perform specific logic, and produce an output."
+  },
+  {
+    "question": "2- Operators:",
+    "answer": "azon bayen mn esmha heya 3obara 3n shewyt operators bts5dmha l rx code3shantoapplytheRXlogictothe codeitoftenusefilterandmapw subscribe to take an event as an input and perform its logic to produce output."
+  },
+  {
+    "question": "3. Schedulers",
+    "answer": "With all these events and subscriptions, there must be a mechanism to organize the processes. Therefore, Rx provides its own dispatchers called Schedulers. RxSwift acts as a dispatcher between your subscriptions (the work being done) and the schedulers (the execution context), sending pieces of work to the correct context and seamlessly allowing them to work with each other\u2019s output.\n\n---"
+  },
+  {
+    "question": "3- Schedulers:",
+    "answer": "m3 kol l events de w kol l subscriptions lazim yb2a 3ndi 7aga tnzm l processes de 3shan kda l RX provides its own dispatcher (Schedulers) RxSwift will act as a dispatcher between your subscriptions (on the left hand side below) and the schedulers (on the right hand side), sending the pieces of work to the correct context and seamlessly allowing them to work with each other\u2019s output."
+  },
+  {
+    "question": "INTERVIEWS",
+    "answer": ""
+  },
+  {
+    "question": "INTERVIEWS",
+    "answer": ""
+  },
+  {
+    "question": "OOP Concepts:",
+    "answer": "1. Abstraction\n2. Encapsulation\n3. Inheritance\n4. Polymorphism\n5. Composition, Aggregation and Association"
+  },
+  {
+    "question": "The difference between composition vs aggregation vs association:",
+    "answer": "* **Composition** implies a relationship where the child cannot exist independent of the parent. \n    * *Example:* House (parent) and Room (child). Rooms don't exist separate to a House.\n* **Aggregation** implies a relationship where the child can exist independently of the parent. \n    * *Example:* Class (parent) and Student (child). Delete the Class and the Students still exist.\n* **Association** is a \"relates-to\" relationship between two objects, where one object is related to another object. In other words, the two objects have a relationship that is not based on composition or aggregation. \n    * *For example,* a student may take a course, and the student and the course are related to each other, but neither is a part of the other.\n\n---"
+  },
+  {
+    "question": "The difference between function overriding and overloading:",
+    "answer": "* **Function overloading** is a way to define multiple functions with the same name in a class or a module, but with different parameters. Overloading allows a function to behave differently based on the number, type, and order of its parameters. When a function is overloaded, the compiler determines which version of the function to call based on the arguments passed in at runtime.\n* **Function overriding** is a way to provide a new implementation of a method that is already defined in a parent class or an interface. Overriding allows a subclass to provide its own implementation of a method that is inherited from its superclass. When a method is overridden, the version of the method that is called depends on the type of the object at runtime.\n\n---"
+  },
+  {
+    "question": "The difference between class name and type name:",
+    "answer": "* A **class name** refers specifically to a class, which is a blueprint for creating objects. A class defines properties, methods, and initializers that can be used to create instances of the class. A class is a reference type, which means that instances of the class are passed by reference rather than by value.\n* A **type name**, on the other hand, is a more general term that refers to any type in Swift, including classes, structs, enums, and protocols. A type defines a blueprint for creating values of a certain kind. A type can define properties, methods, and initializers, just like a class. However, unlike a class, a type can be either a value type or a reference type.\n\n---"
+  },
+  {
+    "question": "The difference between class-level properties, instance-level properties and static properties:",
+    "answer": "* **Class-level properties** are associated with a class and are shared among all instances of the class. They can be overridden by subclasses.\n* **Instance-level properties** are associated with an instance of a class or a struct. Each instance has its own copy of the property.\n* **Static properties** are associated with a type and are shared among all instances of the type. They cannot be overridden by subclasses.\n\n---"
+  },
+  {
+    "question": "Q: Class vs Instance vs Static methods",
+    "answer": "* **Instance methods:** Functions that belong to instances of a particular class, structure, or enumeration. They provide ways to access and modify instance properties.\n* **Class methods:** Called on the type itself (type methods). Indicated by writing the keyword `class` before the method\u2019s `func` keyword. Subclasses can override `class` methods since they are dynamically dispatched.\n* **Static methods:** Indicated by writing the keyword `static`. Subclasses *cannot* override `static` methods. `static` can be considered essentially as a \"Class final\" method."
+  },
+  {
+    "question": "The difference between class and static function in swift:",
+    "answer": "* **Accessing properties and methods:** A class function can access both class-level properties and instance-level properties and methods, while a static function can only access static properties and methods.\n* **Inheritance:** Class functions can be overridden by subclasses, while static functions cannot be overridden.\n* **Polymorphism:** Class functions can be used in polymorphism, meaning that a subclass can override a superclass's function with its own implementation, while static functions cannot be used in polymorphism.\n* **Memory allocation:** Class functions are associated with instances of the class, which means they can only be called on instances of the class. Static functions, on the other hand, are associated with the type itself and can be called without creating an instance of the type.\n\n*In summary,* the main differences between class functions and static functions in Swift are that class functions can access both static and instance-level properties and methods, can be overridden by subclasses, and can be used in polymorphism, while static functions can only access static properties and methods, cannot be overridden, and cannot be used in polymorphism.\n\n---"
+  },
+  {
+    "question": "The differences between struct and class in Swift:",
+    "answer": "* **class** supports inheritance, while **struct** does not.\n* **class** is a reference type, while **struct** is a value type.\n* **class** requires an initializer, while **struct** has a memberwise initializer by default.\n* **class** can be declared as mutable or immutable, while **struct** is always mutable by default.\n\n**Reexplanation for the last point:**\nWhen you declare a `let` constant of a struct type, the entire struct instance becomes immutable, meaning that you cannot modify any of its properties, even if they are declared as `var`. This is because struct is a value type, and when you declare a constant of a value type, the entire value is immutable.\n\nOn the other hand, when you declare a `let` constant of a class type, the constant itself is immutable, meaning that you cannot reassign it to a different instance of the class, but you can still modify the properties of the instance. This is because class is a reference type, and when you declare a constant of a reference type, the reference itself is immutable, but the instance it points to can still be mutable.\n\n---"
+  },
+  {
+    "question": "1- What is array searching?",
+    "answer": "Wallahy ana lw 3aiz asearch 3 element aw index mo3yen f array f ana momkn ast5dm algorithm mn dol:\n1. **Linear search:** w dh ashl w wa7ed fehom hwa 3obara 3n sequential search algorithm that starts at one end and goes through each element of a list until the desired element or group of elements is found. Otherwise, the search continues till the end of the data set. This has a time complexity of O(N)\n2. **Binary search:** dh a7sn mn l linear bs lazim ykon l array w l list sorted w mn esmo f hwa bysht8l 3 binary aw two sides of the list to get the desired element w l time complexity O(log2 N)\n3. **Ternary Search:** dh asr3 7aga fehom w shbh l binary shewya bs dh byst5dm divide and conquer algorithm 3shan ysht8l 3 sorted array aw list w by2smhom l 3 parts w l time complexity O(log3 N)"
+  },
+  {
+    "question": "2- T3rf eh 3n l data structure types?",
+    "answer": "**Linear (Static):** Array\n**Linear (Dynamic):** Linked list (node & next), Stack (LIFO), Queue (FIFO)\n**Non-linear:** Graph (edge & vertex, multi edges are connected), Tree (edge & vertex)"
+  },
+  {
+    "question": "3- SOLID principles",
+    "answer": "* Single responsibility\n* Open for extension closed for modification\n* Liskov substitution\n* Interface segregation\n* Dependency inversion"
+  },
+  {
+    "question": "5- What is singleton?",
+    "answer": "It is creational design pattern about creating one instance of the class while application is running in the memory w blab la bla. \nNote: singleton is not the best to be used while unit testing"
+  }
+]

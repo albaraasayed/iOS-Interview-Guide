@@ -1,0 +1,107 @@
+[
+  {
+    "category": "iOS Fundamentals",
+    "question": "What APIs are available for battery-efficient location tracking in iOS? [Mid]",
+    "answer": "* **Significant-Change Location Service:** Highly power-efficient; it delivers updates only when the user's location changes significantly (e.g., transitioning between cell towers, often tracking movements up to 1km).\n* **Region Monitoring (Geofencing):** Triggers enter or exit events when the device crosses a defined geographical boundary (typically a radius of 100 meters or more).\n* **Visit Events:** Monitors and logs when a user arrives at or departs from frequently visited locations (like a home or office)."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the preferred method for caching data in memory? [Easy]",
+    "answer": "`NSCache` is vastly preferable to a standard `Dictionary` for in-memory caching. `NSCache` is specifically engineered to automatically purge items when the system experiences low memory pressure, doing so intelligently to retain as much relevant data as possible. Furthermore, `NSCache` is thread-safe, supports arbitrary keys and values, and allows customizable eviction behaviors via delegate methods, making it a robust solution."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the difference between a delegate and a notification in iOS development? [Mid]",
+    "answer": "* A **Delegate** represents a one-to-one communication pattern. It allows an object to communicate directly with exactly one assigned delegate object via a defined protocol.\n* A **Notification** represents a one-to-many communication pattern. Messages are broadcast via `NotificationCenter` to any number of registered observers simultaneously, without requiring the sender to know who is listening."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What are computed properties, and when should you use them over methods? [Mid]",
+    "answer": "Computed properties do not physically store a value in memory. Instead, they provide a getter (and optionally a setter) to calculate and return a value dynamically based on underlying logic or the state of other stored properties every time they are accessed. They must always be declared as `var`. A computed property with only a getter is called read-only.\n\n**Computed Property vs. Method**\nIn Swift, we often need to encapsulate logic that returns a value. We have two options: Computed Properties or Methods.\n\n* **Computed Properties:**\n  * **No stored value** \u2014 it calculates a result each time it's accessed.\n  * **Idempotent** \u2014 should return the same result when called multiple times with the same state.\n  * **No Side Effects** \u2014 should not modify any external state.\n  * **Execution Complexity** \u2014 `O(1)` (should be quick).\n  * **Can Take Parameters?** \u2014 No.\n  * **Use Case** \u2014 Returning a derived value.\n\n* **Methods:**\n  * Can **modify state** (`mutating` for struct).\n  * Can have **side effects**.\n  * Can take **parameters**.\n  * **Use Case** \u2014 Performing an action or complex calculation.\n\n*Example of Computed Property:*\n```swift\nstruct Circle {\n    var radius: Double\n    var area: Double {\n        return Double.pi * radius * radius\n    }\n}\n```\n\n*Example of Method:*\n```swift\nstruct Counter {\n    var count = 0\n    mutating func increment() {\n        count += 1\n    }\n}\n```"
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is dynamic dispatch? [Expert]",
+    "answer": "Dynamic dispatch is the runtime mechanism that determines which specific implementation of a polymorphic method or function to invoke. It provides architectural flexibility by allowing subclasses to override methods inherited from a parent class, ensuring the correct subclass implementation is executed when called. In Swift, dynamic dispatch is used by classes for overridden methods, usually resolved via a virtual table (vtable) or Objective-C message passing (`objc_msgSend`)."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What are the different kinds of operations possible on a semaphore? [Mid]",
+    "answer": "A semaphore relies on two primary atomic operations to manage thread synchronization:\n* **Wait():** Decrements the semaphore value by 1. If the value is already 0, the thread attempting the wait operation is blocked until the value becomes greater than 0.\n* **Signal():** Increments the semaphore value by 1. If other threads were blocked waiting on this semaphore, one of those threads is unblocked and permitted to proceed."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What is a Real-Time Operating System (RTOS)? [Mid]",
+    "answer": "**RTOS** stands for Real-Time Operating System. It is engineered specifically for applications subjected to strict time constraints, where data processing must occur flawlessly within rigid deadlines (often measured in tenths of seconds). It is heavily used in systems interacting dynamically with external hardware events."
+  },
+  {
+    "category": "UIKit",
+    "question": "What is the purpose of the prepareForReuse() method in a UITableViewCell? [Easy]",
+    "answer": "The `prepareForReuse()` method is invoked on a reusable cell object immediately before it is returned by the table view to be populated with new data. It provides an opportunity to reset the cell's visual state\u2014such as clearing out old text, removing legacy images, or canceling obsolete network requests\u2014preventing visual artifacts when scrolling."
+  },
+  {
+    "category": "General Computer Science, OS & Multithreading",
+    "question": "What are two common types of process synchronization? [Mid]",
+    "answer": "* **Interprocess Communication (IPC):** Mechanisms that allow distinct processes to communicate and synchronize their state (e.g., shared memory, message passing).\n* **Mutual Exclusion (Mutex):** Techniques designed to ensure that only a single process or thread can access a shared resource or critical section of code at any given time (e.g., locks, binary semaphores)."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "When is an iOS application considered to be in the \"Active\" state? [Easy]",
+    "answer": "An application is truly \"Active\" when it is executing in the foreground and directly receiving user interactions and system events. *(Note: If an app is executing code in the background for a limited, system-allotted time before being suspended, it is officially in the \"Background\" state, not the Active state.)*"
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "Which state does an iOS app reach briefly before being suspended? [Easy]",
+    "answer": "The **Background** state. Almost all applications pass through the Background state to execute final cleanup code before the operating system formally puts them into the Suspended state."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "What is the difference between == and === in Swift? [Easy]",
+    "answer": "* **`==` (Equal To):** An operator used to evaluate whether the *values* contained within two variables are equivalent.\n* **`===` (Identical To / Strict Equality):** An identity operator used explicitly for reference types (classes) to determine if two variables both point to the exact same physical instance in memory."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "When would you use a deinit block in Swift? [Mid]",
+    "answer": "You utilize `deinit` to perform manual memory cleanup operations immediately before a class instance is permanently deallocated. While Swift's ARC handles standard memory deallocation automatically, `deinit` is vital for releasing custom system resources, invalidating timers, closing file handles, or removing notification observers."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What techniques can you use to reduce the size of an iOS application? [Mid]",
+    "answer": "* **App Thinning:** A comprehensive suite of techniques to optimize installation size based on the user's specific device.\n* **App Slicing:** A subset of App Thinning where the App Store delivers only the assets (like 2x vs 3x images) strictly required for the target device's architecture.\n* **On-Demand Resources (ODR):** Hosting heavy, non-immediate assets (like later game levels) on Apple's servers to be downloaded only when the user needs them.\n* **Asset Cleanup:** Routinely identifying and removing obsolete or unused images and files from the project bundle.\n* **Bitcode:** Compiling an intermediate representation of the code so Apple can re-optimize the binary on their end. *(Note: Apple deprecated Bitcode in Xcode 14, but it remains historically relevant).*"
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "Given the following Swift code, what is the value of `u`? [Easy]",
+    "answer": "```swift\nvar x1 = [10, 20, 30, 40, 50]\nvar x2 = [10, 20, 30, 40, 50, 65]\nlet u = 5\n```\nBased strictly on the provided code snippet, the value of `u` is definitively assigned as **`5`**."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the difference between a synchronous and asynchronous URLSession request? [Easy]",
+    "answer": "* A **Synchronous** network request forcibly blocks the thread it is called on until the entire data transfer completes. Doing this on the main thread causes the UI to freeze entirely.\n* An **Asynchronous** request dispatches the operation to a background thread, allowing the main thread to continue processing user interactions unhindered. A completion handler, delegate, or `async/await` continuation is notified once the download finishes."
+  },
+  {
+    "category": "Swift Fundamentals",
+    "question": "How do you swap the values of two variables in Swift without using a built-in swap function? [Easy]",
+    "answer": "You can use an `inout` parameter in a function with a temporary variable:\n```swift\nfunc swapNumbers(x: inout Int, y: inout Int) {\n    let temp = x\n    x = y\n    y = temp\n}\n\nvar num1 = 20\nvar num2 = 60\nswapNumbers(x: &num1, y: &num2)\nprint(num1, num2) // Output: 60, 20\n```\nAlternatively, Swift allows tuple destructuring to swap variables inline:\n```swift\n(num1, num2) = (num2, num1)\n```"
+  },
+  {
+    "category": "UIKit",
+    "question": "Can you have multiple UIWindows in an iOS application? [Mid]",
+    "answer": "Yes. Multiple `UIWindow` instances can be used in scenarios like presenting custom alerts over the entire UI, displaying a secure screen cover when the app enters the background to avoid sensitive data in screenshots, or handling external displays.\nThere are default window levels defined, such as `.normal`, `.statusBar`, and `.alert`. To use an additional window, you create a new `UIWindow` instance, set its `windowLevel`, and call `makeKeyAndVisible()`."
+  },
+  {
+    "category": "UIKit",
+    "question": "What are the primary drawbacks of using UITableView? [Easy]",
+    "answer": "The main drawback of `UITableView` is its restriction to a single-column, **vertical scrolling** layout. It lacks built-in support for complex grid layouts or horizontal scrolling, which are more easily achieved using `UICollectionView`."
+  },
+  {
+    "category": "iOS Fundamentals",
+    "question": "What is the most critical rule when updating the UI in a multithreaded iOS application, and how do you enforce it? [Easy]",
+    "answer": "You must **always update the UI on the main thread** (or main queue). Doing otherwise can lead to unpredicted behavior, UI glitches, or crashes. You can ensure this by using `DispatchQueue.main.async` or marking functions/classes with `@MainActor` in modern Swift concurrency."
+  },
+  {
+    "category": "UIKit",
+    "question": "How do you handle the software keyboard obscuring important parts of the UI, such as text fields? [Mid]",
+    "answer": "This issue is typically resolved by embedding the UI content within a `UIScrollView`. You can observe keyboard notifications (such as `UIResponder.keyboardWillShowNotification` and `UIResponder.keyboardWillHideNotification`) using `NotificationCenter`. When these notifications are triggered, you adjust the `contentInset` and `scrollIndicatorInsets` of the scroll view to match the keyboard's height, ensuring the active text field remains visible."
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What is the difference between MVP & MVVM?",
+    "answer": "|  |  |\n| --- | --- |\n| It resolves the problem of having a dependent **View** by using **Presenter** as a communication channel between **Model** and **View**. | This architecture pattern is more event-driven as it uses data binding and thus makes easy separation of core business logic from the **View**. |\n| The one-to-one relationship exists between the **Presenter** and the **View**. | Multiple **View** can be mapped with single **ViewModel**. |\n| The **Presenter** has knowledge about the **View**. | **ViewModel** has no reference to the **View**. |"
+  },
+  {
+    "question": "Value and Reference Types",
+    "answer": "Types in Swift fall into one of two categories: first, \"value types\", where each instance keeps a unique copy of its data, usually defined as a `struct`, `enum`, or tuple. The second, \"reference types\", where instances share a single copy of the data, and the type is usually defined as a `class`. In this post we explore the merits of value and reference types, and how to choose between them."
+  },
+  {
+    "question": "Swift Keywords\u2026",
+    "answer": "**escaping :** to use closure inside another closure\n**Atomic :** the object can be accessed by only one thread at a time (Default - slower)\n**Non-atomic :** the object can be accessed by more than one thread at the same time (faster)\n**Inout :** it lets us modify parameters inside a function, and have those changes persist outside the function.\n**Weak :** define the reference as weak mean this reference hasn\u2019t strong reference on the object so it can be removed easily from memory and prevent retain cycle\n**unOwned :** same as weak but it is not optional , weak is optional then it allows nil\n**lazy :** it is just like the computed property but it has an extra feature which is it saves the value and use it every time you call it , but the computed property everytime you call it , it will compute the value again so it will take lots of time if we have lengthy operation in the lazy property\n**discardableResult :** **dynamic :**"
+  },
+  {
+    "question": "What is the difference between Designated and Convenience initializers?",
+    "answer": "Designated initializer is the default initializer (only one designated per class)\nConvenience initializer is the second , third, fourth \u2026 constructor you want to implement, need convenience keyword before init.\nSo if you want many constructor you have to make one as designated (just init() ), the others (convenience init(params) )"
+  },
+  {
+    "question": "Q: Designated initializers VS Convenience initializers?",
+    "answer": "* **Designated:** The primary initializers that initialize all properties and call a superclass initializer.\n* **Convenience:** Secondary initializers that call a designated initializer from the same class, offering a shortcut."
+  },
+  {
+    "question": "Q: Explain Initializer designation for class types?",
+    "answer": "1. A designated initializer must call a designated initializer from its immediate superclass (delegate up).\n2. A convenience initializer must call another initializer from the *same* class (delegate across).\n3. A convenience initializer must ultimately call a designated initializer."
+  },
+  {
+    "question": "Q: Explain Automatic Initializer Inheritance?",
+    "answer": "* Rule 1: If a subclass has no custom designated initializers, it automatically inherits all superclass designated initializers.\n* Rule 2: If a subclass implements *all* superclass designated initializers, it inherits all superclass convenience initializers."
+  },
+  {
+    "question": "What is the delegation?",
+    "answer": "Delegation is a one to one relation design pattern, which is used to pass the data or communication between structs or classes."
+  },
+  {
+    "question": "What is the retain cycle?",
+    "answer": "Having two strong references depending on each other"
+  },
+  {
+    "question": "What is memory management handled on iOS?",
+    "answer": "iOS uses something called ARC which stands for Automatic Reference Counting. When an object is said to have a strong reference to it, ARC increase its retain count by 1. When the retain count of an object reaches 0, the object will typically be deallocated if there are no more strong references to it. Unlike garbage collection, ARC does not handle reference cycles automatically."
+  },
+  {
+    "question": "What is a retain cycle?",
+    "answer": "Retain cycles can occur when memory management is based on retain count. This typically occurs when two objects strongly reference each other. As a result, the retain count of either object will never reach zero and deallocated from memory (hence retaining each other)."
+  },
+  {
+    "question": "What is the difference between *copy* and *retain*?",
+    "answer": "Calling *retain* on an object will increase its *retain* count by one. When the *retain* count of an objective reaches 0, the object will be deallocated and released from memory.\n\nWhen you *retain* an object, you share the same version with whoever passed the object to you. But when you *copy* an object, you do not share the same version of the object that was passed to you. Instead, a duplicate of that object is created with duplicated values."
+  },
+  {
+    "question": "Q: Define Retain Cycle?",
+    "answer": "A Retain Cycle is a memory leak condition where two or more objects keep strong references to each other. Because both objects retain each other, their Automatic Reference Counting (ARC) reference counts will never drop to zero, making it impossible for the system to release them from memory."
+  },
+  {
+    "question": "2. What is the difference between copy and retain?",
+    "answer": "Generally, retaining an object increases its retain count by one. This helps retain the object in memory instead of being blown away. Therefore, if you only have the retained version of an object, you will share that copy of the same with whoever sent it to you.\n\nCopying an object, on the other hand, creates an extra copy or a duplicate version of the object. While you share the original with the person who sent the object to you, you do not share the copied or duplicate version with the sender."
+  },
+  {
+    "question": "Q: Retain VS Strong (=)",
+    "answer": "* **`strong`** is the same as `retain` in a property declaration, so for ARC projects, use `strong` instead of `retain`.\n* Apple notes that if you write `retain`, it will be auto-converted/work exactly like `strong` under ARC.\n* Methods like `alloc` include an implicit `retain`."
+  },
+  {
+    "question": "Q: Retain VS Copy",
+    "answer": "* **`retain`**: It is done on the created object, and it just increases the reference count by one.\n* **`copy`**: Makes a full copy of an object, and returns it with a retain count of 1. If you copy an object, you own the copy. This applies to any method that contains the word `copy` where \u201ccopy\u201d refers to the object being returned."
+  },
+  {
+    "question": "Retain Cyle in swift:",
+    "answer": "A retain cycle, also known as a memory cycle or reference cycle, is a situation in which two or more objects hold strong references to each other, creating a cycle that prevents them from being deallocated from memory. Retain cycles can lead to memory leaks, where memory is consumed by objects that are no longer needed, but cannot be deallocated.\n\n**How to avoid retain cycles:**\nBy using `weak` or `unowned` references.\n\n---"
+  },
+  {
+    "question": "Is core data thread safe?",
+    "answer": ""
+  },
+  {
+    "question": "What is the difference between static func & class func?",
+    "answer": ""
+  },
+  {
+    "question": "Access modifiers in Swift?",
+    "answer": ""
+  },
+  {
+    "question": "Why does struct have no deinit?",
+    "answer": ""
+  },
+  {
+    "question": "Difference between delegation, notification center and KVO?",
+    "answer": ""
+  },
+  {
+    "question": "What is the Notification center?",
+    "answer": ""
+  },
+  {
+    "question": "What is the associated type?",
+    "answer": ""
+  },
+  {
+    "question": "Constraints that prevent me from making KVO on property?",
+    "answer": ""
+  }
+]

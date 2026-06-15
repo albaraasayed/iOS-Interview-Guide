@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Q: What is NSCoding?",
+    "answer": "`NSCoding` is a protocol that enables an object to be encoded and decoded for archiving and distribution (e.g., saving custom objects to `UserDefaults` or a file)."
+  },
+  {
+    "question": "Q: How to access a variable in blocks?",
+    "answer": "By using the `__block` storage type modifier in Objective-C, which allows the block to mutate the original variable."
+  },
+  {
+    "question": "Q: Where should we perform UI tasks in GCD?",
+    "answer": "Main queues are perfect for updating UI and fetching our images, whereas any other heavy task should run on the background thread.\n\n```objective-c\ndispatch_async(dispatch_get_global_queue(0, 0), ^{\n    //load your data here in the background.\n    dispatch_async(dispatch_get_main_queue(), ^{\n        //update UI in main thread.\n    });\n});\n\n```"
+  },
+  {
+    "question": "Q: What is fast enumeration?",
+    "answer": "Several Cocoa classes, including the collection classes, adopt the `NSFastEnumeration` protocol. You use it to retrieve elements held by an instance using a syntax similar to that of a standard C `for` loop:\n\n```objective-c\nNSArray *anArray = // get an array;\nfor (id element in anArray) {\n    /* code that acts on the element */\n}\n\n```"
+  },
+  {
+    "question": "Q: Difference between \u2018+\u2019 and \u2018-\u2019 notation in methods?",
+    "answer": "In Objective-C, **Instance methods** begin with `-` and **Class level methods** begin with `+`."
+  },
+  {
+    "question": "Q: Define CocoaPods?",
+    "answer": "CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It is built with Ruby and is installable with the default Ruby available on macOS. The dependencies for your projects are specified in a single text file called a `Podfile`. CocoaPods resolves dependencies, fetches the source code, and links it together in an Xcode workspace."
+  },
+  {
+    "question": "Q: What is TestFlight?",
+    "answer": "TestFlight Beta Testing is an Apple product that makes it easy to invite users to test your iOS, watchOS, and tvOS apps before you release them into the App Store. You can invite up to 10,000 testers using just their email addresses."
+  },
+  {
+    "question": "Q: What is NSXMLParserDelegate?",
+    "answer": "A protocol in the Foundation framework used to define the behavior of a delegate object that manages the parsing of XML documents using `XMLParser`."
+  },
+  {
+    "question": "Q: What is the HTTP protocol?",
+    "answer": "HTTP is the application protocol, or set of rules, websites use to transfer data from the web server to a client.\n\n* **GET:** Used to retrieve data without altering any data on the server.\n* **HEAD:** Identical to GET but only sends back the headers and none of the actual data.\n* **POST:** Used to send data to the server, commonly used when filling out a form.\n* **PUT:** Used to send/replace data at a specific location.\n* **DELETE:** Deletes data from the specific location provided."
+  },
+  {
+    "question": "Q: What are the major purposes of Frameworks?",
+    "answer": "Frameworks have three major purposes:\n\n1. Code encapsulation\n2. Code modularity\n3. Code reuse"
+  },
+  {
+    "question": "Q: What is Continuous Integration?",
+    "answer": "Continuous Integration (CI) is a development practice that requires developers to integrate code into a shared repository several times a day. Each check-in is then verified by an automated build, allowing teams to detect problems early (e.g., Xcode server, Jenkins, Travis, Fastlane)."
+  },
+  {
+    "question": "Q: What is Keychain?",
+    "answer": "Keychain is an API for persisting data securely in an iOS App."
+  },
+  {
+    "question": "Q: What\u2019s accessibilityHint?",
+    "answer": "`accessibilityHint` describes the results of interacting with a user interface element. A hint should be supplied *only* if the result of an interaction is not obvious from the element\u2019s standard label."
+  },
+  {
+    "question": "Q: Explain UNNotification Content?",
+    "answer": "`UNNotificationContent` stores the content data inside a scheduled or delivered notification. It is read-only."
+  },
+  {
+    "question": "Q: Explain CAEmitterLayer and CAEmitterCell?",
+    "answer": "UIKit provides two classes for creating particle effects. The `CAEmitterLayer` is the layer that emits, animates, and renders the particle system. The `CAEmitterCell` represents the source and defines the direction and visual properties of the emitted particles."
+  },
+  {
+    "question": "Q: Explain In-app Purchase products and subscriptions?",
+    "answer": "* **Consumable products:** Can be purchased more than once (used items would have to be re-purchased).\n* **Non-consumable products:** Users can restore this functionality in the future if they reinstall the app.\n* **Non-Renewing Subscription:** Used for a certain amount of time and certain content.\n* **Auto-Renewing Subscription:** Used for recurring monthly subscriptions."
+  },
+  {
+    "question": "Q: What is HealthKit?",
+    "answer": "HealthKit is an iOS framework that stores health and fitness data in a central, secure location. It takes in data from multiple sources (like different devices) and allows users to control access to their data to maintain privacy."
+  },
+  {
+    "question": "Q: Explain Neural networks with Core ML?",
+    "answer": "Core ML is an iOS framework that helps process machine learning models directly in your apps (e.g., for face detection, image recognition, and natural language processing) efficiently on the device."
+  },
+  {
+    "question": "Q: Explain libssl_iOS and libcrypto_iOS?",
+    "answer": "These files help with the on-device verification of receipt files for In-App purchases securely."
+  },
+  {
+    "question": "Q: What kind of benefits does Xcode server have for developers?",
+    "answer": "Xcode server automatically checks out a project from source control, builds the app, runs automated tests, and archives the app for distribution."
+  },
+  {
+    "question": "Q: Explain the AVFoundation framework?",
+    "answer": "AVFoundation allows us to create, play, and edit audio and visual media on a detailed level with time-based data. It has separate sets of APIs for video and audio manipulation."
+  },
+  {
+    "question": "Q: How is the app delegate declared by the Xcode project template?",
+    "answer": "It is declared as a subclass of `UIResponder` and conforms to the `UIApplicationDelegate` protocol."
+  },
+  {
+    "question": "Q: What is the purpose of the UIWindow object?",
+    "answer": "The presentation of one or more views on a screen is coordinated by the `UIWindow` object. It provides the basic container for an app's views and routes events to them."
+  },
+  {
+    "question": "Q: Define UIViewController Life Cycle?",
+    "answer": "According to Apple's Documentation:\n\n1. `loadView()`: Subclasses should create their custom view hierarchy here if they aren\u2019t using a storyboard/nib. Should never be called directly.\n2. `loadViewIfNeeded()`: Loads the view controller\u2019s view if it has not already been set.\n3. `viewDidLoad()`: Called after the view has been loaded into memory.\n4. `viewWillLayoutSubviews()`: Called just after the view controller\u2019s view\u2019s layoutSubviews method is invoked.\n5. `viewDidLayoutSubviews()`: Called when the size, position, and constraints have been applied to all objects.\n6. `viewWillAppear(_ animated: Bool)`: Called when the view is about to be made visible.\n7. `viewDidAppear(_ animated: Bool)`: Called when the view has fully transitioned onto the screen.\n8. `viewWillDisappear(_ animated: Bool)`: Called when the view is about to be dismissed, covered, or hidden.\n9. `viewDidDisappear(_ animated: Bool)`: Called after the view was dismissed, covered, or hidden.\n10. `viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)`: Called when the view is transitioning/rotating.\n11. `willMove(toParentViewController parent: UIViewController?)`: Called when transitioning between child controllers.\n12. `didMove(toParentViewController parent: UIViewController?)`: Called after transitioning between child controllers.\n13. `didReceiveMemoryWarning()`: Called when the parent application receives a system memory warning."
+  },
+  {
+    "question": "Q: XIB VS NIB",
+    "answer": "* **XIB (XML Interface Builder)** is executable code in Xcode. It is comparatively bigger in size than a nib. These are flat XML files.\n* **NIB (NeXT Interface Builder)** is a non-editable and inoperable file. They are smaller in size. These are binary or archive files. After compilation, a XIB converts into a NIB."
+  }
+]
